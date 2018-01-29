@@ -20,7 +20,55 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MerchantMapper">
+
     <select id="selectByUserId" resultType="Merchant">
         select * from t_merchant where userId = #{userId}
     </select>
+    
+    <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.Merchant">
+		insert into t_merchant
+		(
+			name, 
+			type, 
+			logo, 
+			description, 
+			detail, 
+			province, 
+			city, 
+			area, 
+			address, 
+			userId,
+			createTime
+		)
+		values
+		(
+			#{name}, 
+			#{type}, 
+			#{logo}, 
+			#{description}, 
+			#{detail}, 
+			#{province}, 
+			#{city}, 
+			#{area}, 
+			#{address}, 
+			#{userId},
+			#{createTime}
+		)
+	</insert>
+	
+	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.Merchant">
+		update t_merchant set
+			name = #{name}, 
+			type = #{type}, 
+			logo = #{logo}, 
+			description = #{description}, 
+			detail = #{detail}, 
+			province = #{province}, 
+			city = #{city}, 
+			area = #{area}, 
+			address = #{address}, 
+			userId = #{userId},
+			updateTime = #{updateTime}
+		where id = #{id}
+	</update>
 </mapper>

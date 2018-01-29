@@ -20,7 +20,58 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserInfoMapper">
+	
     <select id="selectByOpenId" resultType="UserInfo">
         select * from t_user_info where openId = #{openId}
     </select>
+    
+    <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
+		insert into t_user_info
+		(
+			name, 
+			mobile, 
+			tel, 
+			qq, 
+			weixin, 
+			email, 
+			province, 
+			city, 
+			area, 
+			address, 
+			openId,
+			createTime
+		)
+		values
+		(
+			#{name}, 
+			#{mobile}, 
+			#{tel}, 
+			#{qq}, 
+			#{weixin}, 
+			#{email}, 
+			#{province}, 
+			#{city}, 
+			#{area}, 
+			#{address}, 
+			#{openId},
+			#{createTime}
+		)
+	</insert>
+	
+	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
+		update t_user_info set
+			name = #{name}, 
+			mobile = #{mobile}, 
+			tel = #{tel}, 
+			qq = #{qq}, 
+			weixin = #{weixin}, 
+			email = #{email}, 
+			province = #{province}, 
+			city = #{city}, 
+			area = #{area}, 
+			address = #{address}, 
+			openId = #{openId},
+			updateTime = #{updateTime}
+		where id = #{id}
+	</update>
 </mapper>

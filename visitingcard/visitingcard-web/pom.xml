@@ -24,13 +24,18 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
 		<!-- visitingcard -->
 		<dependency>
 			<groupId>cn.nanhuaren.visitingcard</groupId>
 			<artifactId>visitingcard-api</artifactId>
 		</dependency>
-		
+
 		<!-- test dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

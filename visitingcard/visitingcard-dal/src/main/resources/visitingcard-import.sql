@@ -1,24 +1,51 @@
---
---    Copyright 2015-2016 the original author or authors.
---
---    Licensed under the Apache License, Version 2.0 (the "License");
---    you may not use this file except in compliance with the License.
---    You may obtain a copy of the License at
---
---       http://www.apache.org/licenses/LICENSE-2.0
---
---    Unless required by applicable law or agreed to in writing, software
---    distributed under the License is distributed on an "AS IS" BASIS,
---    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
---    See the License for the specific language governing permissions and
---    limitations under the License.
---
-
 drop table if exists t_wechat_info;
 drop table if exists t_user_info;
 drop table if exists t_merchant;
 
-create table t_wechat_info (id int primary key auto_increment, openId varchar, unionId varchar, nickName varchar, avatarUrl varchar, gender varchar, city varchar, province varchar, country varchar, language varchar);
-create table t_user_info (id int primary key auto_increment, name varchar, mobile varchar, tel varchar, qq varchar, weixin varchar, email varchar, province varchar, city varchar, area varchar, address varchar, openId varchar);
-create table t_merchant (id int primary key auto_increment, name varchar, type varchar, logo varchar, description varchar, detail varchar, province varchar, city varchar, area varchar, address varchar, userId int);
+create table t_wechat_info (
+	id int(10) primary key auto_increment, 
+	openId varchar(100), 
+	unionId varchar(100), 
+	nickName varchar(100), 
+	avatarUrl varchar(200), 
+	gender varchar(100), 
+	city varchar(100), 
+	province varchar(100), 
+	country varchar(100), 
+	language varchar(100),
+	createTime date,
+	updateTime date
+);
 
+create table t_user_info (
+	id int primary key auto_increment, 
+	name varchar(100), 
+	mobile varchar(100), 
+	tel varchar(100), 
+	qq varchar(100), 
+	weixin varchar(100), 
+	email varchar(100), 
+	province varchar(100), 
+	city varchar(100), 
+	area varchar(100), 
+	address varchar(100), 
+	openId varchar(100),
+	createTime date,
+	updateTime date
+);
+	
+create table t_merchant (
+	id int primary key auto_increment, 
+	name varchar(100), 
+	type varchar(100), 
+	logo varchar(100), 
+	description varchar(100), 
+	detail varchar(100), 
+	province varchar(100), 
+	city varchar(100), 
+	area varchar(100), 
+	address varchar(100), 
+	userId int,
+	createTime date,
+	updateTime date
+);
