@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/line/index",
+    "pages/line/detail/index",
+    "pages/city/choose",
+    "pages/province/list",
+    "pages/province/city/list",
+    "pages/province/city/store/list",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#337ab7",
+    "navigationBarTitleText": "免费班车",
+    "navigationBarTextStyle": "white"
+  }
+}

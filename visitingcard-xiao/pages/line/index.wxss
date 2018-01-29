@@ -1,0 +1,70 @@
+/* pages/line/index.wxss */
+.line-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 12pt;
+  padding:20rpx 0;
+}
+
+.store-province {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  padding-left: 20rpx;
+  color:#337ab7;
+}
+
+.store-choose {
+  text-align: left;
+  color:#337ab7;
+}
+
+.store-city {
+  width: 40rpx;
+  color:#337ab7;
+}
+
+.store-name {
+  width: 50%;
+  text-align: center;
+  color:#337ab7;
+}
+
+.store-postion {
+  width: 20%;
+  text-align: right;
+  padding-right: 20rpx;
+}
+
+.default-line {
+  width: 100%;
+  padding-top:10rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #337ab7;
+  border-bottom-style:solid;
+}
+
+.line-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width:100%;
+}
+
+.line-item {
+  padding: 20rpx;
+}
+
+.line-select-item {
+  color:#337ab7;
+}
+
+.line-item-index {
+  float: left;
+  width: 80rpx;
+}
+
+.line-item-text {
+  float: left;
+}

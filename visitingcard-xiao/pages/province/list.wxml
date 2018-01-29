@@ -1,0 +1,12 @@
+<!--pages/province/list.wxml-->
+<view class="container">
+  <view class='current-city-title'><text class="current-city-text">请选择省</text></view>
+  <view class="province-list">
+    <block wx:key="provinces" wx:for="{{provinces}}" wx:for-item="province">
+      <view class="province-item" hover-class="line-select-item" data-province="{{province.province_no}}" bindtap="bindChooseCityTap">
+        <text class="province-item-text">{{province.province_name}}</text>
+      </view>
+      <view class="default-line"></view>
+    </block>
+  </view>
+</view>

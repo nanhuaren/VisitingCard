@@ -1,0 +1,23 @@
+<!--pages/line/detail/index.wxml-->
+<view class="container">
+  <view class="line-header">
+    <text class="line-name">{{shuttle.shuttle_name}}</text>
+  </view>
+  <view class="default-line"></view>
+  <view class="station-list">
+    <block wx:key="shuttle" wx:for="{{shuttle.shuttle_stations}}" wx:for-item="station">
+      <view class="station-item">
+        <text class="station-item-index">{{index + 1}}.</text>
+        <text class="station-item-text">{{station.station_name}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="default-line"></view>
+  <view class="line-footer">
+    <block wx:key="shuttle_memos" wx:for="{{shuttle.shuttle_memos}}" wx:for-item="memo">
+      <view class="memo-item">
+        <text class="memo-item-text">{{memo}}</text>
+      </view>
+    </block>
+  </view>
+</view>
