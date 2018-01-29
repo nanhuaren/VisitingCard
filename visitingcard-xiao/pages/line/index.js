@@ -139,20 +139,20 @@ Page({
     })
     wx.setStorageSync('currentLine', currentLine)
     wx.navigateTo({
-      url: 'detail/index?lineNo=' + shuttle
+      url: '/pages/line/detail/index?lineNo=' + shuttle
     })
   },
 
   //省市切换
   bindChooseProvinceTap: function (event) {
     wx.navigateTo({
-      url: '../province/list'
+      url: '/pages/province/list'
     })
   },
   //门店切换
   bindChooseStoreTap: function (event) {
     wx.navigateTo({
-      url: '../province/city/store/list'
+      url: '/pages/province/city/store/list'
     })
   },
 })

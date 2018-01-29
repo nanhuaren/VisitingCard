@@ -94,7 +94,7 @@ Page({
     })
     wx.setStorageSync('currentStore', currentStore)
     wx.navigateTo({
-      url: '../../../line/index?storeNo=' + store
+      url: '/pages/line/index?storeNo=' + store
     })
   },
 })

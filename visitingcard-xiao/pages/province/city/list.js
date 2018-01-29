@@ -92,7 +92,7 @@ Page({
     })
     wx.setStorageSync('currentCity', currentCity)
     wx.navigateTo({
-      url: '../city/store/list?cityNo=' + city
+      url: '/pages/province/city/store/list?cityNo=' + city
     })
   },
 })
