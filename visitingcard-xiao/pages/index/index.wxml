@@ -1,13 +1,13 @@
 <!--pages/index/index.wxml-->
 <view class="container">
   <view class="header">
-    <text class="merchant">熙普照明  (李学林-店长)</text>
+    <text class="merchant">亮百佳--飞度照明(李学林)</text>
   </view>
   <view class="default-line"></view>
   <view class="form">
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
-      <text class="item-text  text-line">13816638520</text>
+      <text class="item-text  text-line">186 5315 6091</text>
     </view>
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/type.png'></image>
@@ -15,26 +15,26 @@
     </view>
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
-      <text class="item-text text-line">553601562</text>
+      <text class="item-text text-line">375995002</text>
     </view>
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
-      <text class="item-text text-line">Risingsun</text>
+      <text class="item-text text-line">18653156091</text>
     </view>
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/email.png'></image>
-      <text class="item-text text-line">zhang_xuesheng@126.com</text>
+      <text class="item-text text-line"></text>
     </view>
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
-      <text class="item-text text-line">上海市黄浦区中山东二路600号</text>
+      <text class="item-text text-line">济南水屯路白鹤灯具广场二楼13号</text>
     </view>
   </view>
   <view class="form">
     <view class="form-item-list">     
       <text class="item-title">个人介绍</text>
       <view class="default-line"></view>
-      <text class="item-content">这里是熙普之光照明商务联盟网店铺 ，我们地址在，我们主要经营灯饰</text>
+      <text class="item-content">深圳市亮百佳电子科技有限公司--山东办事处</text>
     </view>
     <view class='merchant-pic' >
     <image mode="widthFix" src='/images/merchant.jpg'></image>
@@ -42,7 +42,7 @@
     <view class="form-item-list">     
       <text class="item-title">公司简介</text>
       <view class="default-line"></view>
-      <text class="item-content">中山市古镇熙普照明电器厂成立于2014年,注册资金3万元人民币。是一家个体户，中山市古镇熙普照明电器厂法人是伍小伟，主要面象全国市场，客户群为中</text>
+      <text class="item-content">深圳市亮百佳电子科技有限公司</text>
     </view>
     <view class="form-item-list">     
       <text class="item-title">新品上市</text>
