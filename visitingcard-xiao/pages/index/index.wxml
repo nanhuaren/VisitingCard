@@ -3,9 +3,7 @@
   <view class="header">
     <text class="merchant">熙普照明  (李学林-店长)</text>
   </view>
-  <view class='merchant-pic' >
-    <image mode="widthFix" src='/images/merchant.jpg'></image>
-  </view>
+  <view class="default-line"></view>
   <view class="form">
     <view class="form-item">
       <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
@@ -38,6 +36,9 @@
       <view class="default-line"></view>
       <text class="item-content">这里是熙普之光照明商务联盟网店铺 ，我们地址在，我们主要经营灯饰</text>
     </view>
+    <view class='merchant-pic' >
+    <image mode="widthFix" src='/images/merchant.jpg'></image>
+  </view>
     <view class="form-item-list">     
       <text class="item-title">公司简介</text>
       <view class="default-line"></view>
