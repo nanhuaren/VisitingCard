@@ -45,6 +45,7 @@
     </view>
     <view class="form-item-list">     
       <text class="item-title">新品上市</text>
+      <view class="default-line"></view>
       <view class="item-pic"><image mode="widthFix" src='/images/01.jpg'></image></view>
       <view class="item-pic"><image mode="widthFix" src='/images/02.jpg'></image></view>
       <view class="item-pic"><image mode="widthFix" src='/images/03.jpg'></image></view>
@@ -52,6 +53,7 @@
     </view>
     <view class="form-item-list">     
       <text class="item-title">热门产品</text>
+      <view class="default-line"></view>
       <view class="item-pic"><image mode="widthFix" src='/images/01.jpg'></image></view>
       <view class="item-pic"><image mode="widthFix" src='/images/02.jpg'></image></view>
       <view class="item-pic"><image mode="widthFix" src='/images/03.jpg'></image></view>

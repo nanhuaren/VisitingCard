@@ -1,17 +1,43 @@
 {
   "pages": [
-    "pages/line/index",
-    "pages/line/detail/index",
-    "pages/city/choose",
-    "pages/province/list",
-    "pages/province/city/list",
-    "pages/province/city/store/list",
     "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#337ab7",
-    "navigationBarTitleText": "免费班车",
+    "navigationBarTitleText": "飞度照明",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#ffffff",
+    "borderStyle": "#337ab7",
+    "backgroundColor": "#337ab7",
+    "list": [
+      {
+        "text": "电话",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tel.png",
+        "selectedIconPath": "images/tel_default.png"
+      },
+      {
+        "text": "微信",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/weixin.png",
+        "selectedIconPath": "images/weixin_default.png"
+      },
+      {
+        "text": "短信",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/message.png",
+        "selectedIconPath": "images/message_default.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user_default.png"
+      }
+    ]
   }
 }
