@@ -1,4 +1,4 @@
-<!--pages/index/index.wxml-->
+<!--pages/index/tel.wxml-->
 <view class="container">
   <view class="form">
     <view class='card-item'>

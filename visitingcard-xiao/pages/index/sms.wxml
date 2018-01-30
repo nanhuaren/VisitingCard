@@ -1,0 +1,37 @@
+<!--pages/index/sms.wxml-->
+<view class="container">
+  <view class="form">
+    <view class='card-item'>
+      <text class="card-item-text" style='text-align:center;margin:10rpx;font-size:14pt;'>熙普之光的名片</text>
+      <view>
+        <text class="card-item-text" style="float:left;">李学林</text>
+        <text class="card-item-text" style="float:right;">18653156091</text>
+      </view>
+      <text class="card-item-text">济南天桥区北园大街372号大明家居2楼54号</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
+      <text class="item-text  text-line">186 5315 6091</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/type.png'></image>
+      <text class="item-text text-line">商业/服务业/个体经营/灯具</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
+      <text class="item-text text-line">375995002</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
+      <text class="item-text text-line">18653156091</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/email.png'></image>
+      <text class="item-text text-line">暂无</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
+      <text class="item-text">济南天桥区北园大街372号大明家居2楼54号</text>
+    </view>
+  </view>
+</view>

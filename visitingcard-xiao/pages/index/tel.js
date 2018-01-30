@@ -1,18 +1,24 @@
-// pages/index/index.js
+// pages/index/tel.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    flag:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this
+    wx.makePhoneCall({
+      phoneNumber: '18653156091',
+      complete:function(){
+        that.setData({flag:true})
+      }
+    })
   },
 
   /**
@@ -26,7 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

@@ -1,0 +1,16 @@
+<!--pages/index/weixin.wxml-->
+<view class="container">
+  <view class="form">
+    <view class='card-item'>
+      <text class="card-item-text" style='text-align:center;margin:10rpx;font-size:14pt;'>熙普之光的名片</text>
+      <view>
+        <text class="card-item-text" style="float:left;">李学林</text>
+        <text class="card-item-text" style="float:right;">18653156091</text>
+      </view>
+      <text class="card-item-text">济南天桥区北园大街372号大明家居2楼54号</text>
+    </view>
+    <view class="merchant-pic">
+      <image mode="widthFix" src='/images/risingsun/weixin_qrcode.jpg'></image>
+    </view>
+  </view>
+</view>

@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/index/sms.js
 Page({
 
   /**
@@ -12,7 +12,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.addPhoneContact({
+      firstName: '李学林',
+      nickName: '飞度照明',
+      mobilePhoneNumber:'18653156091',
+      weChatNumber:'18653156091'
+    })
   },
 
   /**

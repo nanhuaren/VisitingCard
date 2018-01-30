@@ -1,42 +1,46 @@
 {
   "pages": [
+    "pages/index/profile",
+    "pages/index/tel",
+    "pages/index/weixin",
+    "pages/index/sms",
     "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#337ab7",
-    "navigationBarTitleText": "飞度照明",
+    "navigationBarTitleText": "熙普之光——(李学林)",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#ccc",
-    "selectedColor": "#ffffff",
+    "selectedColor": "#337ab7",
     "borderStyle": "#337ab7",
-    "backgroundColor": "#337ab7",
+    "backgroundColor": "white",
     "list": [
       {
         "text": "电话",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/tel",
         "iconPath": "images/tel.png",
-        "selectedIconPath": "images/tel_default.png"
+        "selectedIconPath": "images/tel_actived.png"
       },
       {
         "text": "微信",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/weixin",
         "iconPath": "images/weixin.png",
-        "selectedIconPath": "images/weixin_default.png"
+        "selectedIconPath": "images/weixin_actived.png"
       },
       {
         "text": "短信",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/sms",
         "iconPath": "images/message.png",
-        "selectedIconPath": "images/message_default.png"
+        "selectedIconPath": "images/message_actived.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/profile",
         "iconPath": "images/user.png",
-        "selectedIconPath": "images/user_default.png"
+        "selectedIconPath": "images/user_actived.png"
       }
     ]
   }
