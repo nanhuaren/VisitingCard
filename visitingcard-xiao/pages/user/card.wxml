@@ -1,0 +1,50 @@
+<!--pages/user/card.wxml-->
+<view class="container">
+  <view class='card-modal'>
+    <view class='card-detail'>
+      <view class='head-left'>
+        <image class='head-img' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ64sDCmw37kTRI2W32Bec1xjCp1CvAtJsl2mmCDtbA5f2l5A47kXHVa3JncRHNMYzaJ4C48JAMSg/0'></image>
+      </view>
+      <view class='head-right'>
+        <view class=''>
+          <text>李学林</text>
+        </view>
+        <view class='head-right-text'>
+          <text>经理 ｜ 灯具</text>
+        </view>
+        <view class='head-right-text'>
+          <text>飞度照明科技有限公司</text>
+        </view>
+      </view>
+    </view>
+    <view class='form-detail'>
+      <view class="form-item">
+        <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
+        <text class="item-text">186 5315 6091</text>
+      </view>
+      <view class="form-item">
+        <image class='item-icon' mode="widthFix" src='/images/type.png'></image>
+        <text class="item-text">商业/服务业/个体经营/灯具</text>
+      </view>
+      <view class="form-item">
+        <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
+        <text class="item-text">375995002</text>
+      </view>
+      <view class="form-item" bindtap="bindWeixinTap">
+        <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
+        <text class="item-text">18653156091</text>
+      </view>
+      <view class="form-item">
+        <image class='item-icon' mode="widthFix" src='/images/email.png'></image>
+        <text class="item-text">暂无邮箱地址</text>
+      </view>
+      <view class="form-item">
+        <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
+        <text class="item-text">济南天桥区北园大街372号大明家居2楼54号</text>
+      </view>
+    </view>
+  </view>
+  <view class='card-footer'>
+    <button class='card-footer-button' open-type="share" bindtap='bindShareTap'>发送名片</button>
+  </view>
+</view>

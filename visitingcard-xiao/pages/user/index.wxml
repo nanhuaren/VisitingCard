@@ -1,0 +1,17 @@
+<!--pages/user/index.wxml-->
+<view class="container">
+  <view class='card-header'>
+    <text class='card-header-text'>你还没有创建电子名片哦</text>
+  </view>
+  <view class='card-body'>
+    <text class='card-body-text'>快速分享</text>
+    <text class='card-body-text'>实时检测</text>
+    <text class='card-body-text'>彰显身份</text>
+  </view>
+  <view class='card-demo'>
+    <image class='card-demo-img' mode="widthFix" src="/images/card.jpg"></image>
+  </view>
+  <view class='card-footer'>
+    <button class='card-footer-button' bindtap='bindCreateCardTap'>一秒快速创建</button>
+  </view>
+</view>

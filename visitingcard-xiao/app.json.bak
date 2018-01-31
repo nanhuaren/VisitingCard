@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/user/add",
+    "pages/index/tel",
+    "pages/index/weixin",
+    "pages/index/sms",
+    "pages/index/index",
+    "pages/user/index",
+    "pages/user/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#337ab7",
+    "navigationBarTitleText": "熙普之光——(李学林)",
+    "navigationBarTextStyle": "white"
+  }
+}

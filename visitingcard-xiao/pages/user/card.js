@@ -1,7 +1,4 @@
-// pages/index/index.js
-
-var app = getApp();
-
+// pages/user/card.js
 Page({
 
   /**
@@ -15,25 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const userInfo = app.globalData.userInfo
-    const openId = userInfo.openId
-    //检查用户信息是否存在
-    wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/' + openId,
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-        console.log(res)        
-        if(res.data.code != 1){
-          wx.navigateTo({
-            url: '../user/index'
-          })
-        }
-      }
-    })
+
   },
 
   /**
@@ -81,10 +60,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     return {
-      title: '熙普之光的名片',
-      path: '/pages/index/index',
+      title: '李学林的名片',
+      path: '/pages/user/card',
       success: function (res) {
         // 转发成功
       },
@@ -94,9 +73,7 @@ Page({
     }
   },
 
-  bindWeixinTap: function (event) {  
-    wx.navigateTo({
-      url: 'weixin'
-    })
+  bindShareTap: function (event) {
+    
   },
 })

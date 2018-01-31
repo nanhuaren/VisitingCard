@@ -17,6 +17,7 @@ Page({
   onLoad: function (options) {
     const userInfo = app.globalData.userInfo
     const openId = userInfo.openId
+    console.log(openId)
     //检查用户信息是否存在
     wx.request({
       url: 'https://www.nanhuaren.cn/vcard/user/' + openId,
@@ -26,12 +27,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: res => {
-        console.log(res)        
-        if(res.data.code != 1){
-          wx.navigateTo({
-            url: '../user/index'
-          })
-        }
+        console.log(res)
       }
     })
   },
@@ -82,21 +78,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '熙普之光的名片',
-      path: '/pages/index/index',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
-  },
 
-  bindWeixinTap: function (event) {  
-    wx.navigateTo({
-      url: 'weixin'
-    })
-  },
+  }
 })

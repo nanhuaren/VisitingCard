@@ -1,0 +1,50 @@
+/* pages/user/index.wxss */
+
+.card-header {
+  padding-top: 60rpx;
+  text-align: center;
+}
+
+.card-header-text {
+  font-size: 17pt;
+  font: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.card-body-text {
+  padding: 10rpx 0;
+  font-size: 11pt;
+  color: gray;
+}
+
+.card-demo {
+  width: 100%;
+  text-align: center;
+  padding-top: 40rpx;
+}
+
+.card-demo-img {
+  width: 50%;
+  text-align: center;
+}
+
+.card-footer {
+  width: 100%;
+  text-align: center;
+  padding-top: 60rpx;
+}
+
+.card-footer-button {
+  text-align: center;
+  color: white;
+  background: #337ab7;
+  margin: 40rpx;
+  border-radius: 50rpx;
+}

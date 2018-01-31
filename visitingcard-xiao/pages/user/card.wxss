@@ -1,0 +1,310 @@
+/* pages/user/card.wxss */
+
+.card-header {
+  padding-top: 60rpx;
+  text-align: center;
+}
+
+.card-header-text {
+  font-size: 17pt;
+  font: bold;
+}
+
+.card-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #337ab7;
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  background: white;
+}
+
+.head-left {
+  padding: 20rpx;
+  width: 160rpx;
+}
+
+.head-img {
+  padding: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.head-right {
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  width: 100%;
+}
+
+.head-right-top {
+  font-size: 17pt;
+  font: bold;
+  margin-top: 20rpx;
+}
+
+.head-right-text {
+  font-size: 11pt;
+  color: lightgray;
+  margin-top: 10rpx;
+}
+
+.form-detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  background: white;
+  margin-bottom: 40rpx;
+  padding-bottom: 10rpx;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1rpx;
+  padding-bottom: 10rpx;
+}
+
+.default-gray {
+  height: 20rpx;
+  width: 100%;
+  background: lightgray;
+  opacity: 0.2;
+}
+
+.form-item-label {
+  padding: 20rpx 20rpx 20rpx 40rpx;
+  width: 160rpx;
+}
+
+.form-item-label-required {
+  color: red;
+}
+
+.form-item-input {
+  padding: 20rpx 20rpx;
+}
+
+.form-item-textarea {
+  padding: 20rpx 50rpx;
+}
+
+.form-item-image {
+  margin: 20rpx 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.form-item-line {
+  width: 100%;
+  border-bottom: 1rpx;
+  border-bottom-color: lightgray;
+  border-bottom-style: inset;
+}
+
+.card-footer {
+  width: 100%;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.card-footer-button {
+  text-align: center;
+  color: white;
+  background: #337ab7;
+  margin: 40rpx;
+  border-radius: 50rpx;
+}
+
+.card-footer-text {
+  text-align: center;
+  margin: 40rpx;
+  font-size: 12pt;
+  color: lightgray;
+}
+
+.card-footer-link {
+  text-align: center;
+  margin: 10rpx;
+  font-size: 12pt;
+  color: #337ab7;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 12pt;
+  padding: 20rpx 0;
+}
+
+.city {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  padding-left: 40rpx;
+  color: #337ab7;
+}
+
+.city-item {
+  text-align: left;
+  color: #337ab7;
+}
+
+.merchant-pic {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 12pt;
+  padding: 20rpx 0;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 20rpx;
+  background: #337ab7;
+}
+
+.card-item-text {
+  text-align: left;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  color: white;
+  font: bold;
+}
+
+.merchant {
+  color: #337ab7;
+  width: 100%;
+  text-align: left;
+  font-size: 12pt;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.search {
+  width: 20%;
+  text-align: right;
+  padding-right: 40rpx;
+}
+
+.default-line {
+  width: 100%;
+  border-bottom: 1rpx;
+  border-bottom-color: #337ab7;
+  border-bottom-style: solid;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.item-label {
+  float: left;
+  padding-top: 10rpx;
+  padding-left: 20rpx;
+  width: 150rpx;
+}
+
+.item-icon {
+  float: left;
+  padding-top: 10rpx;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+}
+
+.item-text {
+  float: left;
+  width: 100%;
+  font-size: 11pt;
+  padding-top: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 40rpx;
+}
+
+.text-line {
+  border-bottom: 1rpx;
+  border-bottom-color: #337ab7;
+  border-bottom-style: solid;
+}
+
+.form-item-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item-title {
+  float: left;
+  padding: 20rpx;
+  font-size: 12pt;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  color: #337ab7;
+}
+
+.item-content {
+  float: left;
+  padding: 20rpx;
+  font-size: 11pt;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.item-pic {
+  width: 100%;
+  text-align: center;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.product-left {
+  width: 50%;
+  padding-left: 40rpx;
+  padding-right: 20rpx;
+  padding-bottom: 40rpx;
+}
+
+.product-right {
+  width: 50%;
+  padding-left: 20rpx;
+  padding-right: 40rpx;
+  padding-bottom: 40rpx;
+}
