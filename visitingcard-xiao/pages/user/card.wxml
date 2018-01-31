@@ -7,32 +7,20 @@
       </view>
       <view class='head-right'>
         <view class=''>
-          <text>李学林</text>
+          <text style='font-size:17pt;'>李学林</text>
         </view>
         <view class='head-right-text'>
-          <text>经理 ｜ 灯具</text>
+          <text style='font-size:10pt;'>经理 ｜ 灯具</text>
         </view>
         <view class='head-right-text'>
-          <text>飞度照明科技有限公司</text>
+          <text style='font-size:10pt;'>飞度照明科技有限公司</text>
         </view>
       </view>
     </view>
     <view class='form-detail'>
       <view class="form-item" bindtap='bindCallTap'>
         <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
-        <text class="item-text">186 5315 6091</text>
-      </view>
-      <view class="form-item">
-        <image class='item-icon' mode="widthFix" src='/images/type.png'></image>
-        <text class="item-text">商业/服务业/个体经营/灯具</text>
-      </view>
-      <view class="form-item">
-        <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
-        <text class="item-text">375995002</text>
-      </view>
-      <view class="form-item" bindtap="bindCallTap">
-        <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
-        <text class="item-text">18653156091</text>
+        <text class="item-text" style='color:#337ab7;'>18653156091</text>
       </view>
       <view class="form-item">
         <image class='item-icon' mode="widthFix" src='/images/email.png'></image>
@@ -40,11 +28,42 @@
       </view>
       <view class="form-item">
         <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
-        <text class="item-text">济南天桥区北园大街372号大明家居2楼54号</text>
+        <text class="item-text" style='color:#337ab7;'>济南天桥区北园大街372号大明家居2楼54号</text>
       </view>
+    </view>
+  </view>
+  <view class='card-desc'>
+    <view class='card-desc-item'>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <text>人气 10</text>
+    </view>
+    <view class='card-desc-item'>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <text>保存 5</text>
+    </view>
+    <view class='card-desc-item'>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <text>靠谱 10</text>
     </view>
   </view>
   <view class='card-footer'>
     <button class='card-footer-button' open-type="share" bindtap='bindShareTap'>发送名片</button>
   </view>
+  <view class='default-gray'></view>
+  <view class='card-desc'>
+    <view class='card-desc-img-list'>
+      <image class='card-desc-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <text>名片图片</text>
+    </view>
+    <view class='card-desc-img-list'>
+      <image class='card-desc-img' mode="widthFix" src='/images/weixin_actived.png'></image>
+      <text>名片码</text>
+    </view>
+    <view class='card-desc-img-list'>
+      <image class='card-desc-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <text>名片壁纸</text>
+    </view>
+  </view>
+  <view class='default-gray'></view>
+  <view class='default-gray'></view>
 </view>

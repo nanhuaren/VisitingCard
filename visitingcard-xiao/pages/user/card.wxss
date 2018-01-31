@@ -23,6 +23,7 @@
   margin-left: 40rpx;
   margin-right: 40rpx;
   background: white;
+  margin-top:40rpx;
 }
 
 .head-left {
@@ -44,14 +45,12 @@
 }
 
 .head-right-top {
-  font-size: 17pt;
   font: bold;
   margin-top: 20rpx;
 }
 
 .head-right-text {
-  font-size: 11pt;
-  color: lightgray;
+  color: gray;
   margin-top: 10rpx;
 }
 
@@ -136,6 +135,44 @@
   margin: 10rpx;
   font-size: 12pt;
   color: #337ab7;
+}
+
+.card-desc {
+  display: flex;
+  flex-direction: row;
+  color: #337ab7;
+  margin-top:20rpx;
+  width:100%;
+}
+
+.card-desc-item {
+  text-align: center;
+  color: #337ab7;
+  width:33%;
+  font-size: 11pt;
+}
+
+.card-desc-item-img {
+  text-align: center;
+  width:30rpx;
+  height:30rpx;
+  padding-top:10rpx;
+}
+
+.card-desc-img-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width:33%;
+  font-size: 11pt;
+  align-items: center;
+}
+
+.card-desc-img {
+  text-align: center;
+  width:80rpx;
+  height:80rpx;
+  margin:20rpx;
 }
 
 .header {
