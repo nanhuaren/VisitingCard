@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class='form-detail'>
-      <view class="form-item">
+      <view class="form-item" bindtap='bindCallTap'>
         <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
         <text class="item-text">186 5315 6091</text>
       </view>
@@ -30,7 +30,7 @@
         <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
         <text class="item-text">375995002</text>
       </view>
-      <view class="form-item" bindtap="bindWeixinTap">
+      <view class="form-item" bindtap="bindCallTap">
         <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
         <text class="item-text">18653156091</text>
       </view>

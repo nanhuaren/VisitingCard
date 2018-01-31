@@ -73,6 +73,12 @@ Page({
     }
   },
 
+  bindCallTap: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: '18653156091',
+    })
+  },
+
   bindShareTap: function (event) {
     
   },
