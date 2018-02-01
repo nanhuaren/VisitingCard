@@ -34,15 +34,15 @@
   </view>
   <view class='card-desc'>
     <view class='card-desc-item'>
-      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/like_actived.png'></image>
       <text>人气 10</text>
     </view>
     <view class='card-desc-item'>
-      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/favorite_actived.png'></image>
       <text>保存 5</text>
     </view>
     <view class='card-desc-item'>
-      <image class='card-desc-item-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <image class='card-desc-item-img' mode="widthFix" src='/images/zan_actived.png'></image>
       <text>靠谱 10</text>
     </view>
   </view>
@@ -52,15 +52,15 @@
   <view class='default-gray'></view>
   <view class='card-desc'>
     <view class='card-desc-img-list'>
-      <image class='card-desc-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <image class='card-desc-img' mode="widthFix" src='/images/picture.png'></image>
       <text>名片图片</text>
     </view>
     <view class='card-desc-img-list'>
-      <image class='card-desc-img' mode="widthFix" src='/images/weixin_actived.png'></image>
+      <image class='card-desc-img' mode="widthFix" src='/images/qrcode.png'></image>
       <text>名片码</text>
     </view>
     <view class='card-desc-img-list'>
-      <image class='card-desc-img' mode="widthFix" src='/images/card_actived.png'></image>
+      <image class='card-desc-img' mode="widthFix" src='/images/bizhi.png'></image>
       <text>名片壁纸</text>
     </view>
   </view>

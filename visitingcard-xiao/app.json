@@ -11,13 +11,13 @@
     "pages/user/detail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "#D3D3D3",
     "navigationBarBackgroundColor": "#337ab7",
     "navigationBarTitleText": "乐享名片",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#ccc",
+    "color": "lightgray",
     "selectedColor": "#337ab7",
     "borderStyle": "#337ab7",
     "backgroundColor": "white",
@@ -31,8 +31,8 @@
       {
         "text": "分享",
         "pagePath": "pages/user/card",
-        "iconPath": "images/card.png",
-        "selectedIconPath": "images/card_actived.png"
+        "iconPath": "images/share.png",
+        "selectedIconPath": "images/share_actived.png"
       },
      
       {
