@@ -9,26 +9,20 @@ public class Merchant implements Serializable {
 
 	private Long id;
 
-	private String name;
+	private String merchantName;
 
-	private String type;
+	private String merchantLogo;
 
-	private String logo;
+	private String merchantPosition;
 
-	private String description;
+	private String merchantType;
 
-	private String detail;
+	private String merchantDescription;
 
-	private String province;
-
-	private String city;
-
-	private String area;
-
-	private String address;
+	private String merchantPicture;
 
 	private Long userId;
-	
+
 	private Date createTime;
 
 	private Date updateTime;
@@ -41,76 +35,52 @@ public class Merchant implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getMerchantName() {
+		return merchantName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMerchantName(String merchantName) {
+		this.merchantName = merchantName;
 	}
 
-	public String getType() {
-		return type;
+	public String getMerchantLogo() {
+		return merchantLogo;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setMerchantLogo(String merchantLogo) {
+		this.merchantLogo = merchantLogo;
 	}
 
-	public String getLogo() {
-		return logo;
+	public String getMerchantPosition() {
+		return merchantPosition;
 	}
 
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setMerchantPosition(String merchantPosition) {
+		this.merchantPosition = merchantPosition;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getMerchantType() {
+		return merchantType;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
 	}
 
-	public String getDetail() {
-		return detail;
+	public String getMerchantDescription() {
+		return merchantDescription;
 	}
 
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setMerchantDescription(String merchantDescription) {
+		this.merchantDescription = merchantDescription;
 	}
 
-	public String getProvince() {
-		return province;
+	public String getMerchantPicture() {
+		return merchantPicture;
 	}
 
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getArea() {
-		return area;
-	}
-
-	public void setArea(String area) {
-		this.area = area;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setMerchantPicture(String merchantPicture) {
+		this.merchantPicture = merchantPicture;
 	}
 
 	public Long getUserId() {
@@ -120,7 +90,7 @@ public class Merchant implements Serializable {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
+
 	public Date getCreateTime() {
 		return createTime;
 	}

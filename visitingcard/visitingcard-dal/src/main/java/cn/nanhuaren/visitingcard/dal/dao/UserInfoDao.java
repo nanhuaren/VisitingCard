@@ -17,6 +17,14 @@ public class UserInfoDao {
 	public UserInfo selectByOpenId(String openId) {
 		return this.sqlSession.selectOne("UserInfoMapper.selectByOpenId", openId);
 	}
+	
+	public UserInfo selectById(Long id) {
+		return this.sqlSession.selectOne("UserInfoMapper.selectById", id);
+	}
+	
+	public UserInfo selectByMobile(String mobile) {
+		return this.sqlSession.selectOne("UserInfoMapper.selectByMobile", mobile);
+	}
 
 	public int insert(UserInfo data) {
 		return this.sqlSession.insert("UserInfoMapper.insert", data);

@@ -11,9 +11,13 @@ public class UserInfo implements Serializable {
 
 	private String name;
 
+	private String headerImg;
+
 	private String mobile;
 
 	private String tel;
+
+	private String fax;
 
 	private String qq;
 
@@ -29,8 +33,12 @@ public class UserInfo implements Serializable {
 
 	private String address;
 
+	private String description;
+
 	private String openId;
-	
+
+	private String userType;
+
 	private Date createTime;
 
 	private Date updateTime;
@@ -51,6 +59,14 @@ public class UserInfo implements Serializable {
 		this.name = name;
 	}
 
+	public String getHeaderImg() {
+		return headerImg;
+	}
+
+	public void setHeaderImg(String headerImg) {
+		this.headerImg = headerImg;
+	}
+
 	public String getMobile() {
 		return mobile;
 	}
@@ -65,6 +81,14 @@ public class UserInfo implements Serializable {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
 	public String getQq() {
@@ -123,6 +147,14 @@ public class UserInfo implements Serializable {
 		this.address = address;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getOpenId() {
 		return openId;
 	}
@@ -130,7 +162,15 @@ public class UserInfo implements Serializable {
 	public void setOpenId(String openId) {
 		this.openId = openId;
 	}
-	
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 	public Date getCreateTime() {
 		return createTime;
 	}
