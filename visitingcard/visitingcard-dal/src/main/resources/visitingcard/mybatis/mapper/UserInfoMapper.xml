@@ -37,6 +37,7 @@
 		insert into t_user_info
 		(
 			name, 
+			headerImg,
 			mobile, 
 			tel, 
 			fax, 
@@ -47,12 +48,16 @@
 			city, 
 			area, 
 			address, 
+			description,
 			openId,
+			userType,
+			ownerId,
 			createTime
 		)
 		values
 		(
 			#{name}, 
+			#{headerImg}, 
 			#{mobile}, 
 			#{tel}, 
 			#{fax},
@@ -63,7 +68,10 @@
 			#{city}, 
 			#{area}, 
 			#{address}, 
+			#{description},
 			#{openId},
+			#{userType},
+			#{ownerId},
 			#{createTime}
 		)
 	</insert>
@@ -71,8 +79,10 @@
 	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
 		update t_user_info set
 			name = #{name}, 
+			headerImg = #{headerImg}, 
 			mobile = #{mobile}, 
 			tel = #{tel}, 
+			fax = #{fax},
 			qq = #{qq}, 
 			weixin = #{weixin}, 
 			email = #{email}, 
@@ -80,7 +90,10 @@
 			city = #{city}, 
 			area = #{area}, 
 			address = #{address}, 
+			description = #{description}, 
 			openId = #{openId},
+			userType = #{userType},
+			ownerId = #{ownerId},
 			updateTime = #{updateTime}
 		where id = #{id}
 	</update>
