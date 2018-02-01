@@ -25,12 +25,21 @@
         select * from t_user_info where openId = #{openId}
     </select>
     
+    <select id="selectByMobile" resultType="UserInfo">
+        select * from t_user_info where mobile = #{mobile}
+    </select>
+    
+    <select id="selectById" resultType="UserInfo">
+        select * from t_user_info where id = #{id}
+    </select>
+    
     <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
 		insert into t_user_info
 		(
 			name, 
 			mobile, 
 			tel, 
+			fax, 
 			qq, 
 			weixin, 
 			email, 
@@ -46,6 +55,7 @@
 			#{name}, 
 			#{mobile}, 
 			#{tel}, 
+			#{fax},
 			#{qq}, 
 			#{weixin}, 
 			#{email}, 

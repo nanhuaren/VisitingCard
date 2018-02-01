@@ -39,6 +39,8 @@ public class UserInfo implements Serializable {
 
 	private String userType;
 
+	private Long ownerId;
+
 	private Date createTime;
 
 	private Date updateTime;
@@ -169,6 +171,14 @@ public class UserInfo implements Serializable {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public Long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public Date getCreateTime() {

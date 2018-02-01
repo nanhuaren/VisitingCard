@@ -2,6 +2,7 @@
 package cn.nanhuaren.visitingcard.api.rest;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,6 +48,19 @@ public class UserInfoController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/list", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody list(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserInfo> userInfoList = userInfoDao.listByOwnerId(ownerId);
+		if (userInfoList != null) {
+			resultBody.setData(userInfoList);
+		} else {
+			resultBody.isError("获取用户列表失败");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
 	@RequestMapping(value = "/add", method = { RequestMethod.POST, RequestMethod.GET })
 	public ResultBody add(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response) {
 		ResultBody resultBody = new ResultBody();
@@ -68,6 +82,8 @@ public class UserInfoController {
 			queryUserInfo.setArea(userInfo.getArea());
 			queryUserInfo.setAddress(userInfo.getAddress());
 			queryUserInfo.setDescription(userInfo.getDescription());
+			queryUserInfo.setUserType("01");
+			queryUserInfo.setOwnerId(new Long(1));
 			queryUserInfo.setCreateTime(new Date());
 			userInfoDao.insert(queryUserInfo);
 		} else {

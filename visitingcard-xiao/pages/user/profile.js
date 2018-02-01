@@ -1,18 +1,37 @@
-// pages/user/edit.js
+// pages/user/profile.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    weChatInfo: {},
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.setNavigationBarTitle({
+      title: '个人中心',
+    })
+    var weChatInfo = wx.getStorageSync("weChatInfo")
+    this.setData({ weChatInfo: weChatInfo })
+    wx.request({
+      url: 'https://www.nanhuaren.cn/vcard/user/get',
+      data: { openId: weChatInfo.openId },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: res => {
+        console.log(res.data)
+        if (res.data.code != 0) {
+          that.setData({ userInfo: res.data.data })
+        }
+      }
+    })
   },
 
   /**
@@ -64,32 +83,15 @@ Page({
 
   },
 
-  bindAddImgTap: function (event) {
-    wx.chooseImage({
-      success: function (res) {
-
-      },
-    })
-  },
-
-  bindSaveTap: function (event) {
+  bindAddUserTap: function (event) {
     wx.navigateTo({
-      url: 'detail'
+      url: 'edit'
     })
   },
 
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    var userInfo = e.detail.value
-    wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/add',
-      data: userInfo,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-console.log(res)
-      }
-    })
+  bindContactUsTap: function (event) {
+    
   },
+
+  
 })

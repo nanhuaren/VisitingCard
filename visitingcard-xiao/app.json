@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/user/index",
+    "pages/user/profile",
     "pages/index/tel",
     "pages/index/weixin",
     "pages/index/sms",
@@ -8,7 +8,8 @@
     "pages/user/add",
     "pages/user/edit",
     "pages/user/card",
-    "pages/user/detail"
+    "pages/user/detail",
+    "pages/user/index"
   ],
   "window": {
     "backgroundTextStyle": "#D3D3D3",
@@ -29,15 +30,8 @@
         "selectedIconPath": "images/card_actived.png"
       }, 
       {
-        "text": "分享",
-        "pagePath": "pages/user/card",
-        "iconPath": "images/share.png",
-        "selectedIconPath": "images/share_actived.png"
-      },
-     
-      {
         "text": "我的",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/user/profile",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user_actived.png"
       }

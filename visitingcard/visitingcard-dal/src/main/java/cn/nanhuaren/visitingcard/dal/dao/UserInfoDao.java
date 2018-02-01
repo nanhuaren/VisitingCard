@@ -1,5 +1,7 @@
 package cn.nanhuaren.visitingcard.dal.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +19,17 @@ public class UserInfoDao {
 	public UserInfo selectByOpenId(String openId) {
 		return this.sqlSession.selectOne("UserInfoMapper.selectByOpenId", openId);
 	}
-	
+
 	public UserInfo selectById(Long id) {
 		return this.sqlSession.selectOne("UserInfoMapper.selectById", id);
 	}
-	
+
 	public UserInfo selectByMobile(String mobile) {
 		return this.sqlSession.selectOne("UserInfoMapper.selectByMobile", mobile);
+	}
+
+	public List<UserInfo> listByOwnerId(long ownerId) {
+		return this.sqlSession.selectList("UserInfoMapper.listByOwnerId", ownerId);
 	}
 
 	public int insert(UserInfo data) {

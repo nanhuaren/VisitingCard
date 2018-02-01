@@ -13,15 +13,17 @@ create table t_wechat_info (
 	province varchar(100), 
 	country varchar(100), 
 	language varchar(100),
-	createTime date,
-	updateTime date
+	createTime timestamp,
+	updateTime timestamp default current_timestamp
 );
 
 create table t_user_info (
 	id int primary key auto_increment, 
 	name varchar(100), 
+	headerImg varchar(200), 
 	mobile varchar(100), 
 	tel varchar(100), 
+	fax varchar(100), 
 	qq varchar(100), 
 	weixin varchar(100), 
 	email varchar(100), 
@@ -29,23 +31,23 @@ create table t_user_info (
 	city varchar(100), 
 	area varchar(100), 
 	address varchar(100), 
+	description varchar(500), 
 	openId varchar(100),
-	createTime date,
-	updateTime date
+	userType varchar(100),
+	ownerId int,
+	createTime timestamp,
+	updateTime timestamp default current_timestamp
 );
 	
 create table t_merchant (
 	id int primary key auto_increment, 
-	name varchar(100), 
-	type varchar(100), 
-	logo varchar(100), 
-	description varchar(100), 
-	detail varchar(100), 
-	province varchar(100), 
-	city varchar(100), 
-	area varchar(100), 
-	address varchar(100), 
+	merchantName varchar(100), 
+	merchantLogo varchar(200), 
+	merchantPosition varchar(100), 
+	merchantType varchar(100), 
+	merchantDescription varchar(1000), 
+	merchantPicture varchar(1000),  
 	userId int,
-	createTime date,
-	updateTime date
+	createTime timestamp,
+	updateTime timestamp default current_timestamp
 );

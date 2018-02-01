@@ -11,7 +11,7 @@ App({
           'content-type': 'application/json' // 默认值
         },
         success: res => {
-          
+          wx.setStorageSync("weChatInfo", userInfo)
         }
       })
     })

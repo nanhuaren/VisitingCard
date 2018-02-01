@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +28,8 @@ public class MerchantController {
 	private MerchantDao merchantDao;
 
 	@ResponseBody
-	@RequestMapping(value = "/{userId}", method = { RequestMethod.POST, RequestMethod.GET })
-	public ResultBody get(@PathVariable Long userId, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody get(Long userId, HttpServletRequest request, HttpServletResponse response) {
 		ResultBody resultBody = new ResultBody();
 		Merchant merchant = merchantDao.selectByUserId(userId);
 		if (merchant != null) {
@@ -50,31 +49,39 @@ public class MerchantController {
 		queryMerchant = merchantDao.selectByUserId(merchant.getUserId());
 		if (queryMerchant == null) {
 			queryMerchant = new Merchant();
-			queryMerchant.setName(merchant.getName());
-			queryMerchant.setType(merchant.getType());
-			queryMerchant.setLogo(merchant.getLogo());
-			queryMerchant.setDescription(merchant.getDescription());
-			queryMerchant.setDetail(merchant.getDetail());
-			queryMerchant.setProvince(merchant.getProvince());
-			queryMerchant.setCity(merchant.getCity());
-			queryMerchant.setArea(merchant.getArea());
-			queryMerchant.setAddress(merchant.getAddress());
+			queryMerchant.setMerchantName(merchant.getMerchantName());
+			queryMerchant.setMerchantLogo(merchant.getMerchantLogo());
+			queryMerchant.setMerchantPosition(merchant.getMerchantPosition());
+			queryMerchant.setMerchantType(merchant.getMerchantType());
+			queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
+			queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
 			queryMerchant.setUserId(merchant.getUserId());
 			queryMerchant.setCreateTime(new Date());
 			merchantDao.insert(queryMerchant);
 		} else {
-			queryMerchant.setName(merchant.getName());
-			queryMerchant.setType(merchant.getType());
-			queryMerchant.setLogo(merchant.getLogo());
-			queryMerchant.setDescription(merchant.getDescription());
-			queryMerchant.setDetail(merchant.getDetail());
-			queryMerchant.setProvince(merchant.getProvince());
-			queryMerchant.setCity(merchant.getCity());
-			queryMerchant.setArea(merchant.getArea());
-			queryMerchant.setAddress(merchant.getAddress());
-			queryMerchant.setUserId(merchant.getUserId());
+			resultBody.isError("新增商户失败，商户已存在");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/modify", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody modify(Merchant merchant, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		logger.info("request merchant={}", merchant);
+		Merchant queryMerchant = new Merchant();
+		queryMerchant = merchantDao.selectByUserId(merchant.getId());
+		if (queryMerchant != null) {
+			queryMerchant.setMerchantName(merchant.getMerchantName());
+			queryMerchant.setMerchantLogo(merchant.getMerchantLogo());
+			queryMerchant.setMerchantPosition(merchant.getMerchantPosition());
+			queryMerchant.setMerchantType(merchant.getMerchantType());
+			queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
+			queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
 			queryMerchant.setUpdateTime(new Date());
 			merchantDao.updateById(queryMerchant);
+		} else {
+			resultBody.isError("修改商户失败，商户不存在");
 		}
 		return resultBody;
 	}
