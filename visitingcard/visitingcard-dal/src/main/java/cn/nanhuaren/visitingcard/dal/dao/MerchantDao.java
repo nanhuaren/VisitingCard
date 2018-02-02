@@ -15,7 +15,7 @@ public class MerchantDao {
 	}
 
 	public Merchant selectByUserId(long userId) {
-		return this.sqlSession.selectOne("MerchantMapper.selectByOpenId", userId);
+		return this.sqlSession.selectOne("MerchantMapper.selectByUserId", userId);
 	}
 
 	public int insert(Merchant data) {

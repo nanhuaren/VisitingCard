@@ -4,17 +4,17 @@
     <view class='card-modal' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}'>
       <view class='card-detail'>
         <view class='head-left'>
-          <image class='head-img' src='{{userInfo.headerImg}}'></image>
+          <image class='head-img' src='{{userInfo.headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
         </view>
         <view class='head-right'>
           <view class=''>
             <text style='font-size:17pt;'>{{userInfo.name}}</text>
           </view>
           <view class='head-right-text'>
-            <text style='font-size:10pt;'>经理 ｜ 灯具</text>
+            <text style='font-size:10pt;'>{{userInfo.merchantPosition}} ｜ {{userInfo.merchantType}}</text>
           </view>
           <view class='head-right-text'>
-            <text style='font-size:10pt;'>飞度照明科技有限公司</text>
+            <text style='font-size:10pt;'>{{userInfo.merchantName}}</text>
           </view>
         </view>
       </view>
@@ -29,7 +29,7 @@
         </view>
         <view class="form-item">
           <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
-          <text class="item-text" style='color:#337ab7;'>{{userInfo.province+userInfo.city+userInfo.area+userInfo.address}}</text>
+          <text class="item-text" style='color:#337ab7;'>{{(userInfo.province||"")+(userInfo.city||"")+(userInfo.area||"")+(userInfo.address||"")}}</text>
         </view>
       </view>
     </view>

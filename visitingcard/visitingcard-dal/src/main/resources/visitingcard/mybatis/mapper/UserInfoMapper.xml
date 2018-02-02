@@ -42,6 +42,16 @@
 		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />
 	</resultMap>
 	
+	<resultMap id="UserMerchantInfoMap" extends="UserInfoMap" type="cn.nanhuaren.visitingcard.dal.domain.UserMerchantInfo">
+		<result column="merchantId" jdbcType="INTEGER" property="merchantId" />
+		<result column="merchantName" jdbcType="VARCHAR" property="merchantName" />
+		<result column="merchantLogo" jdbcType="VARCHAR" property="merchantLogo" />
+		<result column="merchantPosition" jdbcType="VARCHAR" property="merchantPosition" />
+		<result column="merchantType" jdbcType="VARCHAR" property="merchantType" />
+		<result column="merchantDescription" jdbcType="VARCHAR" property="merchantDescription" />
+		<result column="merchantPicture" jdbcType="VARCHAR" property="merchantPicture" />
+	</resultMap>
+	
     <select id="selectByOpenId" resultType="UserInfo">
         select * from t_user_info where openId = #{openId}
     </select>
@@ -62,7 +72,28 @@
         select count(1) from t_user_info where ownerId = #{ownerId} and id != #{ownerId}
     </select>
     
+    <select id="selectMerchantById" resultType="UserMerchantInfo">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.id = #{id}
+    </select>
+    
+    <select id="listMerchantByOwnerId" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId}
+    </select>
+    
+    <select id="countMerchantByOwnerId" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId}
+    </select>
+    
     <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
+    	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
 		insert into t_user_info
 		(
 			name, 

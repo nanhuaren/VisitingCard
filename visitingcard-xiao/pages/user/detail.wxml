@@ -6,7 +6,7 @@
     <form bindsubmit="formSubmit">
       <view class='form-item'>
         <view class='head-left'>
-          <image class='head-img' src='{{userInfo.headerImg}}'></image>
+          <image bindtap='bindAddUserImgTap' class='head-img' src='{{userInfo.headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
         </view>
         <view class='head-right'>
           <view class='form-item form-item-line'>
@@ -56,27 +56,28 @@
         <label class='form-item-label'>公司
           <text class='form-item-label-required'>*</text>
         </label>
-        <input class='form-item-input' name='merchantName' type='text' placeholder='请输入公司名称'></input>
+        <input class='form-item-input' name='merchantName' type='text' value='{{userInfo.merchantName}}'></input>
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>职务
           <text class='form-item-label-required'>*</text>
         </label>
-        <input class='form-item-input' name='merchantPosition' type='text' placeholder='请输入职务'></input>
+        <input class='form-item-input' name='merchantPosition' type='text' value='{{userInfo.merchantPosition}}'></input>
       </view>
 
       <view class='form-item form-item-line'>
         <label class='form-item-label'>行业</label>
-        <input class='form-item-input' name='merchantType' type='text' placeholder='请选择行业'></input>
+        <input class='form-item-input' name='merchantType' type='text' value='{{userInfo.merchantType}}'></input>
       </view>
 
       <view class='form-item form-item-line'>
         <label class='form-item-label'>简介</label>
-        <textarea class='form-item-textarea' name='merchantDescription' auto-height placeholder='公司介绍...'></textarea>
+        <textarea class='form-item-textarea' name='merchantDescription' auto-height value='{{userInfo.merchantDescription}}'></textarea>
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>图片</label>
-        <image class='form-item-image' name='merchantPicture' bindtap='bindAddImgTap' src='/images/add-img.png'></image>
+        <image class='form-item-image' wx:if="{{userInfo.merchantPicture!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantPicture}}'></image>
+        <image class='form-item-image' name='merchantPicture' bindtap='bindAddMerchantImgTap' src='/images/add-img.png'></image>
       </view>
       <view class='card-footer'>
         <button class='card-footer-button' formType="submit">保存</button>

@@ -69,4 +69,10 @@ Page({
       url: 'add'
     })
   },
+
+  bindContactUsTap: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: '18653156091',
+    })
+  },
 })

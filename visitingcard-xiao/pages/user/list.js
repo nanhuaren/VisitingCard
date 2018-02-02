@@ -15,7 +15,7 @@ Page({
     var that = this
     var ownerId = options.ownerId
     wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/list',
+      url: 'https://www.nanhuaren.cn/vcard/user/merchantList',
       data: { ownerId: ownerId },
       header: {
         'content-type': 'application/json' // 默认值

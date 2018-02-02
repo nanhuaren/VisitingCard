@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/user/profile",
+    "pages/user/index",
     "pages/index/tel",
     "pages/index/weixin",
     "pages/index/sms",
@@ -9,7 +9,7 @@
     "pages/user/edit",
     "pages/user/card",
     "pages/user/detail",
-    "pages/user/index",
+    "pages/user/profile",
     "pages/user/list"
   ],
   "window": {

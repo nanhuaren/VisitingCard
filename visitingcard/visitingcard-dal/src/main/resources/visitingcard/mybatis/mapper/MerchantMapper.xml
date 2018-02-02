@@ -28,29 +28,23 @@
     <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.Merchant">
 		insert into t_merchant
 		(
-			name, 
-			type, 
-			logo, 
-			description, 
-			detail, 
-			province, 
-			city, 
-			area, 
-			address, 
+			merchantName, 
+			merchantLogo, 
+			merchantPosition, 
+			merchantType, 
+			merchantDescription, 
+			merchantPicture, 
 			userId,
 			createTime
 		)
 		values
 		(
-			#{name}, 
-			#{type}, 
-			#{logo}, 
-			#{description}, 
-			#{detail}, 
-			#{province}, 
-			#{city}, 
-			#{area}, 
-			#{address}, 
+			#{merchantName}, 
+			#{merchantLogo}, 
+			#{merchantPosition}, 
+			#{merchantType}, 
+			#{merchantDescription}, 
+			#{merchantPicture}, 
 			#{userId},
 			#{createTime}
 		)
@@ -58,16 +52,13 @@
 	
 	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.Merchant">
 		update t_merchant set
-			name = #{name}, 
-			type = #{type}, 
-			logo = #{logo}, 
-			description = #{description}, 
-			detail = #{detail}, 
-			province = #{province}, 
-			city = #{city}, 
-			area = #{area}, 
-			address = #{address}, 
-			userId = #{userId},
+			merchantName = #{merchantName}, 
+			merchantLogo = #{merchantLogo}, 
+			merchantPosition = #{merchantPosition}, 
+			merchantType = #{merchantType}, 
+			merchantDescription = #{merchantDescription}, 
+			merchantPicture = #{merchantPicture}, 
+			userId = #{userId}, 
 			updateTime = #{updateTime}
 		where id = #{id}
 	</update>

@@ -6,7 +6,7 @@
     <form bindsubmit="formSubmit">
       <view class='form-item'>
         <view class='head-left'>
-          <image class='head-img' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ64sDCmw37kTRI2W32Bec1xjCp1CvAtJsl2mmCDtbA5f2l5A47kXHVa3JncRHNMYzaJ4C48JAMSg/0'></image>
+          <image class='head-img' bindtap='bindAddUserImgTap' src='{{headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+headerImg}}'></image>
         </view>
         <view class='head-right'>
           <view class='form-item form-item-line'>
@@ -76,7 +76,8 @@
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>图片</label>
-        <image class='form-item-image' name='merchantPicture' bindtap='bindAddImgTap' src='/images/add-img.png'></image>
+        <image class='form-item-image' wx:if="{{userInfo.merchantPicture!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantPicture}}'></image>
+        <image class='form-item-image' name='merchantPicture' bindtap='bindAddMerchantImgTap' src='/images/add-img.png'></image>
       </view>
       <view class='card-footer'>
         <button class='card-footer-button' formType="submit">保存</button>

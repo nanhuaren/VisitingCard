@@ -33,7 +33,7 @@ Page({
           that.setData({ userInfo: userInfo })
           if (userInfo.userType == '00') {
             wx.request({
-              url: 'https://www.nanhuaren.cn/vcard/user/count',
+              url: 'https://www.nanhuaren.cn/vcard/user/merchantCount',
               data: { ownerId: userInfo.id },
               header: {
                 'content-type': 'application/json' // 默认值
@@ -103,12 +103,14 @@ Page({
 
   bindAddUserTap: function (event) {
     wx.navigateTo({
-      url: 'edit'
+      url: 'edit?ownerId=' + this.data.userInfo.id
     })
   },
 
   bindContactUsTap: function (event) {
-
+    wx.makePhoneCall({
+      phoneNumber: '18653156091',
+    })
   },
 
   bindListUserTap: function (event) {

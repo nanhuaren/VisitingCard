@@ -12,6 +12,6 @@
     <image class='card-demo-img' mode="widthFix" src="/images/card.jpg"></image>
   </view>
   <view class='card-footer'>
-    <button class='card-footer-button' bindtap='bindCreateCardTap'>一秒快速创建</button>
+    <button class='card-footer-button' bindtap='bindContactUsTap'>联系我们</button>
   </view>
 </view>

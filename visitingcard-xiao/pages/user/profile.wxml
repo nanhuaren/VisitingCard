@@ -4,7 +4,7 @@
   <view class='add-form'>
     <view class='form-item'>
       <view class='head-left'>
-        <image class='head-img' src='{{weChatInfo.avatarUrl}}'></image>
+        <image class='head-img' src='{{weChatInfo.avatarUrl==null?"/images/logo.jpg":weChatInfo.avatarUrl}}'></image>
       </view>
       <view class='head-right'>
         <view class='form-item form-item-line'>
@@ -18,7 +18,7 @@
     <view class='default-gray'></view>
     <view wx:if="{{userInfo.userType=='00'}}" class='form-item form-item-line' bindtap='bindListUserTap'>
       <label class='form-item-label'>推荐客户</label>
-      <text class='form-item-input form-item-count'>{{count}}</text>      
+      <text class='form-item-input form-item-count'>{{count}} 个</text>     
     </view>
   </view>
   <view class='card-footer'>
