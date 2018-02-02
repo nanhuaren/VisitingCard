@@ -1,30 +1,30 @@
-// pages/user/detail.js
+// pages/user/list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfoList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userId = options.userId
     var that = this
+    var ownerId = options.ownerId
     wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/detail',
-      data: { userId: userId },
+      url: 'https://www.nanhuaren.cn/vcard/user/list',
+      data: { ownerId: ownerId },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: res => {
         console.log(res.data)
         if (res.data.code != 0) {
-          var userInfo = res.data.data
-          that.setData({ userInfo: userInfo })
+          var userInfoList = res.data.data
+          that.setData({ userInfoList: userInfoList })
         }
       }
     })
@@ -81,7 +81,14 @@ Page({
 
   bindBackTap: function (event) {
     wx.switchTab({
-      url: 'card',
+      url: 'profile',
+    })
+  },
+
+  bindViewUserTap: function (event) {
+    var userId = event.currentTarget.dataset.userid
+    wx.navigateTo({
+      url: 'detail?userId=' + userId,
     })
   },
 })

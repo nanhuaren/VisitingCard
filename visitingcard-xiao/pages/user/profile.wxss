@@ -57,7 +57,11 @@
 }
 
 .form-item-input {
-  padding: 20rpx 20rpx;
+  padding: 20rpx 20rpx;  
+}
+
+.form-item-count {
+  color:#337ab7;
 }
 
 .form-item-line {
@@ -65,6 +69,15 @@
   border-bottom: 1rpx;
   border-bottom-color:lightgray;
   border-bottom-style: inset;
+}
+
+.right-img {
+  vertical-align:middle;
+  float: right;
+  text-align: right;
+  margin:25rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .card-footer {

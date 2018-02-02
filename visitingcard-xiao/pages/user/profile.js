@@ -6,7 +6,8 @@ Page({
    */
   data: {
     weChatInfo: {},
-    userInfo: {}
+    userInfo: {},
+    count:0
   },
 
   /**
@@ -28,7 +29,24 @@ Page({
       success: res => {
         console.log(res.data)
         if (res.data.code != 0) {
-          that.setData({ userInfo: res.data.data })
+          var userInfo = res.data.data
+          that.setData({ userInfo: userInfo })
+          if (userInfo.userType == '00') {
+            wx.request({
+              url: 'https://www.nanhuaren.cn/vcard/user/count',
+              data: { ownerId: userInfo.id },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              success: res => {
+                console.log(res.data)
+                if (res.data.code != 0) {
+                  var count = res.data.data
+                  that.setData({ count: count })                  
+                }
+              }
+            })
+          }
         }
       }
     })
@@ -90,8 +108,14 @@ Page({
   },
 
   bindContactUsTap: function (event) {
-    
+
   },
 
-  
+  bindListUserTap: function (event) {
+    wx.navigateTo({
+      url: 'list?ownerId='+this.data.userInfo.id
+    })
+  },
+
+
 })

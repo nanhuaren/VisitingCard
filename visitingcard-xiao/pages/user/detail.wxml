@@ -1,51 +1,87 @@
 <!--pages/user/detail.wxml-->
 <view class="container">
   <view class='default-gray'></view>
+
   <view class='add-form'>
-    <view class='form-item'>
-      <view class='head-left'>
-        <image class='head-img' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ64sDCmw37kTRI2W32Bec1xjCp1CvAtJsl2mmCDtbA5f2l5A47kXHVa3JncRHNMYzaJ4C48JAMSg/0'></image>
-      </view>
-      <view class='head-right'>
-        <view class='form-item form-item-line'>
-          <input class='form-item-input' type='text' disabled placeholder='请输入名字'></input>
+    <form bindsubmit="formSubmit">
+      <view class='form-item'>
+        <view class='head-left'>
+          <image class='head-img' src='{{userInfo.headerImg}}'></image>
         </view>
-        <view class='form-item'>
-          <input class='form-item-input' type='number' disabled placeholder='常用手机号码'></input>
+        <view class='head-right'>
+          <view class='form-item form-item-line'>
+            <input class='form-item-input' name='name' type='text' value='{{userInfo.name}}'></input>
+          </view>
+          <view class='form-item'>
+            <input class='form-item-input' name='mobile' type='number' value='{{userInfo.mobile}}'></input>
+          </view>
         </view>
       </view>
-    </view>
-    <view class='default-gray'></view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>公司</label>
-      <input class='form-item-input' type='text' disabled placeholder='请输入公司名称'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>职务</label>
-      <input class='form-item-input' type='text' disabled placeholder='请输入职务'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>邮箱</label>
-      <input class='form-item-input' type='text' disabled placeholder='请输入邮箱地址'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>行业</label>
-      <input class='form-item-input' type='text' disabled placeholder='请选择行业'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>所在城市</label>
-      <input class='form-item-input' type='text' disabled placeholder='请选择所在城市'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>详细地址</label>
-      <input class='form-item-input' type='text' disabled placeholder='请输入详细地址'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>更多</label>
-      <textarea class='form-item-textarea' disabled auto-height placeholder='让微信好友更了解你...'></textarea>
-    </view>
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>电话</label>
+        <input class='form-item-input' name='tel' type='number' value='{{userInfo.tel}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>传真</label>
+        <input class='form-item-input' name='fax' type='number' value='{{userInfo.fax}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>QQ</label>
+        <input class='form-item-input' name='qq' type='number' value='{{userInfo.qq}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>微信</label>
+        <input class='form-item-input' name='weixin' type='text' value='{{userInfo.weixin}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>邮箱</label>
+        <input class='form-item-input' name='email' type='text' value='{{userInfo.email}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>所在城市</label>
+        <input class='form-item-input' name='province' type='text' value='{{userInfo.province}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>详细地址</label>
+        <input class='form-item-input' name='address' type='text' value='{{userInfo.address}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>简介</label>
+        <textarea class='form-item-textarea' name='description' auto-height value='{{userInfo.description}}'></textarea>
+      </view>
+      <view class='default-gray'></view>
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>公司
+          <text class='form-item-label-required'>*</text>
+        </label>
+        <input class='form-item-input' name='merchantName' type='text' placeholder='请输入公司名称'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>职务
+          <text class='form-item-label-required'>*</text>
+        </label>
+        <input class='form-item-input' name='merchantPosition' type='text' placeholder='请输入职务'></input>
+      </view>
+
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>行业</label>
+        <input class='form-item-input' name='merchantType' type='text' placeholder='请选择行业'></input>
+      </view>
+
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>简介</label>
+        <textarea class='form-item-textarea' name='merchantDescription' auto-height placeholder='公司介绍...'></textarea>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>图片</label>
+        <image class='form-item-image' name='merchantPicture' bindtap='bindAddImgTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='card-footer'>
+        <button class='card-footer-button' formType="submit">保存</button>
+      </view>
+    </form>
   </view>
-  <view class='card-footer'>
-    <button class='card-footer-button' bindtap='bindBackTap'>查看名片</button>
-  </view>
+
 </view>

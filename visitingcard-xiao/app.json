@@ -9,7 +9,8 @@
     "pages/user/edit",
     "pages/user/card",
     "pages/user/detail",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/user/list"
   ],
   "window": {
     "backgroundTextStyle": "#D3D3D3",

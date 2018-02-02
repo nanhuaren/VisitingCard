@@ -16,9 +16,9 @@
       </view>
     </view>
     <view class='default-gray'></view>
-    <view wx:if="{{userInfo.userType=='00'}}" class='form-item form-item-line'>
+    <view wx:if="{{userInfo.userType=='00'}}" class='form-item form-item-line' bindtap='bindListUserTap'>
       <label class='form-item-label'>推荐客户</label>
-      <text class='form-item-input'>0</text>
+      <text class='form-item-input form-item-count'>{{count}}</text>      
     </view>
   </view>
   <view class='card-footer'>

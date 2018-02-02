@@ -31,6 +31,10 @@ public class UserInfoDao {
 	public List<UserInfo> listByOwnerId(long ownerId) {
 		return this.sqlSession.selectList("UserInfoMapper.listByOwnerId", ownerId);
 	}
+	
+	public Integer countByOwnerId(long ownerId) {
+		return this.sqlSession.selectOne("UserInfoMapper.countByOwnerId", ownerId);
+	}
 
 	public int insert(UserInfo data) {
 		return this.sqlSession.insert("UserInfoMapper.insert", data);

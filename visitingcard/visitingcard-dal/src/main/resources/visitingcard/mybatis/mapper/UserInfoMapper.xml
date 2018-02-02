@@ -20,6 +20,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserInfoMapper">
+
+	<resultMap id="UserInfoMap" type="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="headerImg" jdbcType="VARCHAR" property="headerImg" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="fax" jdbcType="VARCHAR" property="fax" />
+		<result column="qq" jdbcType="VARCHAR" property="qq" />
+		<result column="weixin" jdbcType="VARCHAR" property="weixin" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="province" jdbcType="VARCHAR" property="province" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="area" jdbcType="VARCHAR" property="area" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="openId" jdbcType="VARCHAR" property="openId" />
+		<result column="userType" jdbcType="VARCHAR" property="userType" />
+		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />
+	</resultMap>
 	
     <select id="selectByOpenId" resultType="UserInfo">
         select * from t_user_info where openId = #{openId}
@@ -31,6 +52,14 @@
     
     <select id="selectById" resultType="UserInfo">
         select * from t_user_info where id = #{id}
+    </select>
+    
+    <select id="listByOwnerId" resultMap="UserInfoMap">
+        select * from t_user_info where ownerId = #{ownerId} and id != #{ownerId}
+    </select>
+    
+    <select id="countByOwnerId" resultType="java.lang.Integer">
+        select count(1) from t_user_info where ownerId = #{ownerId} and id != #{ownerId}
     </select>
     
     <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">

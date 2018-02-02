@@ -46,6 +46,32 @@ public class UserInfoController {
 		}
 		return resultBody;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/detail", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody detail(Long userId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		UserInfo userInfo = userInfoDao.selectById(userId);
+		if (userInfo != null) {
+			resultBody.setData(userInfo);
+		} else {
+			resultBody.isError("获取用户信息失败");
+		}
+		return resultBody;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/count", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody count(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countByOwnerId(ownerId);
+		if (count != null) {
+			resultBody.setData(count);
+		}else{
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/list", method = { RequestMethod.POST, RequestMethod.GET })
