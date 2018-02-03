@@ -6,8 +6,12 @@ Page({
    */
   data: {
     weChatInfo: {},
-    userInfo: {},
-    count:0
+    userInfo: null,
+    userCount:0,
+    totalAgent: 0,
+    totalUser: 0,
+    totalAplly:0,
+    agentCount: 0,
   },
 
   /**
@@ -31,9 +35,9 @@ Page({
         if (res.data.code != 0) {
           var userInfo = res.data.data
           that.setData({ userInfo: userInfo })
-          if (userInfo.userType == '00') {
+          if (userInfo.userType == '00' || userInfo.userType == '03') {
             wx.request({
-              url: 'https://www.nanhuaren.cn/vcard/user/merchantCount',
+              url: 'https://www.nanhuaren.cn/vcard/user/totalCount',
               data: { ownerId: userInfo.id },
               header: {
                 'content-type': 'application/json' // 默认值
@@ -41,8 +45,12 @@ Page({
               success: res => {
                 console.log(res.data)
                 if (res.data.code != 0) {
-                  var count = res.data.data
-                  that.setData({ count: count })                  
+                  var userCount = res.data.data.myUserCount
+                  var totalAgent = res.data.data.agentCount
+                  var totalUser = res.data.data.userCount
+                  var totalAplly = res.data.data.applyCount
+                  var agentCount = res.data.data.myAgentCount
+                  that.setData({ userCount: userCount, totalAgent: totalAgent, totalUser: totalUser, totalAplly: totalAplly, agentCount: agentCount })                  
                 }
               }
             })
@@ -94,12 +102,7 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+  
 
   bindAddUserTap: function (event) {
     wx.navigateTo({
@@ -114,10 +117,28 @@ Page({
   },
 
   bindListUserTap: function (event) {
+    var type = event.currentTarget.dataset.type
     wx.navigateTo({
-      url: 'list?ownerId='+this.data.userInfo.id
+      url: 'list?ownerId=' + this.data.userInfo.id + '&type=' + type
     })
   },
 
+  bindSettingTap: function (event) {
+    wx.navigateTo({
+      url: 'setting'
+    })
+  },
+
+  bindSystemSettingTap: function (event) {
+    wx.navigateTo({
+      url: '/pages/system/setting'
+    })
+  },
+
+  bindAbountUsTap: function (event) {
+    wx.navigateTo({      
+      url: '/pages/system/about'
+    })
+  },
 
 })

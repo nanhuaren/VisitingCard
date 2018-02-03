@@ -4,25 +4,57 @@
   <view class='add-form'>
     <view class='form-item'>
       <view class='head-left'>
-        <image class='head-img' src='{{weChatInfo.avatarUrl==null?"/images/logo.jpg":weChatInfo.avatarUrl}}'></image>
+        <image class='head-img' src='{{userInfo==null?(weChatInfo.avatarUrl==null?"/images/logo.jpg":weChatInfo.avatarUrl):((userInfo.headerImg==null||userInfo.headerImg=="")?weChatInfo.avatarUrl:"https://www.nanhuaren.cn/upload/"+userInfo.headerImg)}}'></image>
       </view>
       <view class='head-right'>
         <view class='form-item form-item-line'>
-          <input class='form-item-input' type='text' disabled value='{{weChatInfo.nickName}}'></input>
+          <input class='form-item-input' type='text' disabled value='{{userInfo==null?(weChatInfo.avatarUrl==null?"":weChatInfo.nickName):userInfo.name}}'></input>
         </view>
         <view class='form-item'>
-          <input class='form-item-input' type='text' disabled value='{{weChatInfo.gender==1?"男":"女"}}'></input>
+          <input class='form-item-input' type='text' disabled value='{{userInfo.mobile==null?"未设置手机号码":userInfo.mobile}}'></input>
         </view>
       </view>
     </view>
     <view class='default-gray'></view>
-    <view wx:if="{{userInfo.userType=='00'}}" class='form-item form-item-line' bindtap='bindListUserTap'>
+    <view wx:if="{{userInfo.userType=='03'}}" class='form-item form-item-line' data-type='01' bindtap='bindListUserTap'>
+      <label class='form-item-label'>代理总数</label>
+      <text class='form-item-input form-item-count'>{{totalAgent}} 个</text>
+    </view>
+    <view wx:if="{{userInfo.userType=='03'}}" class='form-item form-item-line' data-type='02'  bindtap='bindListUserTap'>
+      <label class='form-item-label'>客户总数</label>
+      <text class='form-item-input form-item-count'>{{totalUser}} 个</text>
+    </view>
+    <view wx:if="{{userInfo.userType=='03'}}" class='form-item form-item-line' data-type='05'  bindtap='bindListUserTap'>
+      <label class='form-item-label'>申请中</label>
+      <text class='form-item-input form-item-count'>{{totalAplly}} 个</text>
+    </view>
+    <view class='default-gray'></view>
+    <view wx:if="{{userInfo.userType=='03'}}" class='form-item form-item-line' data-type='03'  bindtap='bindListUserTap'>
+      <label class='form-item-label'>推荐代理</label>
+      <text class='form-item-input form-item-count'>{{agentCount}} 个</text>
+    </view>    
+    <view wx:if="{{userInfo.userType=='00'||userInfo.userType=='03'}}" class='form-item form-item-line' data-type='04' bindtap='bindListUserTap'>
       <label class='form-item-label'>推荐客户</label>
-      <text class='form-item-input form-item-count'>{{count}} 个</text>     
+      <text class='form-item-input form-item-count'>{{userCount}} 个</text>
+    </view>
+    <view class='default-gray'></view>
+    <view wx:if="{{userInfo.userType!=null}}" class='form-item form-item-line' bindtap='bindSettingTap'>
+      <label class='form-item-label'>个人设置</label>
+      <text class='form-item-input form-item-count'></text>
+    </view>
+    <view class='default-gray'></view>
+    <view class='form-item form-item-line' bindtap='bindSystemSettingTap'>
+      <label class='form-item-label'>系统设置</label>
+      <text class='form-item-input form-item-count'></text>
+    </view>
+    <view class='form-item form-item-line' bindtap='bindAbountUsTap'>
+      <label class='form-item-label'>关于我们</label>
+      <text class='form-item-input form-item-count'></text>
     </view>
   </view>
   <view class='card-footer'>
-    <button wx:if="{{userInfo.userType=='00'}}" class='card-footer-button' bindtap='bindAddUserTap'>我要推荐</button>
-    <button wx:if="{{userInfo.userType!='00'}}" class='card-footer-button' bindtap='bindContactUsTap'>联系我们</button>
+    <button wx:if="{{userInfo.userType=='00'||userInfo.userType=='03'}}" class='card-footer-button' bindtap='bindAddUserTap'>我要推荐</button>
+    <button wx:if="{{userInfo.userType=='01'}}" class='card-footer-button' bindtap='bindApplyAgentTap'>加入代理</button>
+    <button wx:if="{{userInfo.userType=='01'}}" class='card-footer-button' bindtap='bindContactUsTap'>联系客服</button>
   </view>
 </view>

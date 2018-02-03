@@ -1,6 +1,6 @@
 <!--pages/user/list.wxml-->
 <view class="container">
-  <block  wx:key="user" wx:for="{{userInfoList}}" wx:for-item="userInfo">
+  <block wx:key="user" wx:for="{{userInfoList}}" wx:for-item="userInfo">
     <view class='card-modal' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}'>
       <view class='card-detail'>
         <view class='head-left'>
@@ -33,8 +33,9 @@
         </view>
       </view>
     </view>
-  </block>  
+  </block>
   <view class='card-footer'>
+    <button wx:if='{{userInfo.userType == "00"}}' class='card-footer-button' bindtap='bindAddUserTap'>继续推荐</button>
     <button class='card-footer-button' bindtap='bindBackTap'>返回</button>
   </view>
   <view class='default-gray'></view>

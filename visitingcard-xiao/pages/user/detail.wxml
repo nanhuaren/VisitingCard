@@ -75,7 +75,12 @@
         <textarea class='form-item-textarea' name='merchantDescription' auto-height value='{{userInfo.merchantDescription}}'></textarea>
       </view>
       <view class='form-item form-item-line'>
-        <label class='form-item-label'>图片</label>
+        <label class='form-item-label'>公司LOGO</label>
+        <image class='form-item-image' wx:if="{{userInfo.merchantLogo!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantLogo}}'></image>
+        <image class='form-item-image' name='merchantLogo' bindtap='bindAddMerchantLogoTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>产品图片</label>
         <image class='form-item-image' wx:if="{{userInfo.merchantPicture!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantPicture}}'></image>
         <image class='form-item-image' name='merchantPicture' bindtap='bindAddMerchantImgTap' src='/images/add-img.png'></image>
       </view>

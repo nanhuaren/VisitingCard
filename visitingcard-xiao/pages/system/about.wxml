@@ -1,0 +1,4 @@
+<!--pages/system/about.wxml-->
+<view class="container">
+  <text>这是关于我们的描述内容</text>
+</view>

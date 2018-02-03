@@ -57,5 +57,61 @@ public class UserInfoDao {
 	public Integer countMerchantByOwnerId(long ownerId) {
 		return this.sqlSession.selectOne("UserInfoMapper.countMerchantByOwnerId", ownerId);
 	}
+	
+	public List<UserMerchantInfo> listAgentByOwnerId() {
+		return this.sqlSession.selectList("UserInfoMapper.listAgentByOwnerId");
+	}
+
+	public Integer countAgentByOwnerId() {
+		return this.sqlSession.selectOne("UserInfoMapper.countAgentByOwnerId");
+	}
+	
+	public List<UserMerchantInfo> listUserByOwnerId() {
+		return this.sqlSession.selectList("UserInfoMapper.listUserByOwnerId");
+	}
+
+	public Integer countUserByOwnerId() {
+		return this.sqlSession.selectOne("UserInfoMapper.countUserByOwnerId");
+	}
+	
+	public List<UserMerchantInfo> listMyUserByOwnerId(long ownerId) {
+		return this.sqlSession.selectList("UserInfoMapper.listMyUserByOwnerId", ownerId);
+	}
+
+	public Integer countMyUserByOwnerId(long ownerId) {
+		return this.sqlSession.selectOne("UserInfoMapper.countMyUserByOwnerId", ownerId);
+	}
+	
+	public List<UserMerchantInfo> listMyAgentByOwnerId(long ownerId) {
+		return this.sqlSession.selectList("UserInfoMapper.listMyAgentByOwnerId", ownerId);
+	}
+
+	public Integer countMyAgentByOwnerId(long ownerId) {
+		return this.sqlSession.selectOne("UserInfoMapper.countMyAgentByOwnerId", ownerId);
+	}
+	
+	public List<UserMerchantInfo> listAgent() {
+		return this.sqlSession.selectList("UserInfoMapper.listAgent");
+	}
+
+	public Integer countAgent() {
+		return this.sqlSession.selectOne("UserInfoMapper.countAgent");
+	}
+	
+	public List<UserMerchantInfo> listUser() {
+		return this.sqlSession.selectList("UserInfoMapper.listUser");
+	}
+
+	public Integer countUser() {
+		return this.sqlSession.selectOne("UserInfoMapper.countUser");
+	}
+	
+	public List<UserMerchantInfo> listApply() {
+		return this.sqlSession.selectList("UserInfoMapper.listApply");
+	}
+
+	public Integer countApply() {
+		return this.sqlSession.selectOne("UserInfoMapper.countApply");
+	}
 
 }

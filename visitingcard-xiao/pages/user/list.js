@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfoList: []
+    userInfoList: [],
+    ownerId: null
   },
 
   /**
@@ -14,8 +15,30 @@ Page({
   onLoad: function (options) {
     var that = this
     var ownerId = options.ownerId
+    var type = options.type
+    var title = ''
+    var url = ''
+    if (type == '01') {
+      title = '所有代理'
+      url = 'https://www.nanhuaren.cn/vcard/user/agentList'
+    } else if (type == '02') {
+      title = '所有客户'
+      url = 'https://www.nanhuaren.cn/vcard/user/userList'
+    } else if (type == '03') {
+      title = '我的代理'
+      url = 'https://www.nanhuaren.cn/vcard/user/myAgentList'
+    } else if (type == '04') {
+      title = '我的客户'
+      url = 'https://www.nanhuaren.cn/vcard/user/myUserList'
+    } else if (type == '05') {
+      title = '申请客户'
+      url = 'https://www.nanhuaren.cn/vcard/user/applyList'
+    }
+    wx.setNavigationBarTitle({
+      title: title,
+    })
     wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/merchantList',
+      url: url,
       data: { ownerId: ownerId },
       header: {
         'content-type': 'application/json' // 默认值
@@ -24,7 +47,7 @@ Page({
         console.log(res.data)
         if (res.data.code != 0) {
           var userInfoList = res.data.data
-          that.setData({ userInfoList: userInfoList })
+          that.setData({ userInfoList: userInfoList, ownerId: ownerId })
         }
       }
     })
@@ -75,8 +98,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
 
+  bindAddUserTap: function (event) {
+    wx.navigateTo({
+      url: 'edit?ownerId=' + this.data.ownerId
+    })
   },
 
   bindBackTap: function (event) {

@@ -10,7 +10,10 @@
     "pages/user/card",
     "pages/user/detail",
     "pages/user/profile",
-    "pages/user/list"
+    "pages/user/list",
+    "pages/user/setting",
+    "pages/system/about",
+    "pages/system/setting"
   ],
   "window": {
     "backgroundTextStyle": "#D3D3D3",

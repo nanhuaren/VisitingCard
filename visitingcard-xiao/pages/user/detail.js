@@ -6,8 +6,9 @@ Page({
    */
   data: {
     userInfo: {},
-    uploadImage:null,
-    headerImg: ''
+    uploadImage: null,
+    headerImg: '',
+    merchantLogo: null
   },
 
   /**
@@ -26,6 +27,15 @@ Page({
         console.log(res.data)
         if (res.data.code != 0) {
           var userInfo = res.data.data
+          if (userInfo.userType == '00') {
+            wx.setNavigationBarTitle({
+              title: '代理详情',
+            })
+          } else if (userInfo.userType == '01') {
+            wx.setNavigationBarTitle({
+              title: '客户详情',
+            })
+          }
           that.setData({ userInfo: userInfo })
         }
       }
@@ -77,9 +87,6 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
 
   bindBackTap: function (event) {
     wx.switchTab({
@@ -91,17 +98,22 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var userInfo = e.detail.value
     userInfo.id = this.data.userInfo.id
-    if (this.data.uploadImage){
+    if (this.data.uploadImage) {
       userInfo.merchantPicture = this.data.uploadImage
-    }else{
+    } else {
       userInfo.merchantPicture = this.data.userInfo.merchantPicture
     }
-    if (this.data.headerImg){
+    if (this.data.merchantLogo) {
+      userInfo.merchantLogo = this.data.merchantLogo
+    } else {
+      userInfo.merchantLogo = this.data.userInfo.merchantLogo
+    }
+    if (this.data.headerImg) {
       userInfo.headerImg = this.data.headerImg
-    }else{
+    } else {
       userInfo.headerImg = this.data.userInfo.headerImg
     }
-    
+
     var ownerId = this.data.userInfo.ownerId
     wx.request({
       url: 'https://www.nanhuaren.cn/vcard/user/modify',
@@ -126,12 +138,40 @@ Page({
     })
   },
 
+  bindAddMerchantLogoTap: function (event) {
+    var that = this
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        wx.uploadFile({
+          url: 'https://www.nanhuaren.cn/vcard/file/upload',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data)
+            console.log(data)
+            var userInfo = that.data.userInfo
+            userInfo.merchantLogo = data.data.join(',')
+            that.setData({ merchantLogo: data.data.join(','), userInfo: userInfo })
+          }
+        })
+      },
+    })
+  },
+
   bindAddMerchantImgTap: function (event) {
     var that = this
     wx.chooseImage({
-      count:9,
+      count: 9,
       sizeType: ['compressed'],
-      sourceType: ['album','camera'],
+      sourceType: ['album', 'camera'],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths
         console.log(tempFilePaths)
@@ -147,7 +187,7 @@ Page({
             console.log(data)
             var userInfo = that.data.userInfo
             userInfo.merchantPicture = data.data.join(',')
-            that.setData({ uploadImage: data.data.join(','), userInfo: userInfo})
+            that.setData({ uploadImage: data.data.join(','), userInfo: userInfo })
           }
         })
       },
@@ -175,7 +215,7 @@ Page({
             console.log(data)
             var userInfo = that.data.userInfo
             userInfo.headerImg = data.data.join(',')
-            that.setData({ headerImg: data.data.join(','), userInfo: userInfo})
+            that.setData({ headerImg: data.data.join(','), userInfo: userInfo })
           }
         })
       },

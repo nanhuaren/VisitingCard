@@ -1,7 +1,8 @@
 <!--pages/user/index.wxml-->
-<view class="container">
+<view class="container" wx:if='{{userInfo==null||userInfo.userType=="02"}}'>
   <view class='card-header'>
-    <text class='card-header-text'>你还没有创建电子名片哦</text>
+    <text class='card-header-text' wx:if='{{userInfo==null}}'>你还没有申请电子名片哦</text>
+    <text class='card-header-text' wx:if='{{userInfo!=null&&userInfo.userType=="02"}}'>你的电子名片还未生成</text>
   </view>
   <view class='card-body'>
     <text class='card-body-text'>快速分享</text>
@@ -12,6 +13,84 @@
     <image class='card-demo-img' mode="widthFix" src="/images/card.jpg"></image>
   </view>
   <view class='card-footer'>
-    <button class='card-footer-button' bindtap='bindContactUsTap'>联系我们</button>
+    <button class='card-footer-button' wx:if='{{userInfo==null}}' bindtap='bindApplyTap'>我要申请</button>
+    <button class='card-footer-button' wx:if='{{userInfo!=null&&userInfo.userType=="02"}}'>等待审核</button>
+  </view>
+</view>
+<view class="container" wx:if='{{userInfo!=null&&userInfo.userType!="02"}}'>
+
+  <view class='merchant-pic'>
+    <swiper indicator-dots="true" indicator-color="#337ab7" autoplay="true">
+      <swiper-item >
+        <image mode="widthFix" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantLogo}}'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='card-modal'>
+    <view class='card-detail'>
+      <view class='head-left'>
+        <image class='head-img' src='{{userInfo.headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
+      </view>
+      <view class='head-right'>
+        <view class=''>
+          <text style='font-size:17pt;'>{{userInfo.name||''}}</text>
+        </view>
+        <view class='head-right-text'>
+          <text style='font-size:10pt;'>{{userInfo.merchantPosition||''}} ｜ {{userInfo.merchantType||''}}</text>
+        </view>
+        <view class='head-right-text'>
+          <text style='font-size:10pt;'>{{userInfo.merchantName||''}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form">
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
+      <text class="item-text  text-line">{{userInfo.mobile||''}}</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/type.png'></image>
+      <text class="item-text text-line">{{userInfo.merchantType||''}}</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/qq.png'></image>
+      <text class="item-text text-line">{{userInfo.qq||'未填写'}}</text>
+    </view>
+    <view class="form-item" bindtap="bindWeixinTap">
+      <image class='item-icon' mode="widthFix" src='/images/weixin.png'></image>
+      <text class="item-text text-line">{{userInfo.weixin||'未填写'}}</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/email.png'></image>
+      <text class="item-text text-line">{{userInfo.email||'未填写'}}</text>
+    </view>
+    <view class="form-item">
+      <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
+      <text class="item-text">{{(userInfo.province||"")+(userInfo.city||"")+(userInfo.area||"")+(userInfo.address||"")}}</text>
+    </view>
+  </view>
+  <view class="form">
+    <view class="form-item-list">
+      <text class="item-title">个人介绍</text>
+      <view class="default-line"></view>
+      <text class="item-content">{{userInfo.description||'未填写'}}</text>
+      <view class="item-pic">
+        <image mode="widthFix" src='{{userInfo.headerImg==null?"":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
+      </view>
+    </view>
+    <view class='merchant-pic'>
+    </view>
+    <view class="form-item-list">
+      <text class="item-title">公司简介</text>
+      <view class="default-line"></view>
+      <text class="item-content">{{userInfo.merchantDescription||'未填写'}}</text>
+    </view>
+    <view class="form-item-list">
+      <text class="item-title">产品展示</text>
+      <view class="item-pic">
+        <image mode="widthFix" src='{{userInfo.merchantPicture==null?"":"https://www.nanhuaren.cn/upload/"+userInfo.merchantPicture}}'></image>
+      </view>
+    </view>
   </view>
 </view>

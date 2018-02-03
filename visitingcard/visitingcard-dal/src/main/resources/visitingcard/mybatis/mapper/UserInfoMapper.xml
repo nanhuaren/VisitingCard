@@ -90,6 +90,66 @@
         where u.ownerId = #{ownerId} and u.id != #{ownerId}
     </select>
     
+    <select id="listMyUserByOwnerId" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '01'
+    </select>
+    
+    <select id="countMyUserByOwnerId" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '01'
+    </select>
+    
+    <select id="listMyAgentByOwnerId" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '00'
+    </select>
+    
+    <select id="countMyAgentByOwnerId" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '00'
+    </select>
+    
+    <select id="listAgent" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '00'
+    </select>
+    
+    <select id="countAgent" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '00'
+    </select>
+    
+    <select id="listUser" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '01'
+    </select>
+    
+    <select id="countUser" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '01'
+    </select>
+    
+    <select id="listApply" resultMap="UserMerchantInfoMap">
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '02'
+    </select>
+    
+    <select id="countApply" resultType="java.lang.Integer">
+        select count(1)
+        from t_user_info u left join t_merchant m on u.id = m.userId 
+        where u.userType = '02'
+    </select>
+    
     <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.UserInfo">
     	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
           SELECT LAST_INSERT_ID()

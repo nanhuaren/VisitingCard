@@ -2,39 +2,41 @@
 <view class="container">
   <view class='default-gray'></view>
   <view class='add-form'>
-    <view class='form-item'>
-      <view class='head-left'>
-        <image class='head-img' src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ64sDCmw37kTRI2W32Bec1xjCp1CvAtJsl2mmCDtbA5f2l5A47kXHVa3JncRHNMYzaJ4C48JAMSg/0'></image>
-      </view>
-      <view class='head-right'>
-        <view class='form-item form-item-line'>
-          <input class='form-item-input' type='text' placeholder='请输入名字'></input>
+    <form bindsubmit="formSubmit">
+      <view class='form-item'>
+        <view class='head-left'>
+          <image class='head-img' bindtap='bindAddUserImgTap' src='{{userInfo.headerImg==null?weChatInfo.avatarUrl:"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
         </view>
-        <view class='form-item'>
-          <input class='form-item-input' type='number' placeholder='常用手机号码'></input>
+        <view class='head-right'>
+          <view class='form-item form-item-line'>
+            <input class='form-item-input' name='name' type='text' placeholder='请输入名字'></input>
+          </view>
+          <view class='form-item'>
+            <input class='form-item-input' name='mobile' type='number' placeholder='常用手机号码'></input>
+          </view>
         </view>
       </view>
-    </view>
-    <view class='default-gray'></view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>公司
-        <text class='form-item-label-required'>*</text>
-      </label>
-      <input class='form-item-input' type='text' placeholder='请输入公司名称'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>职务
-        <text class='form-item-label-required'>*</text>
-      </label>
-      <input class='form-item-input' type='text' placeholder='请输入职务'></input>
-    </view>
-    <view class='form-item form-item-line'>
-      <label class='form-item-label'>行业</label>
-      <input class='form-item-input' type='text' placeholder='请选择行业'></input>
-    </view>
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>公司
+          <text class='form-item-label-required'>*</text>
+        </label>
+        <input class='form-item-input' name='merchantName' type='text' placeholder='请输入公司名称'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>职务
+          <text class='form-item-label-required'>*</text>
+        </label>
+        <input class='form-item-input' name='merchantPosition' type='text' placeholder='请输入职务'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>行业</label>
+        <input class='form-item-input' name='merchantType' type='text' placeholder='请选择行业'></input>
+      </view>
+      <view class='card-footer'>
+        <button class='card-footer-button' formType="submit">确定</button>
+      </view>
+    </form>
   </view>
-  <view class='card-footer'>
-    <button class='card-footer-button' bindtap='bindEditCardTap'>确定</button>
-    <text class='card-footer-text'>已有<text class='card-footer-link'>名片账号</text>，直接登录</text>
-  </view>
+
 </view>

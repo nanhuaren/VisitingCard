@@ -2,7 +2,9 @@
 package cn.nanhuaren.visitingcard.api.rest;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -91,7 +93,7 @@ public class UserInfoController {
 		}
 		return resultBody;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/merchantDetail", method = { RequestMethod.POST, RequestMethod.GET })
 	public ResultBody merchantDetail(Long userId, HttpServletRequest request, HttpServletResponse response) {
@@ -126,14 +128,164 @@ public class UserInfoController {
 		if (userMerchantInfoList != null) {
 			resultBody.setData(userMerchantInfoList);
 		} else {
-			resultBody.isError("获取用户列表失败");
+			resultBody.isError("获取推荐用户列表失败");
+		}
+		return resultBody;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/totalCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody totalCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer myUserCount = userInfoDao.countMyUserByOwnerId(ownerId);
+		Integer myAgentCount = userInfoDao.countMyAgentByOwnerId(ownerId);
+		Integer agentCount = userInfoDao.countAgent();
+		Integer userCount = userInfoDao.countUser();
+		Integer applyCount = userInfoDao.countApply();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("myUserCount", myUserCount);
+		map.put("myAgentCount", myAgentCount);
+		map.put("agentCount", agentCount);
+		map.put("userCount", userCount);
+		map.put("applyCount", applyCount);
+		resultBody.setData(map);
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/myUserCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody myUserCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countMyUserByOwnerId(ownerId);
+		if (count != null) {
+			resultBody.setData(count);
+		} else {
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/myUserList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody myUserList(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserMerchantInfo> userMerchantInfoList = userInfoDao.listMyUserByOwnerId(ownerId);
+		if (userMerchantInfoList != null) {
+			resultBody.setData(userMerchantInfoList);
+		} else {
+			resultBody.isError("获取我的用户列表失败");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/myAgentCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody myAgentCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countMyAgentByOwnerId(ownerId);
+		if (count != null) {
+			resultBody.setData(count);
+		} else {
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/myAgentList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody myAgentList(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserMerchantInfo> userMerchantInfoList = userInfoDao.listMyAgentByOwnerId(ownerId);
+		if (userMerchantInfoList != null) {
+			resultBody.setData(userMerchantInfoList);
+		} else {
+			resultBody.isError("获取我的代理列表失败");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/agentCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody agentCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countAgent();
+		if (count != null) {
+			resultBody.setData(count);
+		} else {
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/agentList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody agentList(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserMerchantInfo> userMerchantInfoList = userInfoDao.listAgent();
+		if (userMerchantInfoList != null) {
+			resultBody.setData(userMerchantInfoList);
+		} else {
+			resultBody.isError("获取代理列表失败");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/userCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody userCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countUser();
+		if (count != null) {
+			resultBody.setData(count);
+		} else {
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/userList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody userList(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserMerchantInfo> userMerchantInfoList = userInfoDao.listUser();
+		if (userMerchantInfoList != null) {
+			resultBody.setData(userMerchantInfoList);
+		} else {
+			resultBody.isError("获取客户列表失败");
+		}
+		return resultBody;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/applyCount", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody applyCount(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Integer count = userInfoDao.countApply();
+		if (count != null) {
+			resultBody.setData(count);
+		} else {
+			resultBody.setData(0);
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/applyList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody applyList(Long ownerId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<UserMerchantInfo> userMerchantInfoList = userInfoDao.listApply();
+		if (userMerchantInfoList != null) {
+			resultBody.setData(userMerchantInfoList);
+		} else {
+			resultBody.isError("获取申请中客户列表失败");
 		}
 		return resultBody;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/add", method = { RequestMethod.POST, RequestMethod.GET })
-	public ResultBody add(UserInfo userInfo, Merchant merchant,HttpServletRequest request, HttpServletResponse response) {
+	public ResultBody add(UserInfo userInfo, Merchant merchant, HttpServletRequest request,
+			HttpServletResponse response) {
 		ResultBody resultBody = new ResultBody();
 		logger.info("request userInfo={}", userInfo);
 		UserInfo queryUserInfo = new UserInfo();
@@ -153,7 +305,8 @@ public class UserInfoController {
 			queryUserInfo.setArea(userInfo.getArea());
 			queryUserInfo.setAddress(userInfo.getAddress());
 			queryUserInfo.setDescription(userInfo.getDescription());
-			queryUserInfo.setUserType("01");
+			queryUserInfo.setUserType(userInfo.getUserType());
+			queryUserInfo.setOpenId(userInfo.getOpenId());
 			queryUserInfo.setOwnerId(userInfo.getOwnerId());
 			queryUserInfo.setCreateTime(new Date());
 			queryUserInfo = userInfoDao.insert(queryUserInfo);
