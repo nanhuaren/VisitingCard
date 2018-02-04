@@ -27,7 +27,7 @@
 .card-demo {
   width: 100%;
   text-align: center;
-  padding-top: 40rpx;
+  padding-top: 20rpx;
 }
 
 .card-demo-img {
@@ -38,7 +38,7 @@
 .card-footer {
   width: 100%;
   text-align: center;
-  padding-top: 60rpx;
+  padding-top: 20rpx;
 }
 
 .card-footer-button {
