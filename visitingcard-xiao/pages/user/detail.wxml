@@ -75,14 +75,22 @@
         <textarea class='form-item-textarea' name='merchantDescription' auto-height value='{{userInfo.merchantDescription}}'></textarea>
       </view>
       <view class='form-item form-item-line'>
-        <label class='form-item-label'>公司LOGO</label>
-        <image class='form-item-image' wx:if="{{userInfo.merchantLogo!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantLogo}}'></image>
-        <image class='form-item-image' name='merchantLogo' bindtap='bindAddMerchantLogoTap' src='/images/add-img.png'></image>
+        <label class='form-item-label'>公司图标</label>
+      </view>
+      <view class='form-item-image-list'>
+        <block wx:key="merchantLogo" wx:for="{{merchantLogos}}" wx:for-item="merchantLogo">
+          <image class='form-item-image-detail' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+        </block>
+
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>产品图片</label>
-        <image class='form-item-image' wx:if="{{userInfo.merchantPicture!=null}}" src='https://www.nanhuaren.cn/upload/{{userInfo.merchantPicture}}'></image>
         <image class='form-item-image' name='merchantPicture' bindtap='bindAddMerchantImgTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='form-item-image-list'>
+        <block wx:key="merchantPicture" wx:for="{{merchantPictures}}" wx:for-item="merchantPicture">
+          <image class='form-item-image-detail' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+        </block>
       </view>
       <view class='card-footer'>
         <button class='card-footer-button' formType="submit">保存</button>

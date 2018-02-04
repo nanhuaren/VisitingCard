@@ -93,13 +93,13 @@
     <select id="listMyUserByOwnerId" resultMap="UserMerchantInfoMap">
         select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
         from t_user_info u left join t_merchant m on u.id = m.userId 
-        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '01'
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType in ('00','01','02')
     </select>
     
     <select id="countMyUserByOwnerId" resultType="java.lang.Integer">
         select count(1)
         from t_user_info u left join t_merchant m on u.id = m.userId 
-        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '01'
+        where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType in ('00','01','02')
     </select>
     
     <select id="listMyAgentByOwnerId" resultMap="UserMerchantInfoMap">

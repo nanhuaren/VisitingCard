@@ -8,7 +8,10 @@ Page({
     userInfo: {},
     uploadImage: null,
     headerImg: null,
-    ownerId:null
+    ownerId:null,
+    merchantLogo: null,
+    merchantLogos: [],
+    merchantPictures: []
   },
 
   /**
@@ -83,11 +86,7 @@ Page({
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var userInfo = e.detail.value
-    if (this.data.uploadImage) {
-      userInfo.merchantPicture = this.data.uploadImage
-    } else {
-      userInfo.merchantPicture = this.data.userInfo.merchantPicture
-    }
+    
     var ownerId = this.data.ownerId
     userInfo.ownerId = ownerId
     if (this.data.headerImg) {
@@ -95,6 +94,18 @@ Page({
     } else {
       userInfo.headerImg = this.data.userInfo.headerImg
     }
+   
+    if (this.data.merchantPictures) {
+      userInfo.merchantPicture = this.data.merchantPictures.join(',')
+    } else {
+      userInfo.merchantPicture = this.data.userInfo.merchantPicture
+    }
+    if (this.data.merchantLogos) {
+      userInfo.merchantLogo = this.data.merchantLogos.join(',')
+    } else {
+      userInfo.merchantLogo = this.data.userInfo.merchantLogo
+    }
+    userInfo.userType = '02'
     wx.request({
       url: 'https://www.nanhuaren.cn/vcard/user/add',
       data: userInfo,
@@ -108,12 +119,46 @@ Page({
           duration: 2000,
           mask: true,
           complete: function () {
-            wx.navigateTo({
-              url: 'list?ownerId=' + ownerId,
+            wx.reLaunch({
+              url: 'list?ownerId=' + ownerId+'&type=04',
             })
           }
         })
       }
+    })
+  },
+
+  bindAddMerchantLogoTap: function (event) {
+    var that = this
+    var that = this
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        for (var i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: 'https://www.nanhuaren.cn/vcard/file/upload',
+            filePath: tempFilePaths[i],
+            name: 'file',
+            formData: {
+              'user': 'test'
+            },
+            success: function (res) {
+              var data = JSON.parse(res.data)
+              console.log(data)
+              var userInfo = that.data.userInfo
+              var merchantLogos = that.data.merchantLogos
+              merchantLogos.push(data.data)
+              userInfo.merchantLogo = merchantLogos.join(',')
+              that.setData({ merchantLogos: merchantLogos, userInfo: userInfo })
+            }
+          })
+        }
+
+      },
     })
   },
 
@@ -126,21 +171,26 @@ Page({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths
         console.log(tempFilePaths)
-        wx.uploadFile({
-          url: 'https://www.nanhuaren.cn/vcard/file/upload',
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          success: function (res) {
-            var data = JSON.parse(res.data)
-            console.log(data)
-            var userInfo = that.data.userInfo
-            userInfo.merchantPicture = data.data.join(',')
-            that.setData({ uploadImage: data.data.join(','), userInfo: userInfo })
-          }
-        })
+        for (var i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: 'https://www.nanhuaren.cn/vcard/file/upload',
+            filePath: tempFilePaths[i],
+            name: 'file',
+            formData: {
+              'user': 'test'
+            },
+            success: function (res) {
+              var data = JSON.parse(res.data)
+              console.log(data)
+              var userInfo = that.data.userInfo
+              var merchantPictures = that.data.merchantPictures
+              merchantPictures.push(data.data)
+              userInfo.merchantPicture = merchantPictures.join(',')
+              that.setData({ merchantPictures: merchantPictures, userInfo: userInfo })
+            }
+          })
+        }
+
       },
     })
   },

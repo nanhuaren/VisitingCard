@@ -1,0 +1,308 @@
+/* pages/user/share.wxss */
+
+.card-header {
+  padding-top: 60rpx;
+  text-align: center;
+}
+
+.card-header-text {
+  font-size: 17pt;
+  font: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.card-body-text {
+  padding: 10rpx 0;
+  font-size: 11pt;
+  color: gray;
+}
+
+.card-demo {
+  width: 100%;
+  text-align: center;
+  padding-top: 40rpx;
+}
+
+.card-demo-img {
+  width: 50%;
+  text-align: center;
+}
+
+.weixin-footer {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  height: 100%;
+  top: 100rpx;
+  bottom: 80rpx;
+  padding: 40rpx 40rpx;
+}
+
+.card-footer {
+  width: 100%;
+  text-align: center;
+  padding-top: 60rpx;
+  position: fixed;
+  height: 60rpx;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  color: lightgray;
+}
+
+.card-footer-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.card-footer-item-pic {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: -40rpx;
+}
+
+.card-footer-item-text {
+  font-size: 10pt;
+  color: #337ab7;
+  width: 100%;
+}
+
+.card-footer-item-button {
+  font-size: 10pt;
+  color: #337ab7;
+  height: 60rpx;
+  background: white;
+}
+
+.card-footer-button {
+  text-align: center;
+  color: white;
+  background: #337ab7;
+  margin: 40rpx;
+  border-radius: 50rpx;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 12pt;
+  padding: 20rpx 0;
+}
+
+.city {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  padding-left: 40rpx;
+  color: #337ab7;
+}
+
+.city-item {
+  text-align: left;
+  color: #337ab7;
+}
+
+.merchant-pic {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 12pt;
+  padding: 20rpx 0;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 20rpx;
+  background: #337ab7;
+}
+
+.card-item-text {
+  text-align: left;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  color: white;
+  font: bold;
+}
+
+.merchant {
+  color: #337ab7;
+  width: 100%;
+  text-align: left;
+  font-size: 12pt;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.search {
+  width: 20%;
+  text-align: right;
+  padding-right: 40rpx;
+}
+
+.default-line {
+  width: 100%;
+  border-bottom: 1rpx;
+  border-bottom-color: #337ab7;
+  border-bottom-style: solid;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.item-label {
+  float: left;
+  padding-top: 10rpx;
+  padding-left: 20rpx;
+  width: 150rpx;
+}
+
+.item-icon {
+  float: left;
+  padding-top: 30rpx;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+}
+
+.item-text {
+  float: left;
+  width: 100%;
+  font-size: 11pt;
+  padding-top: 30rpx;
+  margin-left: 20rpx;
+  margin-right: 40rpx;
+}
+
+.text-line {
+  border-bottom: 1rpx;
+  border-bottom-color: #337ab7;
+  border-bottom-style: solid;
+}
+
+.form-item-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item-title {
+  float: left;
+  padding: 20rpx;
+  font-size: 12pt;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  color: #337ab7;
+}
+
+.item-content {
+  float: left;
+  padding: 20rpx;
+  font-size: 11pt;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.item-pic {
+  width: 100%;
+  text-align: center;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.product-left {
+  width: 50%;
+  padding-left: 40rpx;
+  padding-right: 20rpx;
+  padding-bottom: 40rpx;
+}
+
+.product-right {
+  width: 50%;
+  padding-left: 20rpx;
+  padding-right: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.card-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  background: white;
+  margin-top: 40rpx;
+}
+
+.head-left {
+  padding: 20rpx;
+  width: 160rpx;
+}
+
+.head-img {
+  padding: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.head-right {
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  width: 100%;
+}
+
+.head-right-top {
+  font: bold;
+  margin-top: 20rpx;
+}
+
+.head-right-text {
+  color: gray;
+  margin-top: 10rpx;
+}

@@ -73,13 +73,20 @@
   border-color: lightgray;
   border-style:solid;
 }
-
-.form-item-line {
-  width: 100%;
-  border-bottom: 1rpx;
-  border-bottom-color: lightgray;
-  border-bottom-style: inset;
+.form-item-image-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20rpx;
 }
+
+.form-item-image-detail {
+  width: 100%;
+  text-align: center;
+  margin: 10rpx 0;
+}
+
+
 
 .card-footer {
   width: 100%;

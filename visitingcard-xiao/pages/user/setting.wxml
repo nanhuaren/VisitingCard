@@ -18,20 +18,79 @@
       </view>
       <view class='default-gray'></view>
       <view class='form-item form-item-line'>
+        <label class='form-item-label'>电话</label>
+        <input class='form-item-input' name='tel' type='number' placeholder='请输入电话' value='{{userInfo.tel}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>传真</label>
+        <input class='form-item-input' name='fax' type='number' placeholder='请输入传真' value='{{userInfo.fax}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>QQ</label>
+        <input class='form-item-input' name='qq' type='number' placeholder='请输入QQ' value='{{userInfo.qq}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>微信</label>
+        <input class='form-item-input' name='weixin' type='text' placeholder='请输入微信' value='{{userInfo.weixin}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>邮箱</label>
+        <input class='form-item-input' name='email' type='text' placeholder='请输入邮箱地址' value='{{userInfo.email}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>所在城市</label>
+        <input class='form-item-input' name='province' type='text' placeholder='请选择所在城市' value='{{userInfo.province}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>详细地址</label>
+        <input class='form-item-input' name='address' type='text' placeholder='请输入详细地址' value='{{userInfo.address}}'></input>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>简介</label>
+        <textarea class='form-item-textarea' name='description' auto-height placeholder='个人简介...' value='{{userInfo.description}}'></textarea>
+      </view>
+      <view class='default-gray'></view>
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
         <label class='form-item-label'>公司
           <text class='form-item-label-required'>*</text>
         </label>
-        <input class='form-item-input' name='merchantName' type='text' value='{{userInfo.merchantName}}'></input>
+        <input class='form-item-input' name='merchantName' type='text' placeholder='请输入公司名称' value='{{userInfo.merchantName}}'></input>
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>职务
           <text class='form-item-label-required'>*</text>
         </label>
-        <input class='form-item-input' name='merchantPosition' type='text' value='{{userInfo.merchantPosition}}'></input>
+        <input class='form-item-input' name='merchantPosition' type='text' placeholder='请输入职务' value='{{userInfo.merchantPosition}}'></input>
       </view>
+
       <view class='form-item form-item-line'>
         <label class='form-item-label'>行业</label>
-        <input class='form-item-input' name='merchantType' type='text' value='{{userInfo.merchantType}}'></input>
+        <input class='form-item-input' name='merchantType' type='text' placeholder='请选择行业' value='{{userInfo.merchantType}}'></input>
+      </view>
+
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>简介</label>
+        <textarea class='form-item-textarea' name='merchantDescription' auto-height placeholder='公司介绍...' value='{{userInfo.merchantDescription}}'></textarea>
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>公司图标</label>
+        <image class='form-item-image' name='merchantLogo' bindtap='bindAddMerchantLogoTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='form-item-image-list'>
+        <block wx:key="merchantLogo" wx:for="{{merchantLogos}}" wx:for-item="merchantLogo">
+          <image class='form-item-image-detail' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+        </block>
+
+      </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>产品图片</label>
+        <image class='form-item-image' name='merchantPicture' bindtap='bindAddMerchantImgTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='form-item-image-list'>
+        <block wx:key="merchantPicture" wx:for="{{merchantPictures}}" wx:for-item="merchantPicture">
+          <image class='form-item-image-detail' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+        </block>
       </view>
       <view class='card-footer'>
         <button class='card-footer-button' formType="submit">保存</button>

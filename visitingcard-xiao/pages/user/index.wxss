@@ -45,7 +45,7 @@
   text-align: center;
   color: white;
   background: #337ab7;
-  margin: 20rpx;
+  margin: 40rpx;
   border-radius: 50rpx;
 }
 

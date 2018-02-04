@@ -6,7 +6,9 @@ Page({
    */
   data: {
     weChatInfo: {},
-    userInfo: null
+    userInfo: null,
+    merchantLogos: [],
+    merchantPictures:[]
   },
 
   /**
@@ -37,7 +39,15 @@ Page({
               console.log(res.data)
               if (res.data.code != 0) {
                 var userInfo = res.data.data
-                that.setData({ userInfo: userInfo })
+                var merchantPictures = []
+                if (userInfo.merchantPicture != null && userInfo.merchantPicture != '') {
+                  merchantPictures = userInfo.merchantPicture.split(',')
+                }
+                var merchantLogos = []
+                if (userInfo.merchantPicture != null && userInfo.merchantLogo != '') {
+                  merchantLogos = userInfo.merchantLogo.split(',')
+                }
+                that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos })
               }
             }
           })
@@ -92,7 +102,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.userInfo.merchantName+'：'+this.data.userInfo.name+'的名片，乐在分享，有乐同享！联系我吧！',
+      path: '/pages/user/share?userId=' + this.data.userInfo.id,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   },
 
   bindViewTap: function (event) {

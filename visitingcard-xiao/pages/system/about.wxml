@@ -1,4 +1,11 @@
 <!--pages/system/about.wxml-->
 <view class="container">
-  <text>这是关于我们的描述内容</text>
+  <view class='about'>
+    <image class='about-logo' mode="widthFix" src="/images/logo.jpg"></image>    
+  </view>
+  <view class='about-row'>
+    <text class='about-text'>版本号 1.0</text>
+    <text class='about-text'>乐在分享，有乐同享</text>
+    <textarea class='about-content'>乐享名片，是一个用于定制个性化名片的平台，可以快速生成，便于分享和收藏，让大家更容易联系到您，找到您，获取您的最新信息。</textarea>
+  </view>
 </view>

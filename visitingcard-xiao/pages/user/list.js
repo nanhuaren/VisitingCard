@@ -6,7 +6,9 @@ Page({
    */
   data: {
     userInfoList: [],
-    ownerId: null
+    ownerId: null,
+    dataType: null,
+    userInfo: null
   },
 
   /**
@@ -15,22 +17,22 @@ Page({
   onLoad: function (options) {
     var that = this
     var ownerId = options.ownerId
-    var type = options.type
+    var dataType = options.type
     var title = ''
     var url = ''
-    if (type == '01') {
+    if (dataType == '01') {
       title = '所有代理'
       url = 'https://www.nanhuaren.cn/vcard/user/agentList'
-    } else if (type == '02') {
+    } else if (dataType == '02') {
       title = '所有客户'
       url = 'https://www.nanhuaren.cn/vcard/user/userList'
-    } else if (type == '03') {
+    } else if (dataType == '03') {
       title = '我的代理'
       url = 'https://www.nanhuaren.cn/vcard/user/myAgentList'
-    } else if (type == '04') {
+    } else if (dataType == '04') {
       title = '我的客户'
       url = 'https://www.nanhuaren.cn/vcard/user/myUserList'
-    } else if (type == '05') {
+    } else if (dataType == '05') {
       title = '申请客户'
       url = 'https://www.nanhuaren.cn/vcard/user/applyList'
     }
@@ -47,7 +49,7 @@ Page({
         console.log(res.data)
         if (res.data.code != 0) {
           var userInfoList = res.data.data
-          that.setData({ userInfoList: userInfoList, ownerId: ownerId })
+          that.setData({ userInfoList: userInfoList, ownerId: ownerId, dataType: dataType })
         }
       }
     })
@@ -98,6 +100,60 @@ Page({
   /**
    * 用户点击右上角分享
    */
+  onShareAppMessage: function (res) {
+    console.log(res)
+    var userId = res.target.dataset.userid
+    var merchantName = res.target.dataset.merchantname
+    var name = res.target.dataset.username
+    var headerImg = res.target.dataset.headerimg
+    return {
+      title: merchantName + '：' + name + '的名片，乐在分享，有乐同享！联系我吧！',
+      path: '/pages/user/share?userId=' + userId,
+      imageUrl: 'https://www.nanhuaren.cn/upload/' + headerImg,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+
+  },
+
+  bindPreviewTap: function (event) {
+    var userId = event.currentTarget.dataset.userid
+    console.log(userId)
+    wx.navigateTo({
+      url: '/pages/user/share?userId=' + userId
+    })
+  },
+
+  bindShareTap: function (event) {
+    var userId = event.currentTarget.dataset.userid
+    var that = this
+    wx.request({
+      url: 'https://www.nanhuaren.cn/vcard/user/merchantDetail',
+      data: { userId: userId },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: res => {
+        console.log(res.data)
+        if (res.data.code != 0) {
+          var userInfo = res.data.data
+          that.setData({ userInfo: userInfo })
+          that.onShareAppMessage()
+        }
+      }
+    })
+  },
+
+  bindCallTap: function (event) {
+    var mobile = event.currentTarget.dataset.mobile
+    wx.makePhoneCall({
+      phoneNumber: mobile,
+    })
+  },
 
   bindAddUserTap: function (event) {
     wx.navigateTo({
@@ -106,15 +162,118 @@ Page({
   },
 
   bindBackTap: function (event) {
-    wx.switchTab({
+    wx.reLaunch({
       url: 'profile',
     })
   },
 
   bindViewUserTap: function (event) {
     var userId = event.currentTarget.dataset.userid
+    var dataType = event.currentTarget.dataset.datatype
     wx.navigateTo({
-      url: 'detail?userId=' + userId,
+      url: 'detail?userId=' + userId + '&type=' + dataType,
     })
+  },
+
+  bindBindWXTap: function (event) {
+    var userId = event.currentTarget.dataset.userid
+    var that = this
+    wx.request({
+      url: 'https://www.nanhuaren.cn/vcard/user/unBindList',
+      data: {},
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: res => {
+        console.log(res.data)
+        if (res.data.code != 0) {
+          var unBdindList = res.data.data
+          that.setData({ unBdindList: unBdindList })
+          var itemList = unBdindList.map(function (data) {
+            return data.nickName
+          })
+          if (itemList.length==0){
+            wx.showToast({
+              title: '没有微信用户',
+            })
+return
+          }
+          wx.showActionSheet({
+            itemList: itemList,
+            success: function (res) {
+              console.log(res.tapIndex)
+              var openId = unBdindList[res.tapIndex].openId
+              var userType = '01'
+              wx.showModal({
+                title: '提示',
+                content: '确认这是客户的微信吗？',
+                complete: function (res) {
+                  if (res.confirm){
+                    wx.request({
+                      url: 'https://www.nanhuaren.cn/vcard/user/bind',
+                      data: { id: userId, openId: openId, userType: userType },
+                      header: {
+                        'content-type': 'application/json' // 默认值
+                      },
+                      success: res => {
+                        console.log(res.data)
+                        if (res.data.code != 0) {
+                          wx.showToast({
+                            title: '绑定成功',
+                          })
+                          wx.reLaunch({
+                            url: 'list?ownerId=' + that.data.ownerId + '&type=' + that.data.dataType,
+                          })
+                        }
+                      }
+                    })
+                  }
+                  
+                }
+              })
+
+            },
+            fail: function (res) {
+              console.log(res.errMsg)
+            }
+          })
+        }
+      }
+    })
+
+  },
+
+  bindUnBindWXTap: function (event) {
+    var userId = event.currentTarget.dataset.userid
+    var openId = event.currentTarget.dataset.openid
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要解绑该客户?',
+      success: function (res) {
+        if (res.confirm){
+          wx.request({
+            url: 'https://www.nanhuaren.cn/vcard/user/unBind',
+            data: { id: userId, openId: openId },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: res => {
+              console.log(res.data)
+              if (res.data.code != 0) {
+                wx.showToast({
+                  title: '解绑成功',
+                })
+                wx.reLaunch({
+                  url: 'list?ownerId=' + that.data.ownerId + '&type=' + that.data.dataType,
+                })
+              }
+            }
+          })
+        }
+        
+      }
+    })
+
   },
 })

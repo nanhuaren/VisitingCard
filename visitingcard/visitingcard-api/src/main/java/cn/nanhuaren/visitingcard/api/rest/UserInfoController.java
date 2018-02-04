@@ -390,6 +390,19 @@ public class UserInfoController {
 		}
 		return resultBody;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/unBindList", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody unBindList(HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		List<WeChatInfo> weChatInfoList = weChatInfoDao.lisUnBindWechat();
+		if (weChatInfoList != null) {
+			resultBody.setData(weChatInfoList);
+		} else {
+			resultBody.isError("获取未绑定客户列表失败");
+		}
+		return resultBody;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/bind", method = { RequestMethod.POST, RequestMethod.GET })
@@ -402,7 +415,7 @@ public class UserInfoController {
 			if (StringUtils.isEmpty(queryUserInfo.getOpenId())) {
 				queryUserInfo.setOpenId(userInfo.getOpenId());
 				queryUserInfo.setUpdateTime(new Date());
-				queryUserInfo.setUserType("01");
+				queryUserInfo.setUserType(userInfo.getUserType());
 				userInfoDao.updateById(queryUserInfo);
 			} else {
 				resultBody.isError("绑定用户失败，不能重复绑定");
@@ -423,6 +436,7 @@ public class UserInfoController {
 		if (queryUserInfo != null && weChatInfo != null) {
 			if (!StringUtils.isEmpty(queryUserInfo.getOpenId())) {
 				queryUserInfo.setOpenId("");
+				queryUserInfo.setUserType("02");
 				queryUserInfo.setUpdateTime(new Date());
 				userInfoDao.updateById(queryUserInfo);
 			} else {

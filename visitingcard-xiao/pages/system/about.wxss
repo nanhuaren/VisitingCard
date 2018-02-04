@@ -1,1 +1,29 @@
 /* pages/system/about.wxss */
+.about {
+  text-align: center;
+  width: 100%;
+}
+
+.about-logo {
+  margin: 80rpx;
+  width: 256rpx;
+  text-align: center;
+}
+
+.about-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.about-text {
+  padding: 10rpx;
+  font-size: 11pt;
+  text-align: center;
+}
+
+.about-content {
+  margin-top:40rpx;
+  padding:40rpx 40rpx;
+  text-align: center;
+}

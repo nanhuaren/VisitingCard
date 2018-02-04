@@ -27,7 +27,20 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "关于我们",
+					"pathName": "pages/user/detail",
+					"query": "userId=35&type=04"
+				},
+				{
+					"id": 1,
+					"name": "关于我们",
+					"pathName": "pages/user/setting",
+					"query": ""
+				}
+			]
 		}
 	}
 }

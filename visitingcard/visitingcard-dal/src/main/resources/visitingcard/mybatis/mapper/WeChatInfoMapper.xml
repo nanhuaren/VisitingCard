@@ -11,9 +11,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="WeChatInfoMapper">
 
+	<resultMap id="WeChatInfoMap" type="cn.nanhuaren.visitingcard.dal.domain.WeChatInfo">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="openId" jdbcType="VARCHAR" property="openId" />
+		<result column="unionId" jdbcType="VARCHAR" property="unionId" />
+		<result column="nickName" jdbcType="VARCHAR" property="nickName" />
+		<result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl" />
+		<result column="gender" jdbcType="VARCHAR" property="gender" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="province" jdbcType="VARCHAR" property="province" />
+		<result column="country" jdbcType="VARCHAR" property="country" />
+		<result column="language" jdbcType="VARCHAR" property="language" />
+	</resultMap>
+
 	<select id="selectByOpenId" resultType="WeChatInfo">
 		select * from t_wechat_info where openId = #{openId}
 	</select>
+	
+	<select id="lisUnBind" resultMap="WeChatInfoMap">
+        select w.* from t_wechat_info w 
+        where w.openId not in ( select DISTINCT u.openId from t_user_info u where u.openId is not null and u.openId != '')
+        and w.nickName is not null and w.nickName != ''
+    </select>
 
 	<insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.WeChatInfo">
 		insert into t_wechat_info

@@ -1,14 +1,16 @@
 <!--pages/user/list.wxml-->
 <view class="container">
   <block wx:key="user" wx:for="{{userInfoList}}" wx:for-item="userInfo">
-    <view class='card-modal' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}'>
+    <view class='card-modal'>
       <view class='card-detail'>
         <view class='head-left'>
           <image class='head-img' src='{{userInfo.headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
         </view>
         <view class='head-right'>
-          <view class=''>
+          <view class='' style='width:100%;'>
             <text style='font-size:17pt;'>{{userInfo.name}}</text>
+            <text style='font-size:11pt;margin-right:20rpx;float:right;color:red;' wx:if='{{userInfo.userType=="02"}}'>未开通</text>
+            <text style='font-size:11pt;margin-right:20rpx;float:right;color:red;' wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}'>已开通</text>
           </view>
           <view class='head-right-text'>
             <text style='font-size:10pt;'>{{userInfo.merchantPosition}} ｜ {{userInfo.merchantType}}</text>
@@ -19,7 +21,7 @@
         </view>
       </view>
       <view class='form-detail'>
-        <view class="form-item" bindtap='bindCallTap'>
+        <view class="form-item" bindtap='bindCallTap' data-mobile='{{userInfo.mobile}}'>
           <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
           <text class="item-text" style='color:#337ab7;'>{{userInfo.mobile}}</text>
         </view>
@@ -30,6 +32,13 @@
         <view class="form-item">
           <image class='item-icon' mode="widthFix" src='/images/map.png'></image>
           <text class="item-text" style='color:#337ab7;'>{{(userInfo.province||"")+(userInfo.city||"")+(userInfo.area||"")+(userInfo.address||"")}}</text>
+        </view>
+        <view class="form-item">
+          <button size='mini' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}' data-datatype='{{dataType}}'>编辑</button>
+          <button wx:if='{{userInfo.userType=="02"}}' size='mini' data-userid='{{userInfo.id}}' bindtap='bindBindWXTap' >绑定</button>
+          <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-openid='{{userInfo.openId}}' bindtap='bindUnBindWXTap' >解绑</button>
+          <button wx:if='{{userInfo.userType=="02"}}' size='mini' bindtap='bindPreviewTap' data-userid='{{userInfo.id}}'>预览</button>
+          <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-username='{{userInfo.name}}' data-merchantname='{{userInfo.merchantName}}' data-headerimg='{{userInfo.headerImg}}' open-type="share">分享</button>
         </view>
       </view>
     </view>

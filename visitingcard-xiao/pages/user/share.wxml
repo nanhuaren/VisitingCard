@@ -1,27 +1,9 @@
-<!--pages/user/index.wxml-->
-<view class="container" wx:if='{{userInfo==null||userInfo.userType=="02"}}'>
-  <view class='card-header'>
-    <text class='card-header-text' wx:if='{{userInfo==null}}'>你还没有申请电子名片哦</text>
-    <text class='card-header-text' wx:if='{{userInfo!=null&&userInfo.userType=="02"}}'>你的电子名片还未生成</text>
-  </view>
-  <view class='card-body'>
-    <text class='card-body-text'>快速分享</text>
-    <text class='card-body-text'>实时检测</text>
-    <text class='card-body-text'>彰显身份</text>
-  </view>
-  <view class='card-demo'>
-    <image class='card-demo-img' mode="widthFix" src="/images/card.jpg"></image>
-  </view>
-  <view class='card-footer'>
-    <button class='card-footer-button' wx:if='{{userInfo==null}}' bindtap='bindApplyTap'>我要申请</button>
-    <button class='card-footer-button' wx:if='{{userInfo!=null&&userInfo.userType=="02"}}'>等待审核</button>
-  </view>
-</view>
-<view class="container" wx:if='{{userInfo!=null&&userInfo.userType!="02"}}'>
+<!--pages/user/share.wxml-->
+<view class="container" wx:if='{{userInfo!=null}}'>
 
   <view class='merchant-pic'>
     <swiper indicator-dots="true" indicator-color="#ffffff" indicator-active-color='#337ab7' autoplay="true">
-    <block wx:key="merchantLogo" wx:for="{{merchantLogos}}" wx:for-item="merchantLogo">
+      <block wx:key="merchantLogo" wx:for="{{merchantLogos}}" wx:for-item="merchantLogo">
       <swiper-item >
         <image mode="widthFix" src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
       </swiper-item>
@@ -47,7 +29,7 @@
     </view>
   </view>
   <view class="form">
-    <view class="form-item">
+    <view class="form-item" bindtap="bindCallTap">
       <image class='item-icon' mode="widthFix" src='/images/tel.png'></image>
       <text class="item-text  text-line">{{userInfo.mobile||''}}</text>
     </view>
@@ -95,6 +77,27 @@
         <image mode="widthFix" src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
       </view>
       </block>
+    </view>
+  </view>
+  <view class='weixin-footer' wx:if='{{showWeixin}}'>
+    <image mode="widthFix" src='/images/weixin_qrcode.jpg'></image>
+  </view>
+  <view class='card-footer'>
+    <view class='card-footer-item' bindtap='bindCallTap'>
+      <image class='card-footer-item-pic' mode="widthFix" src='/images/tel_actived.png'></image>
+      <text class='card-footer-item-text'>电话</text>
+    </view>
+    <view class='card-footer-item' bindtap='bindWeixinTap'>
+      <image class='card-footer-item-pic' mode="widthFix" src='/images/weixin_actived.png'></image>
+      <text class='card-footer-item-text'>微信</text>
+    </view>
+    <view class='card-footer-item' bindtap='bindMessageTap'>
+      <image class='card-footer-item-pic' mode="widthFix" src='/images/message_actived.png'></image>
+      <text class='card-footer-item-text'>短信</text>
+    </view>
+    <view class='card-footer-item' bindtap='bindHomeTap'>
+      <image class='card-footer-item-pic' mode="widthFix" src='/images/user_actived.png'></image>
+      <text class='card-footer-item-text'>我的</text>      
     </view>
   </view>
 </view>

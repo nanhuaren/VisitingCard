@@ -90,7 +90,7 @@ Page({
             duration: 2000,
             mask: true,
             complete: function () {
-              wx.switchTab({
+              wx.reLaunch({
                 url: 'profile',
               })
             }
