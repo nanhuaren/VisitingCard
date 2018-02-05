@@ -11,8 +11,30 @@ Page({
     merchantLogo: null,
     uploadImage: null,
     merchantLogos: [],
+    merchantLogos1: [],
+    merchantLogos2: [],
+    merchantLogos3: [],
     merchantPictures:[],
+    merchantPictures1:[],
+    merchantPictures2: [],
+    merchantPictures3: [],
     weixinQrcode: null,
+  },
+
+  setMerchantLogo:function(){
+    var merchantLogos = this.data.merchantLogos
+    var merchantLogos1 = merchantLogos && merchantLogos.length >= 3 ? merchantLogos.slice(0, 3) : merchantLogos.slice(0, merchantLogos.length)
+    var merchantLogos2 = merchantLogos && merchantLogos.length >= 6 ? merchantLogos.slice(3, 6) : merchantLogos.slice(3, merchantLogos.length)
+    var merchantLogos3 = merchantLogos && merchantLogos.length >= 9 ? merchantLogos.slice(6, 9) : merchantLogos.slice(6, merchantLogos.length)
+    this.setData({ merchantLogos1: merchantLogos1, merchantLogos2: merchantLogos2, merchantLogos3: merchantLogos3 })
+  },
+
+  setMerchantPictures: function () {
+    var merchantPictures = this.data.merchantPictures
+    var merchantPictures1 = merchantPictures && merchantPictures.length >= 3 ? merchantPictures.slice(0, 3) : merchantPictures.slice(0, merchantPictures.length)
+    var merchantPictures2 = merchantPictures && merchantPictures.length >= 6 ? merchantPictures.slice(3, 6) : merchantPictures.slice(3, merchantPictures.length)
+    var merchantPictures3 = merchantPictures && merchantPictures.length >= 9 ? merchantPictures.slice(6, 9) : merchantPictures.slice(6, merchantPictures.length)
+    this.setData({ merchantPictures1: merchantPictures1, merchantPictures2: merchantPictures2, merchantPictures3: merchantPictures3 })
   },
 
   /**
@@ -54,7 +76,10 @@ Page({
                 if (userInfo.weixinQrcode != null && userInfo.weixinQrcode != '') {
                   weixinQrcode = userInfo.weixinQrcode
                 }
+                
                 that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos, weixinQrcode: weixinQrcode})
+                that.setMerchantLogo()
+                that.setMerchantPictures()
               }
             }
           })
@@ -74,7 +99,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -253,6 +278,7 @@ Page({
               merchantLogos.push(data.data)
               userInfo.merchantLogo = merchantLogos.join(',')
               that.setData({ merchantLogos: merchantLogos, userInfo: userInfo })
+              that.setMerchantLogo();
             }
           })
         }
@@ -286,6 +312,7 @@ Page({
               merchantPictures.push(data.data)
               userInfo.merchantPicture = merchantPictures.join(',')
               that.setData({ merchantPictures:merchantPictures, userInfo: userInfo })
+              that.setMerchantPictures()
             }
           })
         }
@@ -293,4 +320,11 @@ Page({
       },
     })
   },
+
+  bindViewImageTap: function (event) {
+    var imageId = event.currentTarget.dataset.imageid
+    wx.previewImage({
+      urls: ['https://www.nanhuaren.cn/upload/' + imageId],
+    })
+  }
 })

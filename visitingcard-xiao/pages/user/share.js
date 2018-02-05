@@ -9,7 +9,7 @@ Page({
     showWeixin:false,
     merchantLogos: [],
     merchantPictures: [],
-    weixinQrcode:null
+    weixinQrcode:null,
   },
 
   /**

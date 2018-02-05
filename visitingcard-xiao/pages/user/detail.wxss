@@ -140,6 +140,10 @@
   border: 1rpx;
 }
 
+.form-item-row {
+  padding-left: 20rpx;
+}
+
 .head-img {
   padding: 20rpx;
   width: 120rpx;

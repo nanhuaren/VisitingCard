@@ -2,10 +2,10 @@
 <view class="container" wx:if='{{userInfo!=null}}'>
 
   <view class='merchant-pic'>
-    <swiper indicator-dots="true" indicator-color="#ffffff" indicator-active-color='#337ab7' autoplay="true">
+    <swiper indicator-dots="true" indicator-color="#ffffff" indicator-active-color='#337ab7' autoplay="true" style='height:380rpx;'>
       <block wx:key="merchantLogo" wx:for="{{merchantLogos}}" wx:for-item="merchantLogo">
       <swiper-item >
-        <image mode="widthFix" src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+        <image mode='aspectFill' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
       </swiper-item>
       </block>
     </swiper>
@@ -67,7 +67,7 @@
       <view class="default-line"></view>
       <text class="item-content">{{userInfo.merchantDescription||'未填写'}}</text>
     </view>
-    <view class="form-item-list">
+    <view class="form-item-list" style='margin-bottom:140rpx;'>
       <text class="item-title">产品展示</text>
       <block wx:key="merchantPicture" wx:for="{{merchantPictures}}" wx:for-item="merchantPicture">
       <view class="item-pic">

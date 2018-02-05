@@ -31,14 +31,14 @@
 				{
 					"id": 0,
 					"name": "关于我们",
-					"pathName": "pages/user/detail",
-					"query": "userId=35&type=04"
+					"pathName": "pages/user/share",
+					"query": "userId=40&type=02"
 				},
 				{
 					"id": 1,
 					"name": "关于我们",
 					"pathName": "pages/user/setting",
-					"query": ""
+					"query": "ownerId=24"
 				}
 			]
 		}
