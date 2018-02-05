@@ -8,7 +8,8 @@ Page({
     userInfo: null,
     showWeixin:false,
     merchantLogos: [],
-    merchantPictures: []
+    merchantPictures: [],
+    weixinQrcode:null
   },
 
   /**
@@ -35,7 +36,11 @@ Page({
           if (userInfo.merchantPicture != null && userInfo.merchantLogo != '') {
             merchantLogos = userInfo.merchantLogo.split(',')
           }
-          that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos})
+          var weixinQrcode = []
+          if (userInfo.weixinQrcode != null && userInfo.weixinQrcode != '') {
+            weixinQrcode = userInfo.weixinQrcode
+          }
+          that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos, weixinQrcode: weixinQrcode})
           if (userInfo.userType == '02') {
             wx.setNavigationBarTitle({
               title: '名片预览',
@@ -94,7 +99,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: this.data.userInfo.merchantName + '：' + this.data.userInfo.name + '的名片，乐在分享，有乐同享！联系我吧！',
-      path: '/pages/user/share',
+      path: '/pages/user/share?userId=' + this.data.userInfo.id,
       success: function (res) {
         // 转发成功
       },
@@ -121,7 +126,15 @@ Page({
   },
 
   bindWeixinTap: function (event) {
-    this.setData({ showWeixin:!this.data.showWeixin})
+    if (this.data.weixinQrcode != null && this.data.weixinQrcode !=''){
+      this.setData({ showWeixin: !this.data.showWeixin })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '对不起，请先上传微信二维码',
+      })
+    }
+    
   },
 
   bindMessageTap: function (event) {

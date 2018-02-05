@@ -11,7 +11,8 @@ Page({
     merchantLogo: null,
     uploadImage: null,
     merchantLogos: [],
-    merchantPictures:[]
+    merchantPictures:[],
+    weixinQrcode: null,
   },
 
   /**
@@ -49,7 +50,11 @@ Page({
                 if (userInfo.merchantLogo != null && userInfo.merchantLogo != '') {
                   merchantLogos = userInfo.merchantLogo.split(',')
                 }
-                that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos})
+                var weixinQrcode = null
+                if (userInfo.weixinQrcode != null && userInfo.weixinQrcode != '') {
+                  weixinQrcode = userInfo.weixinQrcode
+                }
+                that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos, weixinQrcode: weixinQrcode})
               }
             }
           })
@@ -114,6 +119,11 @@ Page({
     } else {
       userInfo.headerImg = this.data.userInfo.headerImg
     }
+    if (this.data.weixinQrcode) {
+      userInfo.weixinQrcode = this.data.weixinQrcode
+    } else {
+      userInfo.weixinQrcode = this.data.userInfo.weixinQrcode
+    }
     if (this.data.merchantPictures) {
       userInfo.merchantPicture = this.data.merchantPictures.join(',')
     } else {
@@ -126,6 +136,7 @@ Page({
     }
     data.id = userInfo.id
     data.headerImg = userInfo.headerImg
+    data.weixinQrcode = userInfo.weixinQrcode;
     data.merchantLogo = userInfo.merchantLogo
     data.merchantPicture = userInfo.merchantPicture
     wx.request({
@@ -181,6 +192,35 @@ Page({
             var userInfo = that.data.userInfo
             userInfo.headerImg = data.data.join(',')
             that.setData({ headerImg: data.data.join(','), userInfo: userInfo })
+          }
+        })
+      },
+    })
+  },
+
+  bindAddWeixinQrcodeTap: function (event) {
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        wx.uploadFile({
+          url: 'https://www.nanhuaren.cn/vcard/file/upload',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data)
+            console.log(data)
+            var userInfo = that.data.userInfo
+            var weixinQrcode = data.data.join(',')
+            userInfo.weixinQrcode = weixinQrcode
+            that.setData({ weixinQrcode: weixinQrcode, userInfo: userInfo })
           }
         })
       },

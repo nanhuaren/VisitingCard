@@ -299,6 +299,7 @@ public class UserInfoController {
 			queryUserInfo.setFax(userInfo.getFax());
 			queryUserInfo.setQq(userInfo.getQq());
 			queryUserInfo.setWeixin(userInfo.getWeixin());
+			queryUserInfo.setWeixinQrcode(userInfo.getWeixinQrcode());
 			queryUserInfo.setEmail(userInfo.getEmail());
 			queryUserInfo.setProvince(userInfo.getProvince());
 			queryUserInfo.setCity(userInfo.getCity());
@@ -354,6 +355,7 @@ public class UserInfoController {
 			queryUserInfo.setFax(userInfo.getFax());
 			queryUserInfo.setQq(userInfo.getQq());
 			queryUserInfo.setWeixin(userInfo.getWeixin());
+			queryUserInfo.setWeixinQrcode(userInfo.getWeixinQrcode());
 			queryUserInfo.setEmail(userInfo.getEmail());
 			queryUserInfo.setProvince(userInfo.getProvince());
 			queryUserInfo.setCity(userInfo.getCity());

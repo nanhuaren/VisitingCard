@@ -22,6 +22,8 @@ public class UserInfo implements Serializable {
 	private String qq;
 
 	private String weixin;
+	
+	private String weixinQrcode;
 
 	private String email;
 
@@ -107,6 +109,14 @@ public class UserInfo implements Serializable {
 
 	public void setWeixin(String weixin) {
 		this.weixin = weixin;
+	}
+
+	public String getWeixinQrcode() {
+		return weixinQrcode;
+	}
+
+	public void setWeixinQrcode(String weixinQrcode) {
+		this.weixinQrcode = weixinQrcode;
 	}
 
 	public String getEmail() {

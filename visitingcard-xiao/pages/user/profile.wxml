@@ -54,7 +54,6 @@
   </view>
   <view class='card-footer'>
     <button wx:if="{{userInfo.userType=='00'||userInfo.userType=='03'}}" class='card-footer-button' bindtap='bindAddUserTap'>我要推荐</button>
-    <button wx:if="{{userInfo.userType=='01'}}" class='card-footer-button' bindtap='bindApplyAgentTap'>加入代理</button>
     <button wx:if="{{userInfo.userType=='01'}}" class='card-footer-button' bindtap='bindContactUsTap'>联系客服</button>
   </view>
 </view>

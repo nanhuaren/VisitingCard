@@ -77,9 +77,6 @@
       <text class="item-title">个人介绍</text>
       <view class="default-line"></view>
       <text class="item-content">{{userInfo.description||'未填写'}}</text>
-      <view class="item-pic">
-        <image mode="widthFix" src='{{userInfo.headerImg==null?"":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
-      </view>
     </view>
     <view class='merchant-pic'>
     </view>

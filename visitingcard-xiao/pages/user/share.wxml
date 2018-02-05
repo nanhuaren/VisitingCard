@@ -59,9 +59,6 @@
       <text class="item-title">个人介绍</text>
       <view class="default-line"></view>
       <text class="item-content">{{userInfo.description||'未填写'}}</text>
-      <view class="item-pic">
-        <image mode="widthFix" src='{{userInfo.headerImg==null?"":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
-      </view>
     </view>
     <view class='merchant-pic'>
     </view>
@@ -80,7 +77,7 @@
     </view>
   </view>
   <view class='weixin-footer' wx:if='{{showWeixin}}'>
-    <image mode="widthFix" src='/images/weixin_qrcode.jpg'></image>
+    <image wx:if='{{weixinQrcode!=null}}'mode="widthFix" src='https://www.nanhuaren.cn/upload/{{weixinQrcode}}'></image>
   </view>
   <view class='card-footer'>
     <view class='card-footer-item' bindtap='bindCallTap'>

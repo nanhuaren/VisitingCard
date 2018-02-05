@@ -34,6 +34,16 @@
         <input class='form-item-input' name='weixin' type='text' placeholder='请输入微信' value='{{userInfo.weixin}}'></input>
       </view>
       <view class='form-item form-item-line'>
+        <label class='form-item-label'>二维码</label>
+        <image class='form-item-image' name='weixinQrcode' bindtap='bindAddWeixinQrcodeTap' src='/images/add-img.png'></image>
+      </view>
+      <view class='form-item-image-list'>
+        <block wx:key="merchantLogo" wx:if='{{userInfo.weixinQrcode!=null}}'>
+          <image class='form-item-image-detail' src='https://www.nanhuaren.cn/upload/{{userInfo.weixinQrcode}}'></image>
+        </block>
+
+      </view>
+      <view class='form-item form-item-line'>
         <label class='form-item-label'>邮箱</label>
         <input class='form-item-input' name='email' type='text' placeholder='请输入邮箱地址' value='{{userInfo.email}}'></input>
       </view>

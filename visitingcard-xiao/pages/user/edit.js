@@ -11,7 +11,8 @@ Page({
     ownerId:null,
     merchantLogo: null,
     merchantLogos: [],
-    merchantPictures: []
+    merchantPictures: [],
+    weixinQrcode: null,
   },
 
   /**
@@ -93,6 +94,11 @@ Page({
       userInfo.headerImg = this.data.headerImg
     } else {
       userInfo.headerImg = this.data.userInfo.headerImg
+    }
+    if (this.data.weixinQrcode) {
+      userInfo.weixinQrcode = this.data.weixinQrcode
+    } else {
+      userInfo.weixinQrcode = this.data.userInfo.weixinQrcode
     }
    
     if (this.data.merchantPictures) {
@@ -217,6 +223,35 @@ Page({
             var userInfo = that.data.userInfo
             userInfo.headerImg = data.data.join(',')
             that.setData({ headerImg: data.data.join(','), userInfo: userInfo })
+          }
+        })
+      },
+    })
+  },
+
+  bindAddWeixinQrcodeTap: function (event) {
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        wx.uploadFile({
+          url: 'https://www.nanhuaren.cn/vcard/file/upload',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data)
+            console.log(data)
+            var userInfo = that.data.userInfo
+            var weixinQrcode = data.data.join(',')
+            userInfo.weixinQrcode = weixinQrcode
+            that.setData({ weixinQrcode: weixinQrcode, userInfo: userInfo })
           }
         })
       },
