@@ -26,6 +26,7 @@ create table t_user_info (
 	fax varchar(100), 
 	qq varchar(100), 
 	weixin varchar(100), 
+	weixinQrcode varchar(100), 
 	email varchar(100), 
 	province varchar(100), 
 	city varchar(100), 
