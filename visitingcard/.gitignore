@@ -1,4 +1,5 @@
 target/
+*/target
 .settings
 .classpath
 .project
@@ -6,5 +7,7 @@ target/
 *.log
 *.iml
 .idea
-
+*/.settings
+*/.classpath
+*/.project
 .factorypath
