@@ -315,8 +315,23 @@ Page({
 
   bindViewImageTap: function (event) {
     var imageId = event.currentTarget.dataset.imageid
+    var dataType = event.currentTarget.dataset.datatype
+    var urls = []
+    if (dataType == '01') {
+      urls = ['https://www.nanhuaren.cn/upload/' + imageId]
+    } else if (dataType == '02') {
+      urls = this.data.merchantLogos.map(function (data) {
+        return 'https://www.nanhuaren.cn/upload/' + data
+      })
+    } else if (dataType == '03') {
+      urls = this.data.merchantPictures.map(function (data) {
+        return 'https://www.nanhuaren.cn/upload/' + data
+      })
+    }
+
     wx.previewImage({
-      urls: ['https://www.nanhuaren.cn/upload/' + imageId],
+      current: 'https://www.nanhuaren.cn/upload/' + imageId,
+      urls: urls,
     })
   }
 })

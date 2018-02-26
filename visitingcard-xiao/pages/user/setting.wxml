@@ -36,7 +36,7 @@
       <view class='form-item form-item-line'>
         <label class='form-item-label'>二维码</label>
         <block wx:key="weixinQrcode" wx:if='{{userInfo.weixinQrcode!=null}}'>
-          <image bindtap='bindViewImageTap' data-imageid='{{userInfo.weixinQrcode}}'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{userInfo.weixinQrcode}}'></image>
+          <image bindtap='bindViewImageTap' data-imageid='{{userInfo.weixinQrcode}}' data-datatype='01' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{userInfo.weixinQrcode}}'></image>
         </block>
         <image class='form-item-image' name='weixinQrcode' bindtap='bindAddWeixinQrcodeTap' src='/images/add-img.png'></image>
       </view>
@@ -87,19 +87,19 @@
       </view>      
       <view wx:if='{{merchantLogos1.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos1}}" wx:for-item="merchantLogo">
-          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
         </block>
 
       </view>
       <view wx:if='{{merchantLogos2.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos2}}" wx:for-item="merchantLogo">
-          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
         </block>
 
       </view>
       <view wx:if='{{merchantLogos3.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos3}}" wx:for-item="merchantLogo">
-          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
         </block>
 
       </view>
@@ -109,19 +109,19 @@
       </view>
       <view wx:if='{{merchantPictures1.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture1" wx:for="{{merchantPictures1}}" wx:for-item="merchantPicture">
-          <image bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <image bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
         </block>
 
       </view>
       <view wx:if='{{merchantPictures2.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture2" wx:for="{{merchantPictures2}}" wx:for-item="merchantPicture">
-          <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
         </block>
 
       </view>
       <view wx:if='{{merchantPictures3.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture3" wx:for="{{merchantPictures3}}" wx:for-item="merchantPicture">
-          <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
         </block>
 
       </view>
