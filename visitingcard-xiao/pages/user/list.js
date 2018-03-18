@@ -8,7 +8,8 @@ Page({
     userInfoList: [],
     ownerId: null,
     dataType: null,
-    userInfo: null
+    userInfo: null,
+    showBind:false
   },
 
   /**
@@ -176,71 +177,14 @@ Page({
   },
 
   bindBindWXTap: function (event) {
-    var userId = event.currentTarget.dataset.userid
     var that = this
-    wx.request({
-      url: 'https://www.nanhuaren.cn/vcard/user/unBindList',
-      data: {},
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-        console.log(res.data)
-        if (res.data.code != 0) {
-          var unBdindList = res.data.data
-          that.setData({ unBdindList: unBdindList })
-          var itemList = unBdindList.map(function (data) {
-            return data.nickName
-          })
-          if (itemList.length==0){
-            wx.showToast({
-              title: '没有微信用户',
-            })
-return
-          }
-          wx.showActionSheet({
-            itemList: itemList,
-            success: function (res) {
-              console.log(res.tapIndex)
-              var openId = unBdindList[res.tapIndex].openId
-              var userType = '01'
-              wx.showModal({
-                title: '提示',
-                content: '确认这是客户的微信吗？',
-                complete: function (res) {
-                  if (res.confirm){
-                    wx.request({
-                      url: 'https://www.nanhuaren.cn/vcard/user/bind',
-                      data: { id: userId, openId: openId, userType: userType },
-                      header: {
-                        'content-type': 'application/json' // 默认值
-                      },
-                      success: res => {
-                        console.log(res.data)
-                        if (res.data.code != 0) {
-                          wx.showToast({
-                            title: '绑定成功',
-                          })
-                          wx.reLaunch({
-                            url: 'list?ownerId=' + that.data.ownerId + '&type=' + that.data.dataType,
-                          })
-                        }
-                      }
-                    })
-                  }
-                  
-                }
-              })
-
-            },
-            fail: function (res) {
-              console.log(res.errMsg)
-            }
-          })
-        }
-      }
+    var userId = event.currentTarget.dataset.userid
+    var userType = event.currentTarget.dataset.usertype
+    var dataType = that.data.dataType
+    var ownerId = that.data.ownerId
+    wx.navigateTo({
+      url: 'bind?userId=' + userId + '&userType=' + userType + '&dataType=' + dataType + '&ownerId=' + ownerId,
     })
-
   },
 
   bindUnBindWXTap: function (event) {

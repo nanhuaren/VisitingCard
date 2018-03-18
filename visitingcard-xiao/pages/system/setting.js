@@ -73,5 +73,18 @@ Page({
         })
       }
     })
+  },
+
+  bindSettingTap: function (event) {
+    wx.openSetting({
+      success: (res) => {
+        /*
+         * res.authSetting = {
+         *   "scope.userInfo": true,
+         *   "scope.userLocation": true
+         * }
+         */
+      }
+    })
   }
 })

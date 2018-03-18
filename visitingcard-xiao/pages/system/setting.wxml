@@ -5,4 +5,8 @@
     <label class='form-item-label'>清除缓存</label>
     <text class='form-item-input form-item-count'>{{currentSize}}KB</text>
   </view>
+  <view class='form-item form-item-line' bindtap='bindSettingTap'>
+    <label class='form-item-label'>授权信息</label>
+    <text class='form-item-input form-item-count'></text>
+  </view>
 </view>

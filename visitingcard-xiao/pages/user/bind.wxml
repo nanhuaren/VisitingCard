@@ -1,0 +1,17 @@
+<!--pages/user/bind.wxml-->
+<view class="container">
+  <view class='bind-form'>
+    <form bindsubmit="formSubmit">
+      <radio-group name="openId">
+        <block wx:key="bindUser" wx:for="{{unBdindList}}" wx:for-item="unBdindUser">
+          <label class='form-item'>
+            <radio value="{{unBdindUser.openId}}" class='radio-item'/>
+            <image class='head-img' src='{{unBdindUser.avatarUrl!=""?unBdindUser.avatarUrl:"/images/logo.jpg"}}'></image><text class='radio-item'>{{unBdindUser.nickName}}</text></label>
+        </block>
+      </radio-group>
+      <view class='card-footer'>
+        <button class='card-footer-button' formType="submit">绑定</button>
+      </view>
+    </form>
+  </view>
+</view>

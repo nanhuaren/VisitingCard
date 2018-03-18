@@ -35,14 +35,17 @@
         </view>
         <view class="form-item">
           <button size='mini' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}' data-datatype='{{dataType}}'>编辑</button>
-          <button wx:if='{{userInfo.userType=="02"}}' size='mini' data-userid='{{userInfo.id}}' bindtap='bindBindWXTap' >绑定</button>
-          <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-openid='{{userInfo.openId}}' bindtap='bindUnBindWXTap' >解绑</button>
+          <button wx:if='{{userInfo.userType=="02"}}' size='mini' data-userid='{{userInfo.id}}' data-usertype='{{userInfo.userType}}' bindtap='bindBindWXTap'>绑定</button>
+          <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-openid='{{userInfo.openId}}' bindtap='bindUnBindWXTap'>解绑</button>
           <button wx:if='{{userInfo.userType=="02"}}' size='mini' bindtap='bindPreviewTap' data-userid='{{userInfo.id}}'>预览</button>
           <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-username='{{userInfo.name}}' data-merchantname='{{userInfo.merchantName}}' data-headerimg='{{userInfo.headerImg}}' open-type="share">分享</button>
         </view>
       </view>
     </view>
   </block>
+  <view class='bind-footer' wx:if='{{showBind}}'>
+    
+  </view>
   <view class='card-footer'>
     <button wx:if='{{userInfo.userType == "00"}}' class='card-footer-button' bindtap='bindAddUserTap'>继续推荐</button>
     <button class='card-footer-button' bindtap='bindBackTap'>返回</button>

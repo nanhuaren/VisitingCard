@@ -11,6 +11,7 @@
     "pages/user/detail",
     "pages/user/profile",
     "pages/user/list",
+    "pages/user/bind",
     "pages/user/setting",
     "pages/user/share",
     "pages/system/about",
