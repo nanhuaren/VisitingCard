@@ -71,7 +71,7 @@
       <text class="item-title">产品展示</text>
       <block wx:key="merchantPicture" wx:for="{{merchantPictures}}" wx:for-item="merchantPicture">
       <view class="item-pic">
-        <image mode="widthFix" src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+        <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
       </view>
       </block>
     </view>
