@@ -1,4 +1,4 @@
-bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}'<!--pages/user/edit.wxml-->
+<!--pages/user/edit.wxml-->
 <view class="container">
   <view class='default-gray'></view>
 
