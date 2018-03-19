@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="css/common.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="iconfont/iconfont.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<link href="css/user.css" rel="stylesheet" type="text/css" />
+	<title class="js_title">乐享名片</title>
+</head>
+<body style="background: #333333">
+	<div class="ushdbox js_background" style="background-size: 100% auto; position: fixed; width: 100%">
+		<span class="lt"><i class="iconfont" onClick="opaudio();">&#xe612;</i></span>
+		<span class="rt"><i class="iconfont" onClick="document.getElementById('usma').style.display='';">&#xe71b;</i></span>
+		<span id="playbox" onClick="opaudio();"><audio id="audio" autoplay loop></audio></span>
+	</div>
+
+	<div style="position: relative; width: 100%; top: 350px; z-index: 1">
+		<div style="background: #000000; overflow: hidden; color: #FFFFFF; border-radius: 0px 200px 10px 0px; padding: 3px; margin-right: 50px">
+			<img class="js_headerImg" src="" style="width: 50px; height: 50px; float: left">
+			<p style="float: left; margin-left: 50px; font-size: 12px; color: #CCCCCC; padding: 5px; line-height: 20px;">
+				<span class="js_merchantPosition"></span>&nbsp;&nbsp; <span style="font-size: 18px; color: #FFFFFF" class="js_name"></span>
+				<br><span class="js_merchantName"></span>
+			</p>
+		</div>
+
+		<div class="maskbox" id="usma" style="display: none">
+			<div class="ewmabox">
+				<div style="height: 30px; padding: 10px 0;">
+					<h3 style="float: left; margin-left: 20px; color: #ff3300;" id="title1" onClick="document.getElementById('mingpian').style.display='';document.getElementById('tongxunlu').style.display='none';document.getElementById('title2').style.color='#666666';document.getElementById('title1').style.color='#ff3300';">打开微名片</h3>
+					<h3 style="float: right; margin-right: 20px; color:;" id="title2" onClick="document.getElementById('tongxunlu').style.display='';document.getElementById('mingpian').style.display='none';document.getElementById('title1').style.color='#666666';document.getElementById('title2').style.color='#ff3300';">添加通讯录</h3>
+				</div>
+				<div style="clear: both;"></div>
+				<div id="mingpian" style="display: block; margin-top: 5px;">
+					<p id="qrcode" style="width: 160px; height: 160px; margin: 10px auto"></p>
+					<p>
+						长按二秒<br>即可保存二维码
+					</p>
+				</div>
+				<div id="tongxunlu" style="display: none; margin-top: 5px;">
+					<p id="qrcodeid" style="width: 160px; height: 160px; margin: 10px auto"></p>
+					<img id='imgOne' style="margin-top: 5px;" />
+					<p>
+						长按二秒<br>即可添加到通讯录
+					</p>
+				</div>
+			</div>
+			<div class="back" onClick="hidemask('usma')" ontouchstart="hidemask('usma')" ontouchmove="hidemask('usma')"></div>
+		</div>
+		
+		<div class="jibenox">
+			<p>
+				<i class="iconfont" style="font-size: 18px; margin-top: 4px">&#xe68e;</i><span><a href="tel:18653156091" class="js_mobile"></a></span>
+			</p>
+			<p>
+				<i class="iconfont">&#xe663;</i><span class="js_merchantType"></span>
+			</p>
+			<p>
+				<i class="iconfont">&#xe606;</i><span><a href="http://wpa.qq.com/msgrd?v=3&uin=375995002&site=qq&menu=yes"  class="js_qq"></a></span>
+			</p>
+			<p>
+				<i class="iconfont">&#xe645;</i><span onClick="document.getElementById('ewm').style.display='';" class="js_weixin"></span>
+			</p>
+			<p>
+				<i class="iconfont">&#xe62f;</i><span class="js_email"></span>
+			</p>
+			<p>
+				<i class="iconfont">&#xe617;</i><span><a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=&c=233&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&wd2=&sug_forward=4833e71f8d65c36b82a00cc6&src=1/vt=map/?fromhash=1" class="js_address"></a></span>
+			</p>
+		</div>
+
+		<div style="color: #FFFFFF; margin: 15px; border: 1px solid #FF6633; padding: 10px; font-size: 13px; line-height: 20px; margin-top: 30px">
+			<span style="background: #FF6633; position: absolute; margin-top: -23px; color: #FFFFFF; font-size: 14px; display: inline-block; padding: 3px 5px; margin-bottom: 5px; border-radius: 5px;">个人介绍</span>
+			<br><span class="js_description"></span>
+		</div>
+
+		<div class="piclistbox" id="img-content">
+			<h3 class="piclisttit">= 公司介绍 =</h3>
+			<ul class="piclist1 js_merchantLogo">
+			</ul>
+			<h3 class="piclisttit">= 产品展示 =</h3>
+			<ul class="piclist1 js_merchantPicture">
+			</ul>
+		</div>
+		<div style="color: #FFFFFF; margin: 15px; border: 1px solid #FF6633; padding: 10px; font-size: 13px; line-height: 20px; margin-top: 30px">
+			<span style="background: #FF6633; position: absolute; margin-top: -23px; color: #FFFFFF; font-size: 14px; display: inline-block; padding: 3px 5px; margin-bottom: 5px; border-radius: 5px;">公司简介</span>
+			<br><span class="js_merchantDescription"></span>
+		</div>
+		<!--视频-->
+		<!--留言-->
+		<div style="background: #FFFFFF; margin: 0px 15px; border-radius: 5px; overflow: hidden">
+			<iframe name="message" frameBorder="0" scrolling="no" style="width: 100%; height: 300px;" src="http://www.jr0412.com/message.php?usersid=710"></iframe>
+		</div>
+		<div class="linksbox">
+			<a href="http://www.nanhuaren.cn" class="js_merchantName"></a>
+		</div>
+		<h3 style="background: #dddddd; text-align: center; height: 30px; line-height: 30px; margin: 15px 0px; border-radius: 30px;">=地图坐标 =</h3>
+		<div style="padding: 0px 15px; height: 240px; overflow: hidden">
+			<a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=&c=233&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&wd2=&sug_forward=4833e71f8d65c36b82a00cc6&src=1/vt=map/?fromhash=1" class="cgobtn">导航</a>
+			<div id="allmap" style="height: 220px;"></div>
+		</div>
+	</div>
+
+
+	<span class="zhizuotit" onClick="document.getElementById('zhizuo').style.display='';">制作</span>
+	<div class="maskbox" id="zhizuo" style="display: none">
+		<div class="zhizuocon">
+			<a href="about.php" style="background: #009933">公司<br>简介
+			</a> <a href="zhizuo.php" style="background: #FF6600">名片<br>制作
+			</a>
+		</div>
+		<div class="back" onClick="hidemask('zhizuo')" ontouchstart="hidemask('zhizuo')" ontouchmove="hidemask('zhizuo')"></div>
+	</div>
+
+	<div id="hidebox" style="position: absolute; top: 406px; padding-bottom: 50px; width: 100%; height: 100%; background: #000000; filter: alpha(opacity = 70); opacity: 0.7;"></div>
+	<div style="height: 50px"></div>
+	<div class="footcon">
+		<a class="js_menu_tel" href=""><i class="iconfont">&#xe68e;</i>电话</a> 
+		<a onClick="document.getElementById('ewm').style.display='';"><i class="iconfont">&#xe623;</i>微信</a> 
+		<a class="js_menu_sms" href=""><i class="iconfont">&#xe662;</i>短信</a> 
+		<a href=""><i class="iconfont">&#xe601;</i>我的</a>
+	</div>
+
+	<div class="maskbox" id="ewm" style="display: none">
+		<div class="ewmabox">
+			<h3>微信二维码</h3>
+			<p style="margin: 10px 0px;">
+				<img class="js_weixinQrCode" src="" style="width: 160px; height: 160px;">
+			</p>
+			长按二秒<br>添加我为好友
+		</div>
+		<div class="back" onClick="hidemask('ewm')" ontouchstart="hidemask('ewm')" ontouchmove="hidemask('ewm')"></div>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){document.getElementById('hidebox').style.height=document.body.scrollHeight-406+"px";}
+	</script>
+	<script type="text/javascript" src="js/erweima.js"></script>
+	<script type="text/javascript" src="js/appmsg1e21c7.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B2GYoEZGzYTNj6Cor0ORrBqY"></script>
+	<script type="text/javascript">
+		// 百度地图API功能
+		var map = new BMap.Map("allmap");
+		var point = new BMap.Point(28.439571,34.40494);
+		map.centerAndZoom(point,14);
+		var marker = new BMap.Marker(point);// 创建标注
+		map.addOverlay(marker);// 将标注添加到地图中
+		var label = new BMap.Label("<p class='maptext'><b>飞度照明电器有限公司</b><br>济南天桥区北园大街372号大明家具2楼54号</p>",{offset:new BMap.Size(0, -60)});
+		marker.setLabel(label);
+	</script>
+
+	<script type="text/javascript">
+		var qrcode_c = document.getElementById("qrcode");  
+		if(qrcode_c){
+			//var thisURL = document.URL;
+			var thisURL = "http://www.nanhuaren.cn";    
+			var qrcode = new QRCode(qrcode_c, {  
+				width : 160,  
+				height : 160	
+			});  
+			qrcode.makeCode(thisURL);  
+		}  
+	</script>
+	<script>
+		function utf16to8(str) { //解决中文乱码
+		  var out, i, len, c; 
+		  out = ""; 
+		  len = str.length; 
+		  for(i = 0; i < len; i++) { 
+		  c = str.charCodeAt(i); 
+		  if ((c >= 0x0001) && (c <= 0x007F)) { 
+		    out += str.charAt(i); 
+		  } else if (c > 0x07FF) { 
+		    out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F)); 
+		    out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F)); 
+		    out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F)); 
+		  } else { 
+		    out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F)); 
+		    out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F)); 
+		  } 
+		  } 
+		  return out; 
+		} 
+	</script>
+	<script>//此处生成名片二维码（如要生成普通链接二维码 则 “text”参数值 直接替换成普通链接即可）
+		var the_text = "BEGIN:VCARD \r\nFN:李学林 \r\nTEL;CELL,VOICE:18653156091 \r\nTITLE:销售经理 \r\nORG:公司：飞度照明电器有限公司 \r\nEMAIL;INTERNET,HOME:781471838@qq.com \r\nADR;WORK,POSTAL:济南天桥区北园大街372号大明家具2楼54号\r\nURL:http://www.nanhuaren.cn/ \r\nNOTE:行业 :商业/服务业/灯饰END:VCARD";
+		the_text = utf16to8(the_text);
+		//alert(the_text);
+		var qrcodes = jQuery('#qrcodeid').qrcode({
+		width:160,
+		height:160,
+		render:"canvas", //设置渲染方式 table canvas
+		typeNumber : -1,  //计算模式 
+		correctLevel  : 0,//纠错等级 
+		background   : "#ffffff",//背景颜色 
+		foreground   : "#000000",//前景颜色 
+		text:the_text
+		}).hide(); 
+		
+		var imgSrc=qrcodes.find('canvas').get(0).toDataURL("image/png");  
+	   	document.getElementById("imgOne").src = imgSrc;  
+    </script>
+    <script type="text/javascript">
+		function opaudio(){
+			var audio=document.getElementById('audio');
+			if(audio!==null){
+				if(audio.paused){
+					audio.play();
+				}else{
+					audio.pause();
+				} 
+			} 
+		}
+		//显示或隐藏遮罩层
+		function hidemask(id){
+			document.getElementById(id).style.display='none'
+		}
+	</script>
+	<script type="text/javascript">
+		function getUserInfo(){
+			var url = location.href;
+			var index=url.indexOf("?");
+			if(index==-1){
+				window.location.href = "index.html";
+			}
+			var param=url.substring(index+1);
+			var userId = param.split("=")[1];
+			$.ajax({
+               type: "get",
+               url: "https://www.nanhuaren.cn/vcard/user/merchantDetail",
+               data: "userId="+userId,
+               success: function(data){   
+				   var name = data.data.name;
+				   var headerImg = data.data.headerImg;
+				   var tel = data.data.tel;
+				   var fax = data.data.fax
+				   var mobile = data.data.mobile;
+				   var qq = data.data.qq;
+				   var weixin = data.data.weixin;
+				   var email = data.data.email;
+				   var province = data.data.province;
+				   var city = data.data.city;
+				   var area = data.data.area;
+				   var address = data.data.address;
+				   var description = data.data.description;
+				   var weixinQrcode = data.data.weixinQrcode;
+
+				   var merchantName = data.data.merchantName;
+				   var merchantLogo = data.data.merchantLogo;
+				   var merchantPosition = data.data.merchantPosition;
+				   var merchantType = data.data.merchantType;
+				   var merchantDescription = data.data.merchantDescription;
+				   var merchantPicture = data.data.merchantPicture;
+
+				   $(".js_name").html(name);
+				   $(".js_mobile").html(mobile);
+				   $(".js_fax").html(fax);
+				   $(".js_tel").html(tel);
+				   $(".js_qq").html(qq);
+				   $(".js_weixin").html(weixin);
+				   $(".js_email").html(email);
+				   var addressText = "";
+				   if(province!=null){
+					   addressText += province;
+				   }
+				   if(city!=null){
+					   addressText += city;
+				   }
+				   if(area!=null){
+					   addressText += area;
+				   }
+				   if(address!=null){
+					   addressText += address;
+				   }
+				   $(".js_address").html(addressText);
+				   $(".js_description").html(description);
+				   
+				   $(".js_headerImg").attr("src","http://www.nanhuaren.cn/upload/"+headerImg);
+				   $(".js_weixinQrCode").attr("src","http://www.nanhuaren.cn/upload/"+weixinQrcode);
+				   $(".js_background").attr("style","background: url(http://www.nanhuaren.cn/upload/"+headerImg+") #333333 no-repeat; background-size: 100% auto; position: fixed; width: 100%");
+				   $(".js_title").html(name+"的微名片");
+
+				   $(".js_menu_tel").attr("href","tel:"+mobile);
+				   $(".js_menu_sms").attr("href","sms:"+mobile);
+
+				   $(".js_merchantName").html(merchantName);
+				   $(".js_merchantPosition").html(merchantPosition);
+				   $(".js_merchantType").html(merchantType);
+				   $(".js_merchantDescription").html(merchantDescription);
+				   var merchantLogoHtml = "";
+				   merchantLogo.split(",").forEach(function(data){
+				      merchantLogoHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+				   });
+				   $(".js_merchantLogo").html(merchantLogoHtml);
+				   
+				   var merchantPictureHtml = "";
+				   merchantPicture.split(",").forEach(function(data){
+				      merchantPictureHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+				   });
+				   $(".js_merchantPicture").html(merchantPictureHtml);
+               }
+            });
+		}
+		getUserInfo();
+	</script>
+</body>
+</html>
