@@ -187,6 +187,41 @@ Page({
     })
   },
 
+  bindOpenWXTap: function (event) {
+    var that = this
+    var userId = event.currentTarget.dataset.userid
+    var userType = event.currentTarget.dataset.usertype
+    var dataType = that.data.dataType
+    var ownerId = that.data.ownerId
+    wx.showModal({
+      title: '提示',
+      content: '确定要开通该客户?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://www.nanhuaren.cn/vcard/user/open',
+            data: { id: userId, userType: '01' },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: res => {
+              console.log(res.data)
+              if (res.data.code != 0) {
+                wx.showToast({
+                  title: '开通成功',
+                })
+                wx.reLaunch({
+                  url: 'list?ownerId=' + that.data.ownerId + '&type=' + that.data.dataType,
+                })
+              }
+            }
+          })
+        }
+
+      }
+    })
+  },
+
   bindUnBindWXTap: function (event) {
     var userId = event.currentTarget.dataset.userid
     var openId = event.currentTarget.dataset.openid

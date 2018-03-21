@@ -21,6 +21,10 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
@@ -31,14 +35,21 @@
 				{
 					"id": 0,
 					"name": "关于我们",
-					"pathName": "pages/user/bind",
-					"query": "userId=40&userType=02&dataType=05&ownerId=24"
+					"pathName": "pages/user/detail",
+					"query": "userId=24&type=05"
 				},
 				{
 					"id": 1,
 					"name": "关于我们",
 					"pathName": "pages/user/setting",
 					"query": "ownerId=24"
+				},
+				{
+					"id": 2,
+					"name": "关于我们",
+					"pathName": "pages/user/share",
+					"query": "userId=39",
+					"scene": "1007"
 				}
 			]
 		}

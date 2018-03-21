@@ -226,3 +226,7 @@
   font-size: 12pt;
   color: #337ab7;
 }
+
+.delete_image{
+  margin-left: -50rpx;
+}

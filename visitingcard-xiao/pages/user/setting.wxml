@@ -35,8 +35,9 @@
       </view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>二维码</label>
-        <block wx:key="weixinQrcode" wx:if='{{userInfo.weixinQrcode!=null}}'>
+        <block wx:key="weixinQrcode" wx:if='{{userInfo.weixinQrcode!=null&&userInfo.weixinQrcode!=""}}'>
           <image bindtap='bindViewImageTap' data-imageid='{{userInfo.weixinQrcode}}' data-datatype='01' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{userInfo.weixinQrcode}}'></image>
+          <icon class='delete_image' data-imageid='{{userInfo.weixinQrcode}}' bindtap='bindDeleteMerchantPicture' data-datatype='01' type='cancel'></icon>
         </block>
         <image class='form-item-image' name='weixinQrcode' bindtap='bindAddWeixinQrcodeTap' src='/images/add-img.png'></image>
       </view>
@@ -88,18 +89,21 @@
       <view wx:if='{{merchantLogos1.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos1}}" wx:for-item="merchantLogo">
           <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantLogo}}' bindtap='bindDeleteMerchantPicture' data-datatype='02' type='cancel'></icon>
         </block>
 
       </view>
       <view wx:if='{{merchantLogos2.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos2}}" wx:for-item="merchantLogo">
           <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantLogo}}' bindtap='bindDeleteMerchantPicture' data-datatype='02' type='cancel'></icon>
         </block>
 
       </view>
       <view wx:if='{{merchantLogos3.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantLogo" wx:for="{{merchantLogos3}}" wx:for-item="merchantLogo">
           <image bindtap='bindViewImageTap' data-imageid='{{merchantLogo}}' data-datatype='02'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantLogo}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantLogo}}' bindtap='bindDeleteMerchantPicture' data-datatype='02' type='cancel'></icon>
         </block>
 
       </view>
@@ -110,18 +114,21 @@
       <view wx:if='{{merchantPictures1.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture1" wx:for="{{merchantPictures1}}" wx:for-item="merchantPicture">
           <image bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantPicture}}' bindtap='bindDeleteMerchantPicture' data-datatype='03' type='cancel'></icon>
         </block>
 
       </view>
       <view wx:if='{{merchantPictures2.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture2" wx:for="{{merchantPictures2}}" wx:for-item="merchantPicture">
           <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantPicture}}' bindtap='bindDeleteMerchantPicture' data-datatype='03' type='cancel'></icon>
         </block>
 
       </view>
       <view wx:if='{{merchantPictures3.length>0}}' class='form-item form-item-line form-item-row'>
         <block wx:key="merchantPicture3" wx:for="{{merchantPictures3}}" wx:for-item="merchantPicture">
           <image  bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantPicture}}' bindtap='bindDeleteMerchantPicture' data-datatype='03' type='cancel'></icon>
         </block>
 
       </view>

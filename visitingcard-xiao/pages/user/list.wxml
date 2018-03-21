@@ -4,7 +4,7 @@
     <view class='card-modal'>
       <view class='card-detail'>
         <view class='head-left'>
-          <image class='head-img' src='{{userInfo.headerImg==null?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
+          <image class='head-img' src='{{(userInfo.headerImg==null||userInfo.headerImg=="")?"/images/logo.jpg":"https://www.nanhuaren.cn/upload/"+userInfo.headerImg}}'></image>
         </view>
         <view class='head-right'>
           <view class='' style='width:100%;'>
@@ -35,7 +35,8 @@
         </view>
         <view class="form-item">
           <button size='mini' bindtap='bindViewUserTap' data-userid='{{userInfo.id}}' data-datatype='{{dataType}}'>编辑</button>
-          <button wx:if='{{userInfo.userType=="02"}}' size='mini' data-userid='{{userInfo.id}}' data-usertype='{{userInfo.userType}}' bindtap='bindBindWXTap'>绑定</button>
+          <button wx:if='{{userInfo.userType=="02"&&(userInfo.openId==null||userInfo.openId=="")}}' size='mini' data-userid='{{userInfo.id}}' data-usertype='{{userInfo.userType}}' bindtap='bindBindWXTap'>绑定</button>
+          <button wx:if='{{userInfo.userType=="02"&&userInfo.openId!=null&&userInfo.openId!=""}}' size='mini' data-userid='{{userInfo.id}}' data-usertype='{{userInfo.userType}}' bindtap='bindOpenWXTap'>开通</button>
           <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-openid='{{userInfo.openId}}' bindtap='bindUnBindWXTap'>解绑</button>
           <button wx:if='{{userInfo.userType=="02"}}' size='mini' bindtap='bindPreviewTap' data-userid='{{userInfo.id}}'>预览</button>
           <button wx:if='{{userInfo.userType=="01"||userInfo.userType=="00"}}' size='mini' data-userid='{{userInfo.id}}' data-username='{{userInfo.name}}' data-merchantname='{{userInfo.merchantName}}' data-headerimg='{{userInfo.headerImg}}' open-type="share">分享</button>

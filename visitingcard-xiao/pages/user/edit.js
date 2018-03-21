@@ -115,12 +115,12 @@ Page({
     if (this.data.headerImg) {
       userInfo.headerImg = this.data.headerImg
     } else {
-      userInfo.headerImg = this.data.userInfo.headerImg
+      userInfo.headerImg = this.data.userInfo.headerImg || ""
     }
     if (this.data.weixinQrcode) {
       userInfo.weixinQrcode = this.data.weixinQrcode
     } else {
-      userInfo.weixinQrcode = this.data.userInfo.weixinQrcode
+      userInfo.weixinQrcode = this.data.userInfo.weixinQrcode || ""
     }
    
     if (this.data.merchantPictures) {
@@ -303,5 +303,28 @@ Page({
       current: 'https://www.nanhuaren.cn/upload/' + imageId,
       urls: urls,
     })
+  },
+
+  bindDeleteMerchantPicture: function (event) {
+    var imageId = event.currentTarget.dataset.imageid
+    var dataType = event.currentTarget.dataset.datatype
+    if (dataType === "01") {
+      var userInfo = this.data.userInfo
+      userInfo.weixinQrcode = ""
+      this.setData({ weixinQrcode: null, userInfo: userInfo })
+    } else if (dataType === "02") {
+      var merchantLogos = this.data.merchantLogos
+      var index = merchantLogos.indexOf(imageId)
+      merchantLogos.splice(index, 1)
+      this.setData({ merchantLogos: merchantLogos })
+      this.setMerchantLogo()
+    } else if (dataType === "03") {
+      var merchantPictures = this.data.merchantPictures
+      var index = merchantPictures.indexOf(imageId)
+      merchantPictures.splice(index, 1)
+      this.setData({ merchantPictures: merchantPictures })
+      this.setMerchantPictures()
+    }
+
   }
 })

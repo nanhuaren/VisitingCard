@@ -407,6 +407,22 @@ public class UserInfoController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/open", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody open(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		logger.info("request userInfo={}", userInfo);
+		UserInfo queryUserInfo = userInfoDao.selectById(userInfo.getId());
+		if (queryUserInfo != null) {
+			queryUserInfo.setUpdateTime(new Date());
+			queryUserInfo.setUserType(userInfo.getUserType());
+			userInfoDao.updateById(queryUserInfo);
+		} else {
+			resultBody.isError("开通用户失败，用户不存在");
+		}
+		return resultBody;
+	}
+
+	@ResponseBody
 	@RequestMapping(value = "/bind", method = { RequestMethod.POST, RequestMethod.GET })
 	public ResultBody bind(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response) {
 		ResultBody resultBody = new ResultBody();
