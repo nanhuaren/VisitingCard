@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+       Copyright 2015-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CatalogMapper">
+
+	<resultMap id="CatalogMap" type="cn.nanhuaren.visitingcard.dal.domain.Catalog">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="catalogName" jdbcType="VARCHAR" property="catalogName" />
+		<result column="catalogPicture" jdbcType="VARCHAR" property="catalogPicture" />
+		<result column="catalogDescription" jdbcType="VARCHAR" property="catalogDescription" />
+		<result column="catalogSortNum" jdbcType="INTEGER" property="catalogSortNum" />
+		<result column="userId" jdbcType="INTEGER" property="userId" />
+	</resultMap>
+
+    <select id="listByUserId" resultType="CatalogMap">
+        select * from t_catalog where userId = #{userId}
+    </select>
+    
+    <select id="selectById" resultType="Catalog">
+        select * from t_catalog where id = #{id}
+    </select>
+    
+    <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.Catalog">
+		insert into t_catalog
+		(
+			catalogName, 
+			catalogPicture, 
+			catalogDescription, 
+			catalogSortNum, 
+			userId,
+			createTime
+		)
+		values
+		(
+			#{catalogName}, 
+			#{catalogPicture}, 
+			#{catalogDescription}, 
+			#{catalogSortNum}, 
+			#{userId},
+			#{createTime}
+		)
+	</insert>
+	
+	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.Catalog">
+		update t_catalog set
+			catalogName = #{catalogName}, 
+			catalogPicture = #{catalogPicture}, 
+			catalogDescription = #{catalogDescription}, 
+			catalogSortNum = #{catalogSortNum}, 
+			userId = #{userId}, 
+			updateTime = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="cn.nanhuaren.visitingcard.dal.domain.Catalog">
+		delete from t_catalog where id = #{id}
+	</delete>
+</mapper>

@@ -11,6 +11,7 @@
 	<title class="js_title">乐享名片</title>
 </head>
 <body style="background: #333333">
+	<img class="js_headerImg" src="" style="width: 100%; display:none;">
 	<div class="ushdbox js_background" style="background-size: 100% auto; position: fixed; width: 100%">
 		<span class="lt"><i class="iconfont" onClick="opaudio();">&#xe612;</i></span>
 		<span class="rt"><i class="iconfont" onClick="document.getElementById('usma').style.display='';">&#xe71b;</i></span>
@@ -131,6 +132,7 @@
 	<script type="text/javascript">
 		window.onload=function(){document.getElementById('hidebox').style.height=document.body.scrollHeight-406+"px";}
 	</script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	<script type="text/javascript" src="js/erweima.js"></script>
 	<script type="text/javascript" src="js/appmsg1e21c7.js"></script>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -215,6 +217,10 @@
 		}
 	</script>
 	<script type="text/javascript">
+		var g_name = "";
+		var g_userId = "";
+		var g_description = "";
+		var g_image = "";
 		function getUserInfo(){
 			var url = location.href;
 			var index=url.indexOf("?");
@@ -249,6 +255,11 @@
 				   var merchantType = data.data.merchantType;
 				   var merchantDescription = data.data.merchantDescription;
 				   var merchantPicture = data.data.merchantPicture;
+
+				   g_name = name;
+				   g_userId = userId;
+				   g_image = headerImg;
+				   g_description = description;
 
 				   $(".js_name").html(name);
 				   $(".js_mobile").html(mobile);
@@ -300,6 +311,13 @@
             });
 		}
 		getUserInfo();
+		navigator.share({
+        title: document.title,
+        text:  "Hello World",
+        url: window.location.href
+    }).then(()  => console.log('Successful share'))
+    .catch(()  => console.log('Error sharing:', error)); 
 	</script>
+	
 </body>
 </html>

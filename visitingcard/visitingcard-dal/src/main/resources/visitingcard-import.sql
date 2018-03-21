@@ -1,6 +1,7 @@
 drop table if exists t_wechat_info;
 drop table if exists t_user_info;
 drop table if exists t_merchant;
+drop table if exists t_catalog;
 
 create table t_wechat_info (
 	id int(10) primary key auto_increment, 
@@ -32,7 +33,7 @@ create table t_user_info (
 	city varchar(100), 
 	area varchar(100), 
 	address varchar(100), 
-	description varchar(500), 
+	description varchar(1000), 
 	openId varchar(100),
 	userType varchar(100),
 	ownerId int,
@@ -43,11 +44,23 @@ create table t_user_info (
 create table t_merchant (
 	id int primary key auto_increment, 
 	merchantName varchar(100), 
-	merchantLogo varchar(200), 
+	merchantLogo varchar(2000), 
 	merchantPosition varchar(100), 
 	merchantType varchar(100), 
 	merchantDescription varchar(1000), 
-	merchantPicture varchar(1000),  
+	merchantPicture varchar(2000),  
+	userId int,
+	createTime timestamp,
+	updateTime timestamp default current_timestamp
+);
+
+
+create table t_catalog (
+	id int primary key auto_increment, 
+	catalogName varchar(100), 
+	catalogPicture varchar(1000),  
+	catalogDescription varchar(1000), 
+	catalogSortNum int, 
 	userId int,
 	createTime timestamp,
 	updateTime timestamp default current_timestamp
