@@ -11,6 +11,7 @@
 	<title class="js_title">乐享名片</title>
 </head>
 <body style="background: #333333">
+	<img class="js_headerImg" src="" style="width: 100%; display:none;">
 	<div class="ushdbox js_background" style="background-size: 100% auto; position: fixed; width: 100%">
 		<span class="lt"><i class="iconfont" onClick="opaudio();">&#xe612;</i></span>
 		<span class="rt"><i class="iconfont" onClick="document.getElementById('usma').style.display='';">&#xe71b;</i></span>
@@ -131,12 +132,42 @@
 	<script type="text/javascript">
 		window.onload=function(){document.getElementById('hidebox').style.height=document.body.scrollHeight-406+"px";}
 	</script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	<script type="text/javascript" src="js/erweima.js"></script>
 	<script type="text/javascript" src="js/appmsg1e21c7.js"></script>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B2GYoEZGzYTNj6Cor0ORrBqY"></script>
 	<script type="text/javascript">
+        var signData = {}
+
+		$.ajax({
+               type: "get",
+               url: "http://www.nanhuaren.cn/vcard/weixin/sign",
+               data: "url="+location.href,
+               success: function(data){
+				   console.log(data)
+				   signData = data;
+			   }
+		});
+
+		wx.config({
+		    debug: false,//这里是开启测试，如果设置为true，则打开每个步骤，都会有提示，是否成功或者失败
+		    appId: signData.appId,
+		    timestamp: signData.timestamp,//这个一定要与上面的php代码里的一样。
+		    nonceStr: signData.nonceStr,//这个一定要与上面的php代码里的一样。
+		    signature: signData.signature,
+		    jsApiList: [
+		      // 所有要调用的 API 都要加到这个列表中
+		        'onMenuShareTimeline',
+		        'onMenuShareAppMessage',
+				'onMenuShareQQ',
+				'onMenuShareWeibo',
+				'onMenuShareQZone'
+		    ]
+		});
+
+	    
 		// 百度地图API功能
 		var map = new BMap.Map("allmap");
 		var point = new BMap.Point(28.439571,34.40494);
@@ -215,11 +246,15 @@
 		}
 	</script>
 	<script type="text/javascript">
+		var g_name = "";
+		var g_userId = "";
+		var g_description = "";
+		var g_image = "";
 		function getUserInfo(){
 			var url = location.href;
 			var index=url.indexOf("?");
 			if(index==-1){
-				window.location.href = "card.html?userId=39";
+				window.location.href = "index.html";
 			}
 			var param=url.substring(index+1);
 			var userId = param.split("=")[1];
@@ -249,6 +284,11 @@
 				   var merchantType = data.data.merchantType;
 				   var merchantDescription = data.data.merchantDescription;
 				   var merchantPicture = data.data.merchantPicture;
+
+				   g_name = name;
+				   g_userId = userId;
+				   g_image = headerImg;
+				   g_description = description;
 
 				   $(".js_name").html(name);
 				   $(".js_mobile").html(mobile);
@@ -296,10 +336,93 @@
 				      merchantPictureHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
 				   });
 				   $(".js_merchantPicture").html(merchantPictureHtml);
+
+				   wx.ready(function () {
+			//分享朋友圈
+		    wx.onMenuShareTimeline({
+		        title: g_name+"的微名片", // 分享标题
+		        link: "http://www.nanhuaren.cn/card.html?userId="+g_userId+"&", // 分享链接
+		        imgUrl: 'http://www.nanhuaren.cn/upload/'+g_image, // 分享图标
+		        success: function () { 
+		            // 用户确认分享后执行的回调函数
+		        },
+		        cancel: function () { 
+		            // 用户取消分享后执行的回调函数
+		        }
+		    });
+			//alert(g_name+ "   " + g_description);
+
+			//分享给朋友
+		    wx.onMenuShareAppMessage({	
+		        title: g_name+"的微名片", // 分享标题
+		        desc: g_description, // 分享描述
+		        link: "http://www.nanhuaren.cn/card.html?userId="+g_userId+"&", // 分享链接
+		        imgUrl: 'http://www.nanhuaren.cn/upload/'+g_image, // 分享图标
+		        type: '', // 分享类型,music、video或link，不填默认为link
+		        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		        success: function () { 
+		            // 用户确认分享后执行的回调函数
+					alert("分享成功");
+		        },
+		        cancel: function () { 
+		            // 用户取消分享后执行的回调函数
+					alert("怎么不分享了");
+		        }
+		    });
+
+			//分享到QQ
+			wx.onMenuShareQQ({
+				title: g_name+'的微名片', // 分享标题
+				desc: g_description, // 分享描述
+				link: "http://www.nanhuaren.cn/card.html?userId="+g_userId+"&", // 分享链接
+				imgUrl: 'http://www.nanhuaren.cn/upload/'+g_image, // 分享图标
+				success: function () { 
+				   // 用户确认分享后执行的回调函数
+				},
+				cancel: function () { 
+				   // 用户取消分享后执行的回调函数
+				}
+			});
+
+			//分享到腾讯微博
+			wx.onMenuShareWeibo({
+				title: g_name+'的微名片', // 分享标题
+				desc: g_description, // 分享描述
+				link: "http://www.nanhuaren.cn/card.html?userId="+g_userId+"&", // 分享链接
+				imgUrl: 'http://www.nanhuaren.cn/upload/'+g_image, // 分享图标
+				success: function () { 
+				   // 用户确认分享后执行的回调函数
+				},
+				cancel: function () { 
+					// 用户取消分享后执行的回调函数
+				}
+			});
+
+			//分享到QQ空间
+			wx.onMenuShareQZone({
+				title: g_name+'的微名片', // 分享标题
+				desc: g_description, // 分享描述
+				link: "http://www.nanhuaren.cn/card.html?userId="+g_userId+"&", // 分享链接
+				imgUrl: 'http://www.nanhuaren.cn/upload/'+g_image, // 分享图标
+				success: function () { 
+				   // 用户确认分享后执行的回调函数
+				},
+				cancel: function () { 
+					// 用户取消分享后执行的回调函数
+				}
+			});  
+		});
                }
             });
 		}
-		getUserInfo();
+		getUserInfo(); 
 	</script>
+	<script language="javascript" type="text/javascript">
+
+	    
+
+		
+	</script>
+	
 </body>
 </html>
