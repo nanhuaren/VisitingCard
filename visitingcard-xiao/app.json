@@ -14,6 +14,9 @@
     "pages/user/bind",
     "pages/user/setting",
     "pages/user/share",
+    "pages/catalog/list",
+    "pages/catalog/add",
+    "pages/catalog/edit",
     "pages/system/about",
     "pages/system/setting"
   ],

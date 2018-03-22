@@ -30,7 +30,7 @@
 		<result column="userId" jdbcType="INTEGER" property="userId" />
 	</resultMap>
 
-    <select id="listByUserId" resultType="CatalogMap">
+    <select id="listByUserId" resultMap="CatalogMap">
         select * from t_catalog where userId = #{userId}
     </select>
     

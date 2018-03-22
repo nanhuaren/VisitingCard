@@ -129,6 +129,12 @@ Page({
     })
   },
 
+  bindCatalogTap: function (event) {
+    wx.navigateTo({
+      url: '/pages/catalog/list?userId=' + this.data.userInfo.id
+    })
+  },
+
   bindSystemSettingTap: function (event) {
     wx.navigateTo({
       url: '/pages/system/setting'

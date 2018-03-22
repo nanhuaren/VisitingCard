@@ -1,0 +1,50 @@
+<!--pages/catalog/edit.wxml-->
+<view class="container">
+  <view class='default-gray'></view>
+
+  <view class='add-form'>
+    <form bindsubmit="formSubmit">
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>分类名称</label>
+        <input class='form-item-input' name='catalogName' type='text' placeholder='请输入分类名称' value='{{catalog.catalogName}}'></input>
+      </view>      
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>描述</label>
+        <textarea class='form-item-textarea' name='catalogDescription' auto-height placeholder='分类描述...' value='{{catalog.catalogDescription}}'></textarea>
+      </view>
+      <view class='default-gray'></view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>上传图片</label>
+
+        <image class='form-item-image' name='catalogPicture' bindtap='bindAddCatalogPictureTap' src='/images/add-img.png'></image>
+      </view>
+      <view wx:if='{{catalogPictures1.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="catalogPicture" wx:for="{{catalogPictures1}}" wx:for-item="catalogPicture">
+          <image bindtap='bindViewImageTap' data-imageid='{{catalogPicture}}'class='form-item-image' src='https://www.nanhuaren.cn/upload/{{catalogPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{catalogPicture}}' bindtap='bindDeleteCatalogPicture'  type='cancel'></icon>
+        </block>
+
+      </view>
+      <view wx:if='{{catalogPictures2.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="catalogPicture" wx:for="{{catalogPictures2}}" wx:for-item="catalogPicture">
+          <image bindtap='bindViewImageTap' data-imageid='{{catalogPicture}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{catalogPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{catalogPicture}}' bindtap='bindDeleteCatalogPicture'  type='cancel'></icon>
+        </block>
+
+      </view>
+      <view wx:if='{{catalogPictures3.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="catalogPicture" wx:for="{{catalogPictures3}}" wx:for-item="catalogPicture">
+          <image bindtap='bindViewImageTap' data-imageid='{{catalogPicture}}' class='form-item-image' src='https://www.nanhuaren.cn/upload/{{catalogPicture}}'></image>
+          <icon class='delete_image' data-imageid='{{catalogPicture}}' bindtap='bindDeleteCatalogPicture' type='cancel'></icon>
+        </block>
+
+      </view>
+      
+      <view class='card-footer'>
+        <button class='card-footer-button' formType="submit">保存</button>
+      </view>
+    </form>
+  </view>
+
+</view>

@@ -1,0 +1,114 @@
+/* pages/catalog/edit.wxss */
+
+.card-header {
+  padding-top: 60rpx;
+  text-align: center;
+}
+
+.card-header-text {
+  font-size: 17pt;
+  font: bold;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1rpx;
+}
+
+.form-item-row {
+  padding-left: 20rpx;
+}
+
+.head-img {
+  padding: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.head-left {
+  padding: 20rpx;
+  width: 160rpx;
+}
+
+.head-right {
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  width: 100%;
+}
+
+.default-gray {
+  height: 20rpx;
+  width: 100%;
+  background: lightgray;
+  opacity: 0.2;
+}
+
+.form-item-label {
+  padding: 20rpx 20rpx 20rpx 40rpx;
+  width: 160rpx;
+}
+
+.form-item-label-required {
+  color: red;
+}
+
+.form-item-input {
+  padding: 20rpx 20rpx;
+}
+
+.form-item-textarea {
+  padding: 20rpx 50rpx;
+}
+
+.form-item-image {
+  margin: 20rpx 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx 1rpx 1rpx 1rpx;
+  border-color: lightgray;
+  border-style:solid;
+}
+
+.form-item-line {
+  width: 100%;
+  border-bottom: 1rpx;
+  border-bottom-color: lightgray;
+  border-bottom-style: inset;
+}
+
+.card-footer {
+  width: 100%;
+  text-align: center;
+  padding-top: 60rpx;
+}
+
+.card-footer-button {
+  text-align: center;
+  color: white;
+  background: #337ab7;
+  margin: 40rpx;
+  border-radius: 50rpx;
+}
+
+.card-footer-text {
+  text-align: center;
+  margin: 40rpx;
+  font-size: 12pt;
+  color: lightgray;
+}
+
+.card-footer-link {
+  text-align: center;
+  margin: 10rpx;
+  font-size: 12pt;
+  color: #337ab7;
+}

@@ -27,5 +27,6 @@
         <mapper resource="visitingcard/mybatis/mapper/WeChatInfoMapper.xml"/>
         <mapper resource="visitingcard/mybatis/mapper/UserInfoMapper.xml"/>
         <mapper resource="visitingcard/mybatis/mapper/MerchantMapper.xml"/>
+        <mapper resource="visitingcard/mybatis/mapper/CatalogMapper.xml"/>
     </mappers>
 </configuration>

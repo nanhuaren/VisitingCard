@@ -1,0 +1,27 @@
+<!--pages/catalog/list.wxml-->
+<view class="container">
+  <block wx:key="catalog" wx:for="{{catalogList}}" wx:for-item="catalog">
+    <view class='card-modal'>
+      <view class='card-detail'>
+        <view class='head-left'>
+            <text style='font-size:17pt;'>{{catalog.catalogName}}</text> 
+            <text class="item-text">{{catalog.catalogDescription}}</text>          
+        </view> 
+        <view class='head-right'>
+            <button data-catalogid='{{catalog.id}}' size='mini' bindtap='bindEditCatalogTap'>编辑</button>
+        </view>   
+        <view class='head-right'>
+            <button data-catalogid='{{catalog.id}}' size='mini' bindtap='bindDelCatalogTap'>删除</button>         
+        </view>            
+      </view>
+    </view>
+  </block>
+  <view class='bind-footer' wx:if='{{showBind}}'>
+    
+  </view>
+  <view class='card-footer'>
+    <button class='card-footer-button' bindtap='bindAddCatalogTap'>新增分类</button>
+    <button class='card-footer-button' bindtap='bindBackTap'>返回</button>
+  </view>
+  <view class='default-gray'></view>
+</view>

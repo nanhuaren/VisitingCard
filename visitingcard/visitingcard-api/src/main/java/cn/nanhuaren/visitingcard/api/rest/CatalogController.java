@@ -30,11 +30,24 @@ public class CatalogController {
 
 	@ResponseBody
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET })
-	public ResultBody get(Long userId, HttpServletRequest request, HttpServletResponse response) {
+	public ResultBody list(Long userId, HttpServletRequest request, HttpServletResponse response) {
 		ResultBody resultBody = new ResultBody();
 		List<Catalog> catalogList = catalogDao.listByUserId(userId);
 		if (catalogList != null) {
 			resultBody.setData(catalogList);
+		} else {
+			resultBody.isError("获取分类列表失败");
+		}
+		return resultBody;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET })
+	public ResultBody get(Long userId, Long catalogId, HttpServletRequest request, HttpServletResponse response) {
+		ResultBody resultBody = new ResultBody();
+		Catalog catalog = catalogDao.selectById(catalogId);
+		if (catalog != null) {
+			resultBody.setData(catalog);
 		} else {
 			resultBody.isError("获取分类信息失败");
 		}
@@ -70,7 +83,6 @@ public class CatalogController {
 			queryCatalog.setCatalogPicture(catalog.getCatalogPicture());
 			queryCatalog.setCatalogDescription(catalog.getCatalogDescription());
 			queryCatalog.setCatalogSortNum(catalog.getCatalogSortNum());
-			queryCatalog.setUserId(catalog.getUserId());
 			queryCatalog.setUpdateTime(new Date());
 			catalogDao.updateById(queryCatalog);
 		} else {
