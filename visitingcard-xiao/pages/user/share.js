@@ -9,7 +9,9 @@ Page({
     showWeixin:false,
     merchantLogos: [],
     merchantPictures: [],
+    merchantCases: [],
     weixinQrcode:null,
+    catalogList:[]
   },
 
   /**
@@ -40,12 +42,34 @@ Page({
           if (userInfo.weixinQrcode != null && userInfo.weixinQrcode != '') {
             weixinQrcode = userInfo.weixinQrcode
           }
-          that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos, weixinQrcode: weixinQrcode})
+          var merchantCases = []
+          if (userInfo.merchantCase != null && userInfo.merchantCase != '') {
+            merchantCases = userInfo.merchantCase.split(',')
+          }
+          that.setData({ userInfo: userInfo, merchantPictures: merchantPictures, merchantLogos: merchantLogos, merchantCases: merchantCases, weixinQrcode: weixinQrcode})
           if (userInfo.userType == '02') {
             wx.setNavigationBarTitle({
               title: '名片预览',
             })
           }
+        }
+      }
+    })
+    wx.request({
+      url: 'https://www.nanhuaren.cn/vcard/catalog/list',
+      data: { userId: userId },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: res => {
+        console.log(res.data)
+        if (res.data.code != 0) {
+          var catalogList = res.data.data
+          console.log(catalogList)
+          catalogList.map(function (data) {
+            data.pictures = (data.catalogPicture != null && data.catalogPicture != "") ? data.catalogPicture.split(",") : []
+          })
+          that.setData({ catalogList: catalogList })
         }
       }
     })
@@ -169,6 +193,10 @@ Page({
       })
     } else if (dataType == '03') {
       urls = this.data.merchantPictures.map(function (data) {
+        return 'https://www.nanhuaren.cn/upload/' + data
+      })
+    } else if (dataType == '04') {
+      urls = this.data.merchantCases.map(function (data) {
         return 'https://www.nanhuaren.cn/upload/' + data
       })
     }

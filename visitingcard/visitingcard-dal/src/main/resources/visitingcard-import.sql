@@ -48,7 +48,8 @@ create table t_merchant (
 	merchantPosition varchar(100), 
 	merchantType varchar(100), 
 	merchantDescription varchar(1000), 
-	merchantPicture varchar(2000),  
+	merchantPicture varchar(2000),
+	merchantCase varchar(2000),  
 	userId int,
 	createTime timestamp,
 	updateTime timestamp default current_timestamp

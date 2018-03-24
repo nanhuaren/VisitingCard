@@ -51,6 +51,7 @@
 		<result column="merchantType" jdbcType="VARCHAR" property="merchantType" />
 		<result column="merchantDescription" jdbcType="VARCHAR" property="merchantDescription" />
 		<result column="merchantPicture" jdbcType="VARCHAR" property="merchantPicture" />
+		<result column="merchantCase" jdbcType="VARCHAR" property="merchantCase" />
 	</resultMap>
 	
     <select id="selectByOpenId" resultType="UserInfo">
@@ -74,13 +75,13 @@
     </select>
     
     <select id="selectMerchantById" resultType="UserMerchantInfo">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.id = #{id}
     </select>
     
     <select id="listMerchantByOwnerId" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.ownerId = #{ownerId} and u.id != #{ownerId}
     </select>
@@ -92,7 +93,7 @@
     </select>
     
     <select id="listMyUserByOwnerId" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType in ('00','01','02')
     </select>
@@ -104,7 +105,7 @@
     </select>
     
     <select id="listMyAgentByOwnerId" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.ownerId = #{ownerId} and u.id != #{ownerId} and u.userType = '00'
     </select>
@@ -116,7 +117,7 @@
     </select>
     
     <select id="listAgent" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.userType = '00'
     </select>
@@ -128,7 +129,7 @@
     </select>
     
     <select id="listUser" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.userType = '01'
     </select>
@@ -140,7 +141,7 @@
     </select>
     
     <select id="listApply" resultMap="UserMerchantInfoMap">
-        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture  
+        select u.*,m.id as merchantId,m.merchantName,m.merchantLogo,m.merchantPosition,m.merchantType,m.merchantDescription,m.merchantPicture,m.merchantCase  
         from t_user_info u left join t_merchant m on u.id = m.userId 
         where u.userType = '02'
     </select>

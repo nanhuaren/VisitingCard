@@ -39,11 +39,11 @@
     </view>
     <view class='default-gray'></view>
     <view wx:if="{{userInfo.userType!=null}}" class='form-item form-item-line' data-userid='{{userInfo.id}}' bindtap='bindSettingTap'>
-      <label class='form-item-label'>名片管理</label>
+      <label class='form-item-label'>我的名片</label>
       <text class='form-item-input form-item-count'></text>
     </view>
     <view wx:if="{{userInfo.userType!=null}}" class='form-item form-item-line' bindtap='bindCatalogTap'>
-      <label class='form-item-label'>分类管理</label>
+      <label class='form-item-label'>板块管理</label>
       <text class='form-item-input form-item-count'></text>
     </view>
     <view class='default-gray'></view>

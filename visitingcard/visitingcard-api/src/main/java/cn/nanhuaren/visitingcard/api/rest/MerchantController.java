@@ -55,6 +55,7 @@ public class MerchantController {
 			queryMerchant.setMerchantType(merchant.getMerchantType());
 			queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 			queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+			queryMerchant.setMerchantCase(merchant.getMerchantCase());
 			queryMerchant.setUserId(merchant.getUserId());
 			queryMerchant.setCreateTime(new Date());
 			merchantDao.insert(queryMerchant);
@@ -78,6 +79,7 @@ public class MerchantController {
 			queryMerchant.setMerchantType(merchant.getMerchantType());
 			queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 			queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+			queryMerchant.setMerchantCase(merchant.getMerchantCase());
 			queryMerchant.setUpdateTime(new Date());
 			merchantDao.updateById(queryMerchant);
 		} else {

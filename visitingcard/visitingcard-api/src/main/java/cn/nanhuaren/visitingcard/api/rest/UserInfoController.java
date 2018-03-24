@@ -320,6 +320,7 @@ public class UserInfoController {
 				queryMerchant.setMerchantType(merchant.getMerchantType());
 				queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 				queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+				queryMerchant.setMerchantCase(merchant.getMerchantCase());
 				queryMerchant.setUserId(queryUserInfo.getId());
 				queryMerchant.setCreateTime(new Date());
 				merchantDao.insert(queryMerchant);
@@ -330,6 +331,7 @@ public class UserInfoController {
 				queryMerchant.setMerchantType(merchant.getMerchantType());
 				queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 				queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+				queryMerchant.setMerchantCase(merchant.getMerchantCase());
 				queryMerchant.setUpdateTime(new Date());
 				merchantDao.updateById(queryMerchant);
 			}
@@ -373,6 +375,7 @@ public class UserInfoController {
 				queryMerchant.setMerchantType(merchant.getMerchantType());
 				queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 				queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+				queryMerchant.setMerchantCase(merchant.getMerchantCase());
 				queryMerchant.setUserId(queryUserInfo.getId());
 				queryMerchant.setCreateTime(new Date());
 				merchantDao.insert(queryMerchant);
@@ -383,6 +386,7 @@ public class UserInfoController {
 				queryMerchant.setMerchantType(merchant.getMerchantType());
 				queryMerchant.setMerchantDescription(merchant.getMerchantDescription());
 				queryMerchant.setMerchantPicture(merchant.getMerchantPicture());
+				queryMerchant.setMerchantCase(merchant.getMerchantCase());
 				queryMerchant.setUpdateTime(new Date());
 				merchantDao.updateById(queryMerchant);
 			}

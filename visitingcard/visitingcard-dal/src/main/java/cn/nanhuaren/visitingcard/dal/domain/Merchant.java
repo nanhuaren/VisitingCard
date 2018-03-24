@@ -21,6 +21,8 @@ public class Merchant implements Serializable {
 
 	private String merchantPicture;
 
+	private String merchantCase;
+
 	private Long userId;
 
 	private Date createTime;
@@ -81,6 +83,14 @@ public class Merchant implements Serializable {
 
 	public void setMerchantPicture(String merchantPicture) {
 		this.merchantPicture = merchantPicture;
+	}
+
+	public String getMerchantCase() {
+		return merchantCase;
+	}
+
+	public void setMerchantCase(String merchantCase) {
+		this.merchantCase = merchantCase;
 	}
 
 	public Long getUserId() {

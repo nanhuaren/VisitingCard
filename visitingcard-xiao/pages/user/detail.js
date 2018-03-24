@@ -18,6 +18,10 @@ Page({
     merchantPictures1: [],
     merchantPictures2: [],
     merchantPictures3: [],
+    merchantCases: [],
+    merchantCases1: [],
+    merchantCases2: [],
+    merchantCases3: [],
     weixinQrcode: null,
   },
 
@@ -35,6 +39,14 @@ Page({
     var merchantPictures2 = merchantPictures && merchantPictures.length >= 6 ? merchantPictures.slice(3, 6) : merchantPictures.slice(3, merchantPictures.length)
     var merchantPictures3 = merchantPictures && merchantPictures.length >= 9 ? merchantPictures.slice(6, 9) : merchantPictures.slice(6, merchantPictures.length)
     this.setData({ merchantPictures1: merchantPictures1, merchantPictures2: merchantPictures2, merchantPictures3: merchantPictures3 })
+  },
+
+  setMerchantCases: function () {
+    var merchantCases = this.data.merchantCases
+    var merchantCases1 = merchantCases && merchantCases.length >= 3 ? merchantCases.slice(0, 3) : merchantCases.slice(0, merchantCases.length)
+    var merchantCases2 = merchantCases && merchantCases.length >= 6 ? merchantCases.slice(3, 6) : merchantCases.slice(3, merchantCases.length)
+    var merchantCases3 = merchantCases && merchantCases.length >= 9 ? merchantCases.slice(6, 9) : merchantCases.slice(6, merchantCases.length)
+    this.setData({ merchantCases1: merchantCases1, merchantCases2: merchantCases2, merchantCases3: merchantCases3 })
   },
 
   /**
@@ -75,9 +87,14 @@ Page({
           if (userInfo.weixinQrcode != null && userInfo.weixinQrcode != '') {
             weixinQrcode = userInfo.weixinQrcode
           }
-          that.setData({ userInfo: userInfo, dataType: dataType, merchantPictures: merchantPictures, merchantLogos: merchantLogos, weixinQrcode: weixinQrcode })
+          var merchantCases = []
+          if (userInfo.merchantCase != null && userInfo.merchantCase != '') {
+            merchantCases = userInfo.merchantCase.split(',')
+          }
+          that.setData({ userInfo: userInfo, dataType: dataType, merchantPictures: merchantPictures, merchantLogos: merchantLogos, merchantCases: merchantCases, weixinQrcode: weixinQrcode })
           that.setMerchantLogo()
           that.setMerchantPictures()
+          that.setMerchantCases()
         }
       }
     })
@@ -159,6 +176,11 @@ Page({
       userInfo.weixinQrcode = this.data.weixinQrcode
     } else {
       userInfo.weixinQrcode = this.data.userInfo.weixinQrcode || ""
+    }
+    if (this.data.merchantCases) {
+      userInfo.merchantCase = this.data.merchantCases.join(',')
+    } else {
+      userInfo.merchantCase = this.data.userInfo.merchantCase
     }
 
     var ownerId = this.data.userInfo.ownerId
@@ -284,6 +306,40 @@ Page({
     })
   },
 
+  bindAddMerchantCaseTap: function (event) {
+    var that = this
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        for (var i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: 'https://www.nanhuaren.cn/vcard/file/upload',
+            filePath: tempFilePaths[i],
+            name: 'file',
+            formData: {
+              'user': 'test'
+            },
+            success: function (res) {
+              var data = JSON.parse(res.data)
+              console.log(data)
+              var userInfo = that.data.userInfo
+              var merchantCases = that.data.merchantCases
+              merchantCases.push(data.data)
+              userInfo.merchantCase = merchantCases.join(',')
+              that.setData({ merchantCases: merchantCases, userInfo: userInfo })
+              that.setMerchantCases()
+            }
+          })
+        }
+
+      },
+    })
+  },
+
   bindAddWeixinQrcodeTap: function (event) {
     var that = this
     wx.chooseImage({
@@ -327,6 +383,10 @@ Page({
       urls = this.data.merchantPictures.map(function (data) {
         return 'https://www.nanhuaren.cn/upload/' + data
       })
+    } else if (dataType == '04') {
+      urls = this.data.merchantCases.map(function (data) {
+        return 'https://www.nanhuaren.cn/upload/' + data
+      })
     }
 
     wx.previewImage({
@@ -354,6 +414,12 @@ Page({
       merchantPictures.splice(index, 1)
       this.setData({ merchantPictures: merchantPictures })
       this.setMerchantPictures()
+    } else if (dataType === "04") {
+      var merchantCases = this.data.merchantCases
+      var index = merchantCases.indexOf(imageId)
+      merchantCases.splice(index, 1)
+      this.setData({ merchantCases: merchantCases })
+      this.setMerchantCases()
     }
     
   }

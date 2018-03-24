@@ -67,7 +67,7 @@
       <view class="default-line"></view>
       <text class="item-content">{{userInfo.merchantDescription||'未填写'}}</text>
     </view>
-    <view class="form-item-list" style='margin-bottom:140rpx;'>
+    <view class="form-item-list">
       <text class="item-title">产品展示</text>
       <block wx:key="merchantPicture" wx:for="{{merchantPictures}}" wx:for-item="merchantPicture">
       <view class="item-pic">
@@ -75,6 +75,24 @@
       </view>
       </block>
     </view>
+    <view class="form-item-list" style='margin-bottom:140rpx;'>
+      <text class="item-title">案例展示</text>
+      <block wx:key="merchantCase" wx:for="{{merchantCases}}" wx:for-item="merchantCase">
+      <view class="item-pic">
+        <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{merchantCase}}' data-datatype='04' src='https://www.nanhuaren.cn/upload/{{merchantCase}}'></image>
+      </view>
+      </block>
+    </view>
+    <block wx:key="catalogList" wx:for="{{catalogList}}" wx:for-item="catalog">
+    <view class="form-item-list">
+      <text class="item-title">{{catalog.catalogName}}</text>
+      <block wx:key="catalog" wx:for="{{catalog.pictures}}" wx:for-item="catalogPicture">
+      <view class="item-pic">
+        <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{catalogPicture}}' data-datatype='05' src='https://www.nanhuaren.cn/upload/{{catalogPicture}}'></image>
+      </view>
+      </block>
+    </view>
+    </block>
   </view>
   <view class='weixin-footer' wx:if='{{showWeixin}}'>
     <image wx:if='{{weixinQrcode!=null}}'mode="widthFix" src='https://www.nanhuaren.cn/upload/{{weixinQrcode}}'></image>

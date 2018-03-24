@@ -84,6 +84,9 @@
 			<h3 class="piclisttit">= 产品展示 =</h3>
 			<ul class="piclist1 js_merchantPicture">
 			</ul>
+			<h3 class="piclisttit">= 案例展示 =</h3>
+			<ul class="piclist1 js_merchantCase">
+			</ul>
 		</div>
 		<div style="color: #FFFFFF; margin: 15px; border: 1px solid #FF6633; padding: 10px; font-size: 13px; line-height: 20px; margin-top: 30px">
 			<span style="background: #FF6633; position: absolute; margin-top: -23px; color: #FFFFFF; font-size: 14px; display: inline-block; padding: 3px 5px; margin-bottom: 5px; border-radius: 5px;">公司简介</span>
@@ -284,6 +287,7 @@
 				   var merchantType = data.data.merchantType;
 				   var merchantDescription = data.data.merchantDescription;
 				   var merchantPicture = data.data.merchantPicture;
+				   var merchantCase = data.data.merchantCase;
 
 				   g_name = name;
 				   g_userId = userId;
@@ -336,6 +340,12 @@
 				      merchantPictureHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
 				   });
 				   $(".js_merchantPicture").html(merchantPictureHtml);
+
+				   var merchantCaseHtml = "";
+				   merchantCase.split(",").forEach(function(data){
+				      merchantCaseHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+				   });
+				   $(".js_merchantCase").html(merchantCaseHtml);
 
 				   wx.ready(function () {
 			//分享朋友圈

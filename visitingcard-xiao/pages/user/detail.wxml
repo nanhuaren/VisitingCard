@@ -132,6 +132,31 @@
         </block>
 
       </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>案例图片</label>
+        <image class='form-item-image' name='merchantCase' bindtap='bindAddMerchantCaseTap' src='/images/add-img.png'></image>
+      </view>
+      <view wx:if='{{merchantCases1.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="merchantCase1" wx:for="{{merchantCases1}}" wx:for-item="merchantCase">
+          <image bindtap='bindViewImageTap' data-imageid='{{merchantCase}}' data-datatype='04'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantCase}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantCase}}' bindtap='bindDeleteMerchantPicture' data-datatype='04' type='cancel'></icon>
+        </block>
+
+      </view>
+      <view wx:if='{{merchantCases2.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="merchantCase2" wx:for="{{merchantCases2}}" wx:for-item="merchantCase">
+          <image  bindtap='bindViewImageTap' data-imageid='{{merchantCase}}' data-datatype='04'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantCase}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantCase}}' bindtap='bindDeleteMerchantPicture' data-datatype='04' type='cancel'></icon>
+        </block>
+
+      </view>
+      <view wx:if='{{merchantCases3.length>0}}' class='form-item form-item-line form-item-row'>
+        <block wx:key="merchantCase3" wx:for="{{merchantCases3}}" wx:for-item="merchantCases">
+          <image  bindtap='bindViewImageTap' data-imageid='{{merchantCases}}' data-datatype='04'  class='form-item-image' src='https://www.nanhuaren.cn/upload/{{merchantCases}}'></image>
+          <icon class='delete_image' data-imageid='{{merchantCases}}' bindtap='bindDeleteMerchantPicture' data-datatype='04' type='cancel'></icon>
+        </block>
+
+      </view>
       <view class='card-footer'>
         <button class='card-footer-button' formType="submit">保存</button>
       </view>

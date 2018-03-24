@@ -34,6 +34,7 @@
 			merchantType, 
 			merchantDescription, 
 			merchantPicture, 
+			merchantCase,
 			userId,
 			createTime
 		)
@@ -44,7 +45,8 @@
 			#{merchantPosition}, 
 			#{merchantType}, 
 			#{merchantDescription}, 
-			#{merchantPicture}, 
+			#{merchantPicture},
+			#{merchantCase},
 			#{userId},
 			#{createTime}
 		)
@@ -58,6 +60,7 @@
 			merchantType = #{merchantType}, 
 			merchantDescription = #{merchantDescription}, 
 			merchantPicture = #{merchantPicture}, 
+			merchantCase = #{merchantCase},
 			userId = #{userId}, 
 			updateTime = #{updateTime}
 		where id = #{id}

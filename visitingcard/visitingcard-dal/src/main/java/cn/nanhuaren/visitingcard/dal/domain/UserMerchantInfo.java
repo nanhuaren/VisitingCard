@@ -18,6 +18,8 @@ public class UserMerchantInfo extends UserInfo {
 
 	private String merchantPicture;
 
+	private String merchantCase;
+
 	public Long getMerchantId() {
 		return merchantId;
 	}
@@ -44,6 +46,10 @@ public class UserMerchantInfo extends UserInfo {
 
 	public String getMerchantPicture() {
 		return merchantPicture;
+	}
+
+	public String getMerchantCase() {
+		return merchantCase;
 	}
 
 }
