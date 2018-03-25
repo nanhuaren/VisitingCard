@@ -66,3 +66,16 @@ create table t_catalog (
 	createTime timestamp,
 	updateTime timestamp default current_timestamp
 );
+
+create table t_collectUser (
+	id int primary key auto_increment, 
+	name varchar(100), 
+	mobile varchar(2000), 
+	address varchar(100), 
+	count varchar(100), 
+	description varchar(1000), 
+	pictures varchar(2000),
+	status varchar(2000),  
+	createTime timestamp,
+	updateTime timestamp default current_timestamp
+);

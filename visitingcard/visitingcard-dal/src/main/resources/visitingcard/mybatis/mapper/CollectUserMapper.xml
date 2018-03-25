@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+       Copyright 2015-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CollectUserMapper">
+
+	<resultMap id="CollectUserMap" type="cn.nanhuaren.visitingcard.dal.domain.CollectUser">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="count" jdbcType="VARCHAR" property="count" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="pictures" jdbcType="VARCHAR" property="pictures" />
+		<result column="status" jdbcType="VARCHAR" property="status" />
+	</resultMap>
+
+    <select id="selectById" resultType="CollectUser">
+        select * from t_collectUser where id = #{id}
+    </select>
+    
+    <select id="listAll" resultMap="CollectUserMap">
+        select * from t_collectUser order by updateTime desc, createTime desc
+    </select>
+    
+    <insert id="insert" parameterType="cn.nanhuaren.visitingcard.dal.domain.CollectUser">
+		insert into t_collectUser
+		(
+			name, 
+			mobile, 
+			address, 
+			count, 
+			description, 
+			pictures,
+			status, 
+			createTime
+		)
+		values
+		(
+			#{name}, 
+			#{mobile}, 
+			#{address}, 
+			#{count}, 
+			#{description}, 
+			#{pictures},
+			#{status},
+			#{createTime}
+		)
+	</insert>
+	
+	<update id="updateById" parameterType="cn.nanhuaren.visitingcard.dal.domain.CollectUser">
+		update t_collectUser set
+			name = #{name}, 
+			mobile = #{mobile}, 
+			address = #{address}, 
+			description = #{description}, 
+			pictures = #{pictures}, 
+			status = #{status}, 
+			updateTime = #{updateTime}
+		where id = #{id}
+	</update>
+</mapper>
