@@ -59,7 +59,7 @@
 				<i class="iconfont">&#xe663;</i><span class="js_merchantType"></span>
 			</p>
 			<p>
-				<i class="iconfont">&#xe606;</i><span><a href="http://wpa.qq.com/msgrd?v=3&uin=375995002&site=qq&menu=yes"  class="js_qq"></a></span>
+				<i class="iconfont">&#xe606;</i><span><a class="js_qq"></a></span>
 			</p>
 			<p>
 				<i class="iconfont">&#xe645;</i><span onClick="document.getElementById('ewm').style.display='';" class="js_weixin"></span>
@@ -68,7 +68,7 @@
 				<i class="iconfont">&#xe62f;</i><span class="js_email"></span>
 			</p>
 			<p>
-				<i class="iconfont">&#xe617;</i><span><a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=&c=233&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&wd2=&sug_forward=4833e71f8d65c36b82a00cc6&src=1/vt=map/?fromhash=1" class="js_address"></a></span>
+				<i class="iconfont">&#xe617;</i><span><a class="js_address"></a></span>
 			</p>
 		</div>
 
@@ -99,7 +99,7 @@
 		<!--视频-->
 		
 		<div class="linksbox">
-			<a href="http://www.nanhuaren.cn" class="js_merchantName"></a>
+			<a class="js_merchantName"></a>
 		</div>
 		<br/>
 		<br/>
@@ -110,8 +110,8 @@
 	<span class="zhizuotit"></span>
 	<div class="maskbox" id="zhizuo" style="display: none">
 		<div class="zhizuocon">
-			<a href="about.php" style="background: #009933">公司<br>简介
-			</a> <a href="zhizuo.php" style="background: #FF6600">名片<br>制作
+			<a style="background: #009933">公司<br>简介
+			</a> <a style="background: #FF6600">名片<br>制作
 			</a>
 		</div>
 		<div class="back" onClick="hidemask('zhizuo')" ontouchstart="hidemask('zhizuo')" ontouchmove="hidemask('zhizuo')"></div>
@@ -189,7 +189,7 @@
 		var qrcode_c = document.getElementById("qrcode");  
 		if(qrcode_c){
 			//var thisURL = document.URL;
-			var thisURL = "http://www.nanhuaren.cn";    
+			var thisURL = location.href;//"http://www.nanhuaren.cn";    
 			var qrcode = new QRCode(qrcode_c, {  
 				width : 160,  
 				height : 160	
@@ -335,21 +335,27 @@
 				   $(".js_merchantType").html(merchantType);
 				   $(".js_merchantDescription").html(merchantDescription);
 				   var merchantLogoHtml = "";
-				   merchantLogo.split(",").forEach(function(data){
-				      merchantLogoHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
-				   });
+				   if(merchantLogo!=null&&merchantLogo!=""){
+					   merchantLogo.split(",").forEach(function(data){
+						  merchantLogoHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+					   });
+				   }
 				   $(".js_merchantLogo").html(merchantLogoHtml);
 				   
 				   var merchantPictureHtml = "";
-				   merchantPicture.split(",").forEach(function(data){
-				      merchantPictureHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
-				   });
+				   if(merchantPicture!=null&&merchantPicture!=""){
+					   merchantPicture.split(",").forEach(function(data){
+						  merchantPictureHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+					   });
+				   }
 				   $(".js_merchantPicture").html(merchantPictureHtml);
 
 				   var merchantCaseHtml = "";
-				   merchantCase.split(",").forEach(function(data){
-				      merchantCaseHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
-				   });
+				   if(merchantCase!=null&&merchantCase!=""){
+					   merchantCase.split(",").forEach(function(data){
+						  merchantCaseHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+					   });
+				   }
 				   $(".js_merchantCase").html(merchantCaseHtml);
 
 				   wx.ready(function () {

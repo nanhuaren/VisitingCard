@@ -28,7 +28,7 @@
 
 .head-left {
   padding: 20rpx;
-  width: 50%;
+  width: 70%;
 }
 
 .head-img {
@@ -41,7 +41,7 @@
   margin-top: 50rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  width: 50%; 
+  width: 30%; 
   text-align: right; 
 }
 

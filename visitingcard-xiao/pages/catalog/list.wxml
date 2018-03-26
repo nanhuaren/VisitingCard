@@ -4,7 +4,7 @@
     <view class='card-modal'>
       <view class='card-detail'>
         <view class='head-left'>
-            <text style='font-size:17pt;'>{{catalog.catalogName}}</text> 
+            <text style='font-size:16pt;'>{{catalog.catalogName}}</text> 
             <text class="item-text">{{catalog.catalogDescription}}</text>          
         </view> 
         <view class='head-right'>

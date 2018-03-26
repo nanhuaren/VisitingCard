@@ -31,7 +31,7 @@
 	</resultMap>
 
     <select id="listByUserId" resultMap="CatalogMap">
-        select * from t_catalog where userId = #{userId}
+        select * from t_catalog where userId = #{userId} order by catalogSortNum desc,createTime asc
     </select>
     
     <select id="selectById" resultType="Catalog">

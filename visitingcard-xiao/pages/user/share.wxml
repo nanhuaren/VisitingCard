@@ -74,15 +74,7 @@
         <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{merchantPicture}}' data-datatype='03' src='https://www.nanhuaren.cn/upload/{{merchantPicture}}'></image>
       </view>
       </block>
-    </view>
-    <view class="form-item-list" style='margin-bottom:140rpx;'>
-      <text class="item-title">案例展示</text>
-      <block wx:key="merchantCase" wx:for="{{merchantCases}}" wx:for-item="merchantCase">
-      <view class="item-pic">
-        <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{merchantCase}}' data-datatype='04' src='https://www.nanhuaren.cn/upload/{{merchantCase}}'></image>
-      </view>
-      </block>
-    </view>
+    </view>    
     <block wx:key="catalogList" wx:for="{{catalogList}}" wx:for-item="catalog">
     <view class="form-item-list">
       <text class="item-title">{{catalog.catalogName}}</text>
@@ -93,6 +85,14 @@
       </block>
     </view>
     </block>
+    <view class="form-item-list" style='margin-bottom:140rpx;'>
+      <text class="item-title">案例展示</text>
+      <block wx:key="merchantCase" wx:for="{{merchantCases}}" wx:for-item="merchantCase">
+      <view class="item-pic">
+        <image mode="widthFix" bindtap='bindViewImageTap' data-imageid='{{merchantCase}}' data-datatype='04' src='https://www.nanhuaren.cn/upload/{{merchantCase}}'></image>
+      </view>
+      </block>
+    </view>
   </view>
   <view class='weixin-footer' wx:if='{{showWeixin}}'>
     <image wx:if='{{weixinQrcode!=null}}'mode="widthFix" src='https://www.nanhuaren.cn/upload/{{weixinQrcode}}'></image>

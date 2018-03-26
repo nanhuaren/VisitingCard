@@ -13,6 +13,10 @@
         <label class='form-item-label'>描述</label>
         <textarea class='form-item-textarea' name='catalogDescription' auto-height placeholder='分类描述...' value='{{catalog.catalogDescription}}'></textarea>
       </view>
+      <view class='form-item form-item-line'>
+        <label class='form-item-label'>显示顺序</label>
+        <input class='form-item-input' name='catalogSortNum' type='number' placeholder='请输入显示顺序' value='{{catalog.catalogSortNum}}'></input>
+      </view>
       <view class='default-gray'></view>
       <view class='form-item form-item-line'>
         <label class='form-item-label'>上传图片</label>
