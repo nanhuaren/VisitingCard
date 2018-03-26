@@ -84,6 +84,10 @@
 			<h3 class="piclisttit">= 产品展示 =</h3>
 			<ul class="piclist1 js_merchantPicture">
 			</ul>
+		</div>
+		<div class="piclistbox" id="catalog-content">
+		</div>
+		<div class="piclistbox" id="case-content">
 			<h3 class="piclisttit">= 案例展示 =</h3>
 			<ul class="piclist1 js_merchantCase">
 			</ul>
@@ -261,6 +265,7 @@
 			}
 			var param=url.substring(index+1);
 			var userId = param.split("=")[1];
+			g_userId = userId;
 			$.ajax({
                type: "get",
                url: "https://www.nanhuaren.cn/vcard/user/merchantDetail",
@@ -425,7 +430,31 @@
                }
             });
 		}
-		getUserInfo(); 
+
+		function getCatalogInfo(){
+			$.ajax({
+               type: "get",
+               url: "https://www.nanhuaren.cn/vcard/catalog/list",
+               data: "userId="+g_userId,
+               success: function(data){ 
+				   var collectUserList = data.data;
+				   var listHtml = "";
+				   collectUserList.forEach(function(item){
+						listHtml += "<h3 class='piclisttit'>= "+item.catalogName+" =</h3>";
+						listHtml += "<ul class='piclist1'>";
+						var catalogHtml = "";
+						item.catalogPicture.split(",").forEach(function(data){
+							catalogHtml+='<li><b><img src='+'http://www.nanhuaren.cn/upload/'+data+'></b></li>';
+						});
+						listHtml += catalogHtml;
+						listHtml += "</ul>";
+				   });
+				   $("#catalog-content").html(listHtml);
+			   }
+			});
+		}
+		getUserInfo();
+		getCatalogInfo();
 	</script>
 	<script language="javascript" type="text/javascript">
 
