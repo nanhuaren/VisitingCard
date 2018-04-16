@@ -1,0 +1,83 @@
+<!--share_card/pages/profile/index.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <image class="weui-textarea" src="{{setting.attachurl+setting.headerImg}}"></image>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view style='text-align:center;font-size:18pt;'>{{setting.name}}</view>
+          <view style='text-align:center;font-size:14pt;'>{{setting.title}}</view>
+          <view style='text-align:center;font-size:12pt;'>{{setting.companyName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">个人信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{setting.mobile}}</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">微信</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{setting.weixin}}</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">邮箱</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{setting.email}}</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{setting.companyName}}</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">地址</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-textarea">{{setting.address}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary">同步到通讯录</button>
+    </view>
+    <view class="weui-cells__title">个性签名</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-textarea">{{setting.sign}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">照片展示</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view wx:key="show" wx:for="{{setting.show}}" wx:for-item="item">
+            <image class="weui-textarea" src="{{setting.attachurl+item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

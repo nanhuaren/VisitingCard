@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "share_card/pages/profile/index",
+    "share_card/pages/add/add",
+    "share_card/pages/edit/edit",
+    "share_card/pages/pay/pay",  
+    "share_card/pages/index/index",  
+    "share_card/pages/product/index",
+    "share_card/pages/notice/index",
+    "share_card/pages/website/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "乐享名片",
+    "navigationBarBackgroundColor": "#337ab7",
+    "backgroundColor": "#f5f5f5",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "share_card/pages/profile/index",
+        "text": "名片"
+      },
+      {
+        "pagePath": "share_card/pages/product/index",
+        "text": "产品"
+      },
+      {
+        "pagePath": "share_card/pages/notice/index",
+        "text": "朋友圈"
+      },
+      {
+        "pagePath": "share_card/pages/website/index",
+        "text": "官网"
+      }
+    ]
+  }
+}
